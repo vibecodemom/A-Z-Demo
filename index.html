@@ -462,7 +462,7 @@ textarea#rtext { min-height: 220px; font-size: .85rem; }
 .dial .orbit.t2 i { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; opacity: .75; }
 .dial .orbit.t3 i { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; opacity: .5; }
 .dial .buddy { position: absolute; left: 50%; top: calc(11% + 9px); width: 0; height: 0; }
-.dial .b-rot { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) rotate(calc(var(--p) * -1turn)); transition: transform .3s linear; }
+.dial .b-rot { position: absolute; left: 0; top: 0; width: max-content; transform: translate(-50%, -50%) rotate(calc(var(--p) * -1turn)); transition: transform .3s linear; }
 .dial .b-bob { display: block; font-size: clamp(2.3rem, 12vw, 3.1rem); line-height: 1; filter: drop-shadow(0 3px 4px rgba(0,0,0,.25)); animation: bob 1.1s ease-in-out infinite; }
 .dial .b-bob.paused { animation: none; }
 @keyframes bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
@@ -764,7 +764,7 @@ textarea#rtext { min-height: 220px; font-size: .85rem; }
 .ditem.on { background: rgba(37,99,217,.05); }
 .dbody { padding: 0 14px 14px; }
 /* Pixel pictures */
-img.px { width: 1.15em; height: 1.15em; vertical-align: -0.22em; display: inline-block; image-rendering: pixelated; image-rendering: crisp-edges; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+img.px { width: 1.15em; height: 1.15em; max-width: none; vertical-align: -0.22em; display: inline-block; image-rendering: pixelated; image-rendering: crisp-edges; pointer-events: none; -webkit-user-drag: none; user-select: none; }
 .heart img.px, .burst img.px { width: 1.2em; height: 1.2em; }
 /* Profiles card */
 .prow { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); flex-wrap: wrap; }
@@ -1104,6 +1104,49 @@ a.mini { display: inline-flex; align-items: center; text-decoration: none; font-
 .lookprev.retro i:nth-child(1) { left: 9px; right: 11px; top: 9px; height: 22px; border-radius: 10px; background: repeating-conic-gradient(from 0deg at 85% 50%, #FFD23F 0 12deg, #FFC21F 12deg 24deg); }
 .lookprev.retro i:nth-child(2) { left: 9px; width: 28px; height: 28px; top: 35px; border-radius: 50%; background: #F2542D; }
 .lookprev.retro i:nth-child(3) { left: 46px; right: 11px; top: 37px; height: 22px; border-radius: 999px; background: #2EC4B6; }
+/* Fun facts: groups, badges, grown-up topic switches */
+.fsec { margin: 6px 2px 0; font-size: 1.15rem; }
+.fcats { display: grid; gap: 10px; }
+.fcat { border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+.fcat-bar { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 10px 14px; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+.fcat-bar > .oe { font-size: 2rem; line-height: 1; flex: none; }
+.fcat-bar > .oe img.px, .fcat-bar > img.px { width: 2.2rem; height: 2.2rem; }
+.fcat-n { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.fcat-n b { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.15; }
+.fcat-n small { color: var(--muted); font-size: .95rem; letter-spacing: .1em; }
+.fcat-n small img.px { width: 1.15rem; height: 1.15rem; }
+.fcat-w { flex: none; font-weight: 800; font-size: .9rem; padding: 4px 8px; border-radius: 999px; background: var(--star-soft); }
+.fcat-w img.px { width: 1.1rem; height: 1.1rem; }
+.fcat.open { box-shadow: var(--shadow), inset 0 0 0 2px var(--kid-soft); }
+.fcat.open .ftopics { padding: 0 12px 14px; }
+.fbadges { padding: 12px 14px; display: grid; gap: 8px; }
+.fb-head { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 1.1rem; }
+.fb-head > .oe, .fb-head > img.px { width: 1.6rem; height: 1.6rem; font-size: 1.4rem; }
+.fb-head b { flex: 1; }
+.fb-n { min-width: 32px; padding: 2px 10px; border-radius: 999px; background: var(--star-soft); text-align: center; font-weight: 800; }
+.fb-shelf { display: flex; flex-wrap: wrap; gap: 10px 8px; }
+.fbadges p { margin: 0; }
+.fmedal { display: inline-grid; justify-items: center; flex: none; }
+.fm-rib { width: 26px; height: 14px; margin-bottom: -4px; background: linear-gradient(90deg, #1F64C8 0 50%, #FF3B4E 50% 100%); clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%); }
+.fm-disc { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF6B8, #FFD84A 48%, #E9B21A); box-shadow: inset 0 0 0 3px #D89A00, 0 2px 0 rgba(0,0,0,.15); }
+.fm-disc .oe { font-size: 1.5rem; line-height: 1; }
+.fm-disc img.px { width: 28px; height: 28px; }
+.fmedal.big .fm-rib { width: 50px; height: 26px; margin-bottom: -6px; }
+.fmedal.big .fm-disc { width: 104px; height: 104px; box-shadow: inset 0 0 0 5px #D89A00, 0 4px 0 rgba(0,0,0,.15); }
+.fmedal.big .fm-disc .oe { font-size: 3.4rem; }
+.fmedal.big .fm-disc img.px { width: 60px; height: 60px; }
+.fact-all { display: flex; align-items: center; gap: 12px; }
+.fact-won { margin: 0; font-weight: 800; font-size: 1.15rem; }
+.btn.sm { min-height: 40px; padding: 6px 14px; font-size: .9rem; }
+.pf-all { gap: 8px; }
+.pf-all .grow { flex: 1; }
+.pfcats { border-radius: 16px; box-shadow: inset 0 0 0 1px rgba(100,110,140,.25); overflow: hidden; }
+.pfcats .drow .de { font-size: 1.5rem; }
+.pfcats .dbody .toggle { padding: 6px 0; }
+[data-skin="retro"] .fcat { box-shadow: var(--shadow); }
+[data-skin="retro"] .fcat-w, [data-skin="retro"] .fb-n { background: var(--sun); color: #2A1A3D; }
+[data-skin="retro"] .fm-disc { box-shadow: inset 0 0 0 3px #2A1A3D; }
+[data-skin="retro"] .fmedal.big .fm-disc { box-shadow: inset 0 0 0 5px #2A1A3D; }
 .card.demo { background: var(--star-soft); box-shadow: none; }
 </style>
 <div id="app"></div><script>window.AZ_LS_KEY = "a-z-demo-data";</script>
@@ -1184,7 +1227,9 @@ const SOUNDS = {
   ring() { for (let i = 0; i < 6; i++) { tone(1320, i * 0.16, 0.12, 0.26, 'square'); tone(1660, i * 0.16 + 0.04, 0.1, 0.16, 'square'); } for (let i = 0; i < 6; i++) { tone(1320, 1.3 + i * 0.16, 0.12, 0.26, 'square'); tone(1660, 1.34 + i * 0.16, 0.1, 0.16, 'square'); } },
   cheer() { [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, i * 0.13, 0.3, 0.2, 'triangle')); }
 };
-function play(name) { if (S.settings && S.settings.sound === false) return; try { SOUNDS[name](); } catch (e) {} }
+let lastSfx = 0, lastSfxLen = 0;
+const SFX_LEN = { tap: 100, star: 400, oops: 400, cheer: 1100, done: 1500, warn: 1100, ring: 2000 };
+function play(name) { if (S.settings && S.settings.sound === false) return; lastSfx = Date.now(); lastSfxLen = SFX_LEN[name] || 250; try { SOUNDS[name](); } catch (e) {} }
 function buzz(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) {} }
 let speechUnlocked = false;
 function unlockSpeech() {
@@ -1223,24 +1268,40 @@ function voiceFor(es) {
   return (want && list.find(v => v.voiceURI === want)) || list.find(v => voiceScore(v, es) > -100) || list[0] || null;
 }
 const voiceRate = () => (voicePrefs().slow ? 0.78 : 0.9);
-let speakGen = 0; const speakKeep = [];
+let speakGen = 0, speakResolve = null; const speakKeep = [];
+const wait = ms => new Promise(r => setTimeout(r, ms));
+/* speak() returns a promise that settles when the voice is done (or when newer speech takes over),
+   so the app can wait for a sentence to finish before it moves on. Only one thing talks at a time. */
 function speak(text, asIs, opt = {}) {
+  if (speakResolve) { const r = speakResolve; speakResolve = null; r(); }
+  let finish; const done = new Promise(r => { finish = r; });
   try {
     const es = typeof langNow === 'function' && langNow() === 'es', gen = ++speakGen;
     const parts = (Array.isArray(text) ? text : [text]).map(p => (typeof p === 'string' ? { t: p, raw: asIs } : p)).filter(p => p && p.t);
+    if (!parts.length || typeof speechSynthesis === 'undefined') { finish(); return done; }
     const voice = voiceFor(es);
-    speechSynthesis.cancel(); speakKeep.length = 0;
+    const end = () => { if (gen === speakGen && speakResolve === finish) speakResolve = null; finish(); };
+    speakResolve = finish;
+    const words = parts.reduce((a, p) => a + p.t.split(/\s+/).length, 0);
+    setTimeout(end, 2500 + words * 650 / voiceRate() + parts.length * 700); /* in case the device never says it finished */
     const say = i => {
-      if (gen !== speakGen || i >= parts.length) return;
+      if (gen !== speakGen) return end();
+      if (i >= parts.length) return end();
       const p = parts[i], u = new SpeechSynthesisUtterance(es && !p.raw ? tr(p.t) : p.t);
       u.rate = voiceRate() * (p.slow ? 0.85 : 1); u.pitch = 1; u.lang = voice ? voice.lang : es ? 'es-US' : 'en-US'; if (voice) u.voice = voice;
-      let moved = false; const next = () => { if (moved) return; moved = true; setTimeout(() => say(i + 1), opt.gap || 650); };
+      let moved = false; const next = () => { if (moved) return; moved = true; setTimeout(() => say(i + 1), i < parts.length - 1 ? (opt.gap || 650) : 0); };
       u.onend = next; u.onerror = next;
-      if (i < parts.length - 1) setTimeout(next, 1500 + u.text.split(/\s+/).length * 550); /* some browsers forget to say when they finish */
+      setTimeout(next, 1500 + u.text.split(/\s+/).length * 600 / u.rate); /* some browsers forget to say when they finish */
       speakKeep.push(u); speechSynthesis.speak(u);
     };
-    say(0);
-  } catch (e) {}
+    const busy = speechSynthesis.speaking || speechSynthesis.pending;
+    speechSynthesis.cancel(); speakKeep.length = 0;
+    /* iPhones and iPads can keep talking for a moment after cancel(), so wait a beat before starting new speech.
+       Also let a sound effect (a chime or cheer) finish first, so the voice never talks over it. */
+    const delay = Math.max(busy ? 160 : 0, lastSfxLen - (Date.now() - lastSfx));
+    if (delay > 0) setTimeout(() => say(0), delay); else say(0);
+  } catch (e) { finish(); }
+  return done;
 }
 try { speechSynthesis.addEventListener('voiceschanged', () => { if (UI && UI.view === 'parent' && UI.ptab === 'settings') render(); }); } catch (e) {}
 
@@ -2354,8 +2415,7 @@ function warnNote() {
 }
 function buddyOrbit(b, paused) {
   if (!b.e) return '';
-  return `<div class="orbit trail t3" aria-hidden="true"><i></i></div><div class="orbit trail t2" aria-hidden="true"><i></i></div><div class="orbit trail t1" aria-hidden="true"><i></i></div>
-    <div class="orbit" aria-hidden="true"><span class="buddy"><span class="b-rot"><span class="b-bob ${paused ? 'paused' : ''}">${b.e}</span></span></span></div>`;
+  return `<div class="orbit" aria-hidden="true"><span class="buddy"><span class="b-rot"><span class="b-bob ${paused ? 'paused' : ''}">${b.e}</span></span></span></div>`;
 }
 function tabTimer(k) {
   const b = buddyOf(k);
@@ -5567,6 +5627,7 @@ function lrnReveal(L) {
   if (L.act === 'sounds') return `${q.word} starts with ${q.answer}`;
   if (L.act === 'phonics') return `${q.word} starts with ${es ? q.letter : q.sound}`;
   if (L.act === 'more') return moreLine(q);
+  if (L.act === 'count') return Number(q.answer) === 1 ? 'There is 1!' : `There are ${q.answer}!`;
   return q.answer;
 }
 ACT.lrnGo = d => { const k = kidById(UI.childId); if (!k) return; unlockSpeech(); play('tap'); if (['tables', 'spell', 'readw'].includes(d.v) && !d.t) { UI.lrnPick = d.v; window.scrollTo(0, 0); render(); return; } UI.lrnPick = null; lrnStart(k, d.v, d.v === 'tables' ? { table: d.t === 'mix' ? 0 : Number(d.t) } : d.t ? { tier: d.t } : {}); window.scrollTo(0, 0); render(); };
@@ -5578,12 +5639,20 @@ ACT.lrnPick = (d, el) => {
   const v = d.v, ok = v === L.q.answer;
   if (ok) {
     if (!L.tries) lrnScore(k); lrnRecord(k, !L.tries); L.picked = { v, ok: true }; play('star'); buzz(20); L.busy = true;
-    if (['sounds', 'phonics', 'more'].includes(L.act)) speak(lrnReveal(L)); else if (L.q.wordQ) speak(L.q.answer, true);
     UI._keepScroll = true; render();
-    setTimeout(() => { L.busy = false; lrnNext(k); }, L.act === 'phonics' || L.act === 'more' ? 1500 : 750);
+    /* Say the answer after the chime, and move on only when the sentence is finished. */
+    /* Announce the answer: the full sentence for pictures and groups, and the letter, number or word itself for the rest. */
+    const reveal = ['sounds', 'phonics', 'more', 'count'].includes(L.act), line = reveal ? lrnReveal(L) : (L.q.wordQ || ['letters', 'bigsmall', 'numbers'].includes(L.act)) ? L.q.answer : '';
+    const talk = line ? speak(line, !reveal) : Promise.resolve();
+    Promise.all([talk, wait(line ? 1000 : 750)]).then(() => wait(line ? 450 : 0)).then(() => { L.busy = false; if (UI.lrn === L) lrnNext(k); });
   } else {
     L.tries++; L.picked = { v, ok: false }; play('oops'); buzz([30, 40, 30]);
-    if (L.tries >= 2) { lrnRecord(k, false); L.reveal = true; L.busy = true; UI._keepScroll = true; render(); speak(lrnReveal(L), !['sounds', 'phonics', 'more'].includes(L.act)); setTimeout(() => { L.busy = false; L.reveal = false; lrnNext(k); }, 2000); return; }
+    if (L.tries >= 2) {
+      lrnRecord(k, false); L.reveal = true; L.busy = true; UI._keepScroll = true; render();
+      const talk = wait(400).then(() => (UI.lrn === L ? speak(lrnReveal(L), !['sounds', 'phonics', 'more', 'count'].includes(L.act)) : null));
+      Promise.all([talk, wait(1800)]).then(() => wait(500)).then(() => { L.busy = false; L.reveal = false; if (UI.lrn === L) lrnNext(k); });
+      return;
+    }
     UI._keepScroll = true; render(); setTimeout(() => lrnSay(k), 300);
   }
 };
@@ -5593,8 +5662,15 @@ ACT.lrnTile = d => {
   const want = q.answer.charAt(q.typed.length);
   if (t.c === want) {
     q.typed += t.c; q.used.push(t.i); play('tap'); L.picked = null;
-    if (q.typed === q.answer) { const clean = q.misses === 0; if (clean) lrnScore(k); lrnRecord(k, clean); L.picked = { ok: true }; play('star'); L.busy = true; speak(q.item, true); UI._keepScroll = true; render(); setTimeout(() => { L.busy = false; lrnNext(k); }, 1000); return; }
-    if (L.act === 'spell1') speak(t.c, true);
+    if (q.typed === q.answer) {
+      /* Say the last letter, then the whole word, and only move on when both are finished. */
+      const clean = q.misses === 0; if (clean) lrnScore(k); lrnRecord(k, clean); L.picked = { ok: true }; L.busy = true; UI._keepScroll = true; render();
+      speak([{ t: t.c.toUpperCase(), raw: true }, { t: q.item, raw: true }], true, { gap: 450 })
+        .then(() => { if (UI.lrn === L) play('star'); return wait(700); })
+        .then(() => { L.busy = false; if (UI.lrn === L) lrnNext(k); });
+      return;
+    }
+    speak(t.c.toUpperCase(), true);
   } else { q.misses++; L.picked = { bad: t.i }; play('oops'); buzz([30, 40, 30]); }
   UI._keepScroll = true; render();
 };
@@ -5981,24 +6057,991 @@ const FACT_TOPICS = [
     ['In 2017, Rihanna started Fenty Beauty with 40 shades of foundation so people with many different skin colors could find a match.', 'En 2017, Rihanna creó Fenty Beauty con 40 tonos de base para que personas con muchos colores de piel encontraran el suyo.']
   ] }
 ];
+/* ---------- More facts for the first topics (added after the first 12, so saved fact ids stay the same) */
+/* More facts for topics that already exist. Added AFTER the first facts so read and saved facts keep their place. */
+const FACT_MORE = {};
+FACT_MORE.lego = [
+  ['Ole Kirk Christiansen started the LEGO company. His family still owns it today.', 'Ole Kirk Christiansen fundó la compañía LEGO. Su familia todavía es la dueña hoy.'],
+  ['The LEGO company is still based in the small town of Billund, Denmark.', 'La compañía LEGO todavía tiene su sede en el pequeño pueblo de Billund, Dinamarca.'],
+  ['Before plastic bricks, LEGO made wooden yo-yos, trucks and ducks.', 'Antes de los bloques de plástico, LEGO hacía yoyós, camiones y patitos de madera.'],
+  ['The tubes inside a LEGO brick are what make it hold tight to the brick below it.', 'Los tubitos de adentro de un bloque de LEGO hacen que se agarre fuerte al bloque de abajo.'],
+  ['LEGO DUPLO bricks are twice as long, twice as tall and twice as wide as regular LEGO bricks.', 'Los bloques LEGO DUPLO son el doble de largos, de altos y de anchos que los bloques normales.'],
+  ['DUPLO bricks are made to snap onto regular LEGO bricks too.', 'Los bloques DUPLO también encajan con los bloques de LEGO normales.'],
+  ['LEGO Technic sets use beams, gears and axles to build machines that move.', 'Los sets LEGO Technic usan vigas, engranes y ejes para construir máquinas que se mueven.'],
+  ['LEGO first made bricks you could program with a computer, called Mindstorms, in 1998.', 'LEGO hizo sus primeros bloques que se podían programar con computadora, llamados Mindstorms, en 1998.'],
+  ['The first LEGO Star Wars sets came out in 1999.', 'Los primeros sets de LEGO Star Wars salieron en 1999.'],
+  ['LEGO Friends, with its own town called Heartlake City, started in 2012.', 'LEGO Friends, con su propio pueblo llamado Heartlake City, empezó en 2012.'],
+  ['LEGO Ninjago started in 2011 and later got its own TV show and movie.', 'LEGO Ninjago empezó en 2011 y después tuvo su propio programa de TV y película.'],
+  ['People who design LEGO sets for the company are called LEGO designers. Many of them loved LEGO as kids.', 'Las personas que diseñan los sets para la compañía se llaman diseñadores de LEGO. Muchos amaban LEGO de niños.'],
+  ['Grown-up fans of LEGO are often called AFOLs, which stands for Adult Fans of LEGO.', 'A los fans adultos de LEGO a veces les dicen AFOL, que en inglés quiere decir Fans Adultos de LEGO.'],
+  ['LEGO Ideas lets fans send in their own set ideas. Some of them become real sets you can buy.', 'LEGO Ideas deja que los fans manden sus propias ideas de sets. Algunas se vuelven sets de verdad.'],
+  ['Each LEGO brick has a tiny number inside that tells which mold made it.', 'Cada bloque de LEGO tiene un numerito adentro que dice qué molde lo hizo.'],
+  ['LEGO bricks are made by melting plastic and squirting it into metal molds.', 'Los bloques de LEGO se hacen derritiendo plástico y metiéndolo a presión en moldes de metal.'],
+  ['A minifigure is made of separate pieces: hair or hat, head, body, arms, hands and legs.', 'Una minifigura está hecha de piezas separadas: pelo o sombrero, cabeza, cuerpo, brazos, manos y piernas.'],
+  ['The first minifigures all had the same smiling face.', 'Todas las primeras minifiguras tenían la misma cara sonriente.'],
+  ['LEGO has made minifigures of astronauts, pirates, knights, chefs, firefighters and many more jobs.', 'LEGO ha hecho minifiguras de astronautas, piratas, caballeros, cocineros, bomberos y muchos trabajos más.'],
+  ['There are LEGOLAND parks in many countries, including the United States, England, Germany and Japan.', 'Hay parques LEGOLAND en muchos países, como Estados Unidos, Inglaterra, Alemania y Japón.'],
+  ['Inside LEGOLAND parks there is a place called Miniland, with tiny cities built from millions of bricks.', 'Dentro de los parques LEGOLAND hay un lugar llamado Miniland, con ciudades pequeñas hechas con millones de bloques.'],
+  ['The LEGO House in Billund, Denmark, is a building that looks like a giant stack of LEGO bricks.', 'La LEGO House en Billund, Dinamarca, es un edificio que parece una pila gigante de bloques de LEGO.'],
+  ['LEGO sets come with step-by-step picture instructions, so builders do not need to read words.', 'Los sets de LEGO traen instrucciones con dibujos paso a paso, así que no hace falta leer palabras.'],
+  ['The LEGO Batman Movie came out in 2017.', 'La película LEGO Batman salió en 2017.'],
+  ['Some teachers use LEGO to help kids learn math, like counting the bumps on bricks.', 'Algunos maestros usan LEGO para enseñar matemáticas, como contar los puntitos de los bloques.'],
+  ['One of the smallest LEGO pieces is a round 1-by-1 plate, about the size of a pencil eraser.', 'Una de las piezas de LEGO más pequeñas es una placa redonda de 1 por 1, más o menos del tamaño de un borrador de lápiz.'],
+  ['LEGO bricks come in dozens of colors, from bright red to sand green.', 'Los bloques de LEGO vienen en docenas de colores, desde rojo brillante hasta verde arena.'],
+  ['Building with LEGO can help your brain practice planning, patience and problem solving.', 'Construir con LEGO ayuda a tu cerebro a practicar a planear, a tener paciencia y a resolver problemas.']
+];
+FACT_MORE.pokemon = [
+  ['Pikachu\'s name comes from Japanese sounds: "pika" is a sparkle sound and "chu" is a mouse squeak.', 'El nombre de Pikachu viene de sonidos en japonés: "pika" es un sonido de chispa y "chu" es el chillido de un ratón.'],
+  ['The Pokémon TV show started in Japan in 1997.', 'El programa de TV de Pokémon empezó en Japón en 1997.'],
+  ['Ash Ketchum was the main hero of the Pokémon TV show for 25 years.', 'Ash Ketchum fue el héroe principal del programa de Pokémon durante 25 años.'],
+  ['The first Pokémon movie, Pokémon: The First Movie, starred Mewtwo and came out in 1998.', 'La primera película de Pokémon, con Mewtwo, salió en 1998.'],
+  ['Pokémon Red and Blue came to the United States in 1998.', 'Pokémon Rojo y Azul llegaron a Estados Unidos en 1998.'],
+  ['The company that makes the main Pokémon games is called Game Freak.', 'La compañía que hace los juegos principales de Pokémon se llama Game Freak.'],
+  ['There are 18 Pokémon types, like Fire, Water, Grass, Electric, Dragon and Fairy.', 'Hay 18 tipos de Pokémon, como Fuego, Agua, Planta, Eléctrico, Dragón y Hada.'],
+  ['Water beats Fire, Fire beats Grass, and Grass beats Water, like rock, paper, scissors.', 'Agua le gana a Fuego, Fuego le gana a Planta y Planta le gana a Agua, como piedra, papel o tijera.'],
+  ['In most Pokémon games you pick your first Pokémon from three: a Grass type, a Fire type and a Water type.', 'En casi todos los juegos de Pokémon eliges tu primer Pokémon entre tres: uno de tipo Planta, uno de Fuego y uno de Agua.'],
+  ['Eevee can evolve into eight different Pokémon, more than any other Pokémon.', 'Eevee puede evolucionar en ocho Pokémon diferentes, más que cualquier otro Pokémon.'],
+  ['Magikarp is famous for being weak, but it evolves into the strong Gyarados.', 'Magikarp es famoso por ser débil, pero evoluciona en el fuerte Gyarados.'],
+  ['Ditto can transform into a copy of any Pokémon it sees.', 'Ditto se puede transformar en una copia de cualquier Pokémon que ve.'],
+  ['Snorlax is known for eating a lot and sleeping a lot.', 'Snorlax es famoso por comer muchísimo y dormir muchísimo.'],
+  ['Psyduck always has a headache. When it gets really bad, it uses strange powers.', 'Psyduck siempre tiene dolor de cabeza. Cuando le duele mucho, usa poderes extraños.'],
+  ['Charizard is a Fire and Flying type, even though it looks like a dragon.', 'Charizard es de tipo Fuego y Volador, aunque parece un dragón.'],
+  ['A "shiny" Pokémon is a rare version with different colors.', 'Un Pokémon "shiny" es una versión rara con colores diferentes.'],
+  ['The places in Pokémon games are called regions, like Kanto, Johto, Hoenn, Alola and Paldea.', 'Los lugares de los juegos de Pokémon se llaman regiones, como Kanto, Johto, Hoenn, Alola y Paldea.'],
+  ['The Kanto region is based on a real part of Japan.', 'La región de Kanto está basada en una parte real de Japón.'],
+  ['A Pokédex is like an encyclopedia that tells you about every Pokémon you find.', 'Una Pokédex es como una enciclopedia que te dice sobre cada Pokémon que encuentras.'],
+  ['Professor Oak gives the player their first Pokémon in the very first games.', 'El Profesor Oak le da al jugador su primer Pokémon en los primeros juegos.'],
+  ['Legendary Pokémon are very rare and powerful. Usually you can catch only one of each.', 'Los Pokémon legendarios son muy raros y poderosos. Casi siempre solo puedes atrapar uno de cada uno.'],
+  ['Arceus is called the Original One in the Pokémon stories.', 'A Arceus le dicen "el Original" en las historias de Pokémon.'],
+  ['A giant Pikachu balloon has floated in the Macy\'s Thanksgiving Day Parade in New York since 2001.', 'Un globo gigante de Pikachu ha flotado en el desfile de Acción de Gracias de Macy\'s en Nueva York desde 2001.'],
+  ['The movie Detective Pikachu, with a talking Pikachu who solves mysteries, came out in 2019.', 'La película Detective Pikachu, con un Pikachu que habla y resuelve misterios, salió en 2019.'],
+  ['In 2022, a very rare Pikachu Illustrator card sold for more than 5 million dollars.', 'En 2022, una carta muy rara llamada Pikachu Illustrator se vendió por más de 5 millones de dólares.'],
+  ['Pokémon cards come in packs, so you never know exactly which cards you will get.', 'Las cartas de Pokémon vienen en sobres, así que nunca sabes exactamente cuáles te van a tocar.'],
+  ['The Pokémon Company runs a World Championships where players from many countries compete.', 'La Compañía Pokémon organiza un Campeonato Mundial donde compiten jugadores de muchos países.'],
+  ['Jigglypuff\'s song is so sleepy that it puts everyone to sleep, and then it gets mad when nobody listens!', '¡La canción de Jigglypuff da tanto sueño que todos se duermen, y luego se enoja porque nadie la escuchó!']
+];
+FACT_MORE.dinos = [
+  ['Scientists who study dinosaurs and other fossils are called paleontologists.', 'Los científicos que estudian los dinosaurios y otros fósiles se llaman paleontólogos.'],
+  ['A fossil is the rock-hard remains of a living thing from long, long ago, like bones, teeth or footprints.', 'Un fósil son los restos duros como roca de un ser vivo de hace muchísimo tiempo, como huesos, dientes o huellas.'],
+  ['The time of the dinosaurs is split into three parts: the Triassic, the Jurassic and the Cretaceous.', 'La época de los dinosaurios se divide en tres partes: el Triásico, el Jurásico y el Cretácico.'],
+  ['T. rex lived near the very end of the time of the dinosaurs, about 68 to 66 million years ago.', 'El T. rex vivió casi al final de la época de los dinosaurios, hace unos 68 a 66 millones de años.'],
+  ['T. rex had tiny arms, but they were strong. Each arm had two fingers.', 'El T. rex tenía brazos pequeños, pero fuertes. Cada brazo tenía dos dedos.'],
+  ['T. rex had one of the strongest bites of any land animal ever.', 'El T. rex tenía una de las mordidas más fuertes de cualquier animal terrestre.'],
+  ['Stegosaurus had big plates on its back and spikes on its tail.', 'El Estegosaurio tenía placas grandes en la espalda y picos en la cola.'],
+  ['The spikes on a Stegosaurus tail are nicknamed the "thagomizer."', 'A los picos de la cola del Estegosaurio les dicen "thagomizer".'],
+  ['Ankylosaurus was covered in bony armor and had a club at the end of its tail.', 'El Anquilosaurio estaba cubierto de una armadura de hueso y tenía un mazo al final de la cola.'],
+  ['Brachiosaurus had front legs longer than its back legs, so it stood like a giraffe.', 'El Braquiosaurio tenía las patas de adelante más largas que las de atrás, y se paraba como una jirafa.'],
+  ['Long-necked plant eaters like Brachiosaurus are called sauropods.', 'Los dinosaurios herbívoros de cuello largo como el Braquiosaurio se llaman saurópodos.'],
+  ['Stones have been found inside some dinosaur skeletons. Scientists think some dinosaurs swallowed them, like birds do, to help grind food.', 'Se han encontrado piedras dentro de algunos esqueletos de dinosaurios. Los científicos creen que algunos se las tragaban, como las aves, para moler la comida.'],
+  ['Spinosaurus had a big sail on its back and probably spent lots of time in or near water catching fish.', 'El Espinosaurio tenía una vela grande en la espalda y probablemente pasaba mucho tiempo en el agua o cerca de ella atrapando peces.'],
+  ['Parasaurolophus had a long, hollow crest on its head. It may have used it to make loud honking sounds.', 'El Parasaurolophus tenía una cresta larga y hueca en la cabeza. Tal vez la usaba para hacer sonidos fuertes como trompeta.'],
+  ['Duck-billed dinosaurs had hundreds of teeth for chewing plants.', 'Los dinosaurios de pico de pato tenían cientos de dientes para masticar plantas.'],
+  ['Pachycephalosaurus had a very thick, dome-shaped skull.', 'El Paquicefalosaurio tenía un cráneo muy grueso con forma de cúpula.'],
+  ['Some dinosaurs, like Maiasaura, took care of their babies in nests.', 'Algunos dinosaurios, como la Maiasaura, cuidaban a sus bebés en nidos.'],
+  ['Maiasaura means "good mother lizard."', 'Maiasaura quiere decir "lagarto buena madre".'],
+  ['The biggest dinosaur eggs were about the size of a football.', 'Los huevos de dinosaurio más grandes eran más o menos del tamaño de un balón de fútbol americano.'],
+  ['Not all dinosaurs were huge. Some were as small as a chicken.', 'No todos los dinosaurios eran enormes. Algunos eran tan pequeños como una gallina.'],
+  ['Scientists can tell how fast a dinosaur walked by measuring the space between its footprints.', 'Los científicos pueden saber qué tan rápido caminaba un dinosaurio midiendo el espacio entre sus huellas.'],
+  ['Sharp, pointy teeth usually mean a dinosaur ate meat. Flat teeth usually mean it ate plants.', 'Los dientes filosos casi siempre quieren decir que el dinosaurio comía carne. Los dientes planos, que comía plantas.'],
+  ['Plesiosaurs were giant swimming reptiles with long necks, but they were not dinosaurs.', 'Los plesiosaurios eran reptiles nadadores gigantes de cuello largo, pero no eran dinosaurios.'],
+  ['Sharks were around even before the dinosaurs!', '¡Los tiburones ya existían antes que los dinosaurios!'],
+  ['A famous T. rex skeleton named Sue is at the Field Museum in Chicago.', 'Un famoso esqueleto de T. rex llamado Sue está en el Museo Field de Chicago.'],
+  ['New kinds of dinosaurs are still being discovered every year.', 'Todavía se descubren nuevos tipos de dinosaurios cada año.'],
+  ['Dinosaurs never lived at the same time as people. People came along millions of years later.', 'Los dinosaurios nunca vivieron al mismo tiempo que las personas. Las personas llegaron millones de años después.']
+];
+FACT_MORE.hispanic = [
+  ['Mexico celebrates its independence on September 16, and Chile celebrates on September 18.', 'México celebra su independencia el 16 de septiembre y Chile el 18 de septiembre.'],
+  ['People of Hispanic and Latino heritage come from many countries, including Mexico, Puerto Rico, Cuba, the Dominican Republic, Colombia and more.', 'Las personas de herencia hispana y latina vienen de muchos países, como México, Puerto Rico, Cuba, República Dominicana, Colombia y más.'],
+  ['Spanish is the most spoken language in the United States after English.', 'El español es el idioma más hablado en Estados Unidos después del inglés.'],
+  ['Many U.S. places have Spanish names, like Los Angeles, Florida, Colorado and Nevada.', 'Muchos lugares de Estados Unidos tienen nombres en español, como Los Ángeles, Florida, Colorado y Nevada.'],
+  ['Florida means "full of flowers" in Spanish.', 'Florida quiere decir "llena de flores" en español.'],
+  ['Puerto Rico\'s coquí is a tiny tree frog. It is named for the sound it makes at night: "ko-KEE!"', 'El coquí de Puerto Rico es una ranita de árbol. Se llama así por el sonido que hace de noche: "¡co-quí!"'],
+  ['Gabriel García Márquez, a writer from Colombia, won the Nobel Prize in Literature in 1982.', 'Gabriel García Márquez, un escritor de Colombia, ganó el Premio Nobel de Literatura en 1982.'],
+  ['Gabriela Mistral, a poet and teacher from Chile, was the first Latin American writer to win the Nobel Prize in Literature, in 1945.', 'Gabriela Mistral, poeta y maestra de Chile, fue la primera escritora latinoamericana en ganar el Premio Nobel de Literatura, en 1945.'],
+  ['Selena Quintanilla was called the Queen of Tejano music.', 'A Selena Quintanilla le decían la Reina de la música tejana.'],
+  ['Tito Puente was called the King of Latin Music and played the timbales, a kind of drum.', 'A Tito Puente le decían el Rey de la Música Latina y tocaba los timbales, un tipo de tambor.'],
+  ['Mariachi is a kind of music from Mexico, played with violins, trumpets and guitars.', 'El mariachi es un tipo de música de México que se toca con violines, trompetas y guitarras.'],
+  ['Salsa music grew in New York City in the 1960s and 1970s, mixing Cuban and Puerto Rican sounds.', 'La música salsa creció en Nueva York en los años 1960 y 1970, mezclando sonidos cubanos y puertorriqueños.'],
+  ['Las Posadas is a Christmas celebration from Mexico that lasts nine nights, from December 16 to 24.', 'Las Posadas son una celebración navideña de México que dura nueve noches, del 16 al 24 de diciembre.'],
+  ['Three Kings Day, Día de Reyes, is celebrated on January 6 in many Latin American homes.', 'El Día de Reyes se celebra el 6 de enero en muchos hogares latinoamericanos.'],
+  ['A quinceañera is a big celebration for a girl\'s 15th birthday.', 'Una quinceañera es una gran celebración por el cumpleaños número 15 de una muchacha.'],
+  ['Cesar Chavez Day is celebrated on March 31, his birthday.', 'El Día de César Chávez se celebra el 31 de marzo, el día de su cumpleaños.'],
+  ['Jorge Ramos and María Elena Salinas are well-known Spanish-language TV news reporters in the U.S.', 'Jorge Ramos y María Elena Salinas son periodistas muy conocidos de las noticias en español en Estados Unidos.'],
+  ['Rita Moreno, from Puerto Rico, is one of the few people to win an Emmy, a Grammy, an Oscar and a Tony award.', 'Rita Moreno, de Puerto Rico, es una de las pocas personas que han ganado un Emmy, un Grammy, un Óscar y un Tony.'],
+  ['Franklin Chang-Díaz, born in Costa Rica, flew to space seven times as a NASA astronaut.', 'Franklin Chang-Díaz, nacido en Costa Rica, viajó al espacio siete veces como astronauta de la NASA.'],
+  ['Ellen Ochoa later became the first Hispanic director of NASA\'s Johnson Space Center.', 'Ellen Ochoa después fue la primera directora hispana del Centro Espacial Johnson de la NASA.'],
+  ['The Maya people created their own writing with picture symbols, called glyphs.', 'El pueblo maya creó su propia escritura con símbolos de dibujos, llamados glifos.'],
+  ['The Aztec capital, Tenochtitlan, was built on an island in a lake. Mexico City stands there today.', 'La capital azteca, Tenochtitlan, se construyó en una isla en un lago. Hoy ahí está la Ciudad de México.'],
+  ['Machu Picchu is a city built by the Inca people high in the mountains of Peru.', 'Machu Picchu es una ciudad que construyeron los incas en lo alto de las montañas de Perú.'],
+  ['Papel picado is colorful paper cut into designs and hung up for celebrations in Mexico.', 'El papel picado es papel de colores recortado con diseños que se cuelga en las fiestas de México.'],
+  ['Tamales are made from corn dough wrapped in corn husks or banana leaves, then steamed.', 'Los tamales se hacen con masa de maíz envuelta en hojas de maíz o de plátano y se cocinan al vapor.'],
+  ['Baseball is very popular in the Dominican Republic, and many Major League players were born there.', 'El béisbol es muy popular en República Dominicana, y muchos jugadores de Grandes Ligas nacieron allí.'],
+  ['Lionel Messi, a soccer player from Argentina, helped his country win the World Cup in 2022.', 'Lionel Messi, futbolista de Argentina, ayudó a su país a ganar la Copa Mundial en 2022.']
+];
+FACT_MORE.blackhist = [
+  ['In 1976, the United States officially made February Black History Month.', 'En 1976, Estados Unidos hizo oficial que febrero fuera el Mes de la Historia Afroamericana.'],
+  ['Frederick Douglass escaped slavery and became a famous speaker and writer who fought for freedom.', 'Frederick Douglass escapó de la esclavitud y se volvió un famoso orador y escritor que luchó por la libertad.'],
+  ['Sojourner Truth was a brave speaker who worked for the freedom of enslaved people and for women\'s rights.', 'Sojourner Truth fue una valiente oradora que luchó por la libertad de las personas esclavizadas y por los derechos de las mujeres.'],
+  ['Juneteenth, on June 19, celebrates the day in 1865 when people in Texas learned that slavery had ended.', 'Juneteenth, el 19 de junio, celebra el día de 1865 en que la gente en Texas supo que la esclavitud había terminado.'],
+  ['Juneteenth became a national holiday in the United States in 2021.', 'Juneteenth se volvió un día festivo nacional en Estados Unidos en 2021.'],
+  ['Booker T. Washington started the Tuskegee Institute, a school in Alabama, in 1881.', 'Booker T. Washington fundó el Instituto Tuskegee, una escuela en Alabama, en 1881.'],
+  ['Mary McLeod Bethune started a school for Black girls in Florida with just five students. It grew into a college.', 'Mary McLeod Bethune abrió una escuela para niñas negras en Florida con solo cinco alumnas. Creció hasta ser una universidad.'],
+  ['The Tuskegee Airmen were the first Black military pilots in the U.S. They flew in World War II.', 'Los aviadores de Tuskegee fueron los primeros pilotos militares negros de Estados Unidos. Volaron en la Segunda Guerra Mundial.'],
+  ['Bessie Coleman was the first African American woman to earn a pilot\'s license, in 1921.', 'Bessie Coleman fue la primera mujer afroamericana en sacar una licencia de piloto, en 1921.'],
+  ['Thurgood Marshall became the first Black justice on the U.S. Supreme Court in 1967.', 'Thurgood Marshall fue el primer juez negro de la Corte Suprema de Estados Unidos, en 1967.'],
+  ['Shirley Chisholm was the first Black woman elected to the U.S. Congress, in 1968.', 'Shirley Chisholm fue la primera mujer negra elegida al Congreso de Estados Unidos, en 1968.'],
+  ['In 2021, Kamala Harris became the first woman and the first Black vice president of the United States.', 'En 2021, Kamala Harris fue la primera mujer y la primera persona negra en ser vicepresidenta de Estados Unidos.'],
+  ['Martin Luther King Jr. Day is a holiday on the third Monday in January.', 'El Día de Martin Luther King Jr. es un día festivo el tercer lunes de enero.'],
+  ['Dr. King won the Nobel Peace Prize in 1964 for working for fairness without violence.', 'El Dr. King ganó el Premio Nobel de la Paz en 1964 por luchar por la justicia sin violencia.'],
+  ['Langston Hughes was a famous poet who wrote about Black life in America.', 'Langston Hughes fue un poeta famoso que escribió sobre la vida de las personas negras en Estados Unidos.'],
+  ['Maya Angelou was a poet and author. She read a poem at a president\'s inauguration in 1993.', 'Maya Angelou fue poeta y escritora. Leyó un poema en la toma de posesión de un presidente en 1993.'],
+  ['Louis Armstrong was a famous jazz trumpet player and singer, known for the song "What a Wonderful World."', 'Louis Armstrong fue un famoso trompetista y cantante de jazz, conocido por la canción "What a Wonderful World".'],
+  ['Ella Fitzgerald was called the First Lady of Song.', 'A Ella Fitzgerald le decían la Primera Dama de la Canción.'],
+  ['Jesse Owens won four gold medals at the 1936 Olympics.', 'Jesse Owens ganó cuatro medallas de oro en los Juegos Olímpicos de 1936.'],
+  ['Serena Williams won 23 Grand Slam singles titles in tennis.', 'Serena Williams ganó 23 títulos de Grand Slam en individuales de tenis.'],
+  ['Wilma Rudolph could not walk well as a child after being very sick, and later won three Olympic gold medals in running.', 'Wilma Rudolph casi no podía caminar de niña después de estar muy enferma, y luego ganó tres medallas de oro olímpicas en atletismo.'],
+  ['Dr. Charles Drew found better ways to store blood so it could be used to save lives.', 'El Dr. Charles Drew encontró mejores formas de guardar sangre para poder usarla y salvar vidas.'],
+  ['Lewis Latimer improved the light bulb by inventing a longer-lasting part inside it.', 'Lewis Latimer mejoró el foco inventando una pieza de adentro que duraba más.'],
+  ['Alice Ball, a chemist, found a treatment for a serious sickness called leprosy when she was only 23.', 'Alice Ball, una química, encontró un tratamiento para una enfermedad grave llamada lepra cuando tenía solo 23 años.'],
+  ['Hattie McDaniel was the first Black person to win an Oscar, in 1940.', 'Hattie McDaniel fue la primera persona negra en ganar un Óscar, en 1940.'],
+  ['The National Museum of African American History and Culture opened in Washington, D.C., in 2016.', 'El Museo Nacional de Historia y Cultura Afroamericana abrió en Washington, D.C., en 2016.']
+];
+FACT_MORE.water = [
+  ['Water can be a solid (ice), a liquid (water) or a gas (steam or water vapor).', 'El agua puede ser sólida (hielo), líquida (agua) o gas (vapor).'],
+  ['Water boils at 212 degrees Fahrenheit and freezes at 32 degrees Fahrenheit.', 'El agua hierve a 100 grados Celsius y se congela a 0 grados Celsius.'],
+  ['The Pacific Ocean is the biggest and deepest ocean on Earth.', 'El océano Pacífico es el más grande y profundo de la Tierra.'],
+  ['The deepest spot in the ocean, the Challenger Deep, is almost 7 miles down.', 'El lugar más profundo del océano, el Abismo Challenger, está a casi 11 kilómetros de profundidad.'],
+  ['Ocean water is salty, so people cannot drink it without taking the salt out first.', 'El agua del mar es salada, así que la gente no la puede tomar sin quitarle la sal primero.'],
+  ['Most of Earth\'s fresh water is frozen in glaciers and the ice of Antarctica and Greenland.', 'Casi toda el agua dulce de la Tierra está congelada en glaciares y en el hielo de la Antártida y Groenlandia.'],
+  ['A lot of fresh water is hidden underground. It is called groundwater.', 'Mucha agua dulce está escondida bajo tierra. Se llama agua subterránea.'],
+  ['A well is a deep hole dug down to reach groundwater.', 'Un pozo es un hoyo profundo que se cava para llegar al agua subterránea.'],
+  ['A reservoir is a big lake that stores water for a town or city to use.', 'Una represa o embalse es un lago grande que guarda agua para que la use un pueblo o una ciudad.'],
+  ['A dam is a wall built across a river to hold back water.', 'Una presa es un muro construido a lo ancho de un río para detener el agua.'],
+  ['Some dams use moving water to make electricity. This is called hydroelectric power.', 'Algunas presas usan el agua en movimiento para hacer electricidad. Esto se llama energía hidroeléctrica.'],
+  ['Water pipes under the street carry clean water to homes, schools and fire hydrants.', 'Los tubos de agua debajo de la calle llevan agua limpia a casas, escuelas e hidrantes.'],
+  ['A water meter measures how much water a home uses.', 'Un medidor de agua mide cuánta agua usa una casa.'],
+  ['Rain that runs off streets goes into storm drains, which often lead straight to rivers.', 'La lluvia que corre por las calles se va por las alcantarillas, que muchas veces llevan directo a los ríos.'],
+  ['A watershed is all the land where rain and snow drain into the same river or lake.', 'Una cuenca es toda la tierra donde la lluvia y la nieve van a dar al mismo río o lago.'],
+  ['The Nile River in Africa is one of the longest rivers in the world.', 'El río Nilo, en África, es uno de los ríos más largos del mundo.'],
+  ['The Mississippi River flows through or along 10 U.S. states.', 'El río Misisipi pasa por o junto a 10 estados de Estados Unidos.'],
+  ['Lake Superior is the biggest of the five Great Lakes.', 'El lago Superior es el más grande de los cinco Grandes Lagos.'],
+  ['Plants drink water through their roots and let some out through tiny holes in their leaves.', 'Las plantas toman agua por sus raíces y dejan salir un poco por hoyitos en sus hojas.'],
+  ['A jellyfish is about 95 percent water.', 'Una medusa es más o menos 95 por ciento agua.'],
+  ['A watermelon is about 92 percent water.', 'Una sandía es más o menos 92 por ciento agua.'],
+  ['Your body uses water to keep cool by sweating.', 'Tu cuerpo usa agua para enfriarse sudando.'],
+  ['A leaky faucet that drips all day can waste gallons of water.', 'Una llave que gotea todo el día puede desperdiciar muchos litros de agua.'],
+  ['Desalination plants take salt out of ocean water so people can drink it.', 'Las plantas desalinizadoras le quitan la sal al agua del mar para que la gente la pueda tomar.'],
+  ['Clouds are full of tiny water drops that are so light they float.', 'Las nubes están llenas de gotitas de agua tan ligeras que flotan.'],
+  ['Dew is water from the air that turns into drops on cool grass in the morning.', 'El rocío es agua del aire que se vuelve gotitas sobre el pasto frío en la mañana.'],
+  ['Hot water and soap work together to wash germs and grease off your hands.', 'El agua y el jabón trabajan juntos para quitar los gérmenes y la grasa de tus manos.'],
+  ['Water is sometimes called the universal solvent because so many things dissolve in it, like sugar and salt.', 'Al agua a veces le dicen el disolvente universal porque muchas cosas se disuelven en ella, como el azúcar y la sal.']
+];
+FACT_MORE.weather = [
+  ['Weather is what the air is doing right now. Climate is what the weather is usually like in a place over many years.', 'El tiempo es lo que hace el aire ahorita. El clima es cómo suele ser el tiempo en un lugar durante muchos años.'],
+  ['A thermometer measures how hot or cold it is.', 'Un termómetro mide qué tan caliente o frío está.'],
+  ['A rain gauge is a tube that measures how much rain fell.', 'Un pluviómetro es un tubo que mide cuánta lluvia cayó.'],
+  ['A weather vane points to show which way the wind is blowing.', 'Una veleta apunta para mostrar hacia dónde sopla el viento.'],
+  ['An anemometer spins in the wind to measure how fast it blows.', 'Un anemómetro gira con el viento para medir qué tan rápido sopla.'],
+  ['Weather satellites high above Earth take pictures of clouds and storms.', 'Los satélites del clima, muy arriba de la Tierra, toman fotos de las nubes y las tormentas.'],
+  ['Weather balloons carry instruments high into the sky to measure the air.', 'Los globos meteorológicos llevan instrumentos muy alto en el cielo para medir el aire.'],
+  ['Wind is air moving from a place with high pressure to a place with low pressure.', 'El viento es aire que se mueve de un lugar con presión alta a un lugar con presión baja.'],
+  ['Puffy, white clouds are called cumulus clouds.', 'Las nubes blancas y esponjosas se llaman cúmulos.'],
+  ['Thin, wispy clouds high in the sky are called cirrus clouds. They are made of ice.', 'Las nubes delgadas como plumas, muy arriba en el cielo, se llaman cirros. Están hechas de hielo.'],
+  ['Tall, dark storm clouds are called cumulonimbus clouds. They can bring thunder and lightning.', 'Las nubes de tormenta altas y oscuras se llaman cumulonimbos. Pueden traer truenos y rayos.'],
+  ['Flat, gray clouds that cover the whole sky are called stratus clouds.', 'Las nubes grises y planas que cubren todo el cielo se llaman estratos.'],
+  ['Snow forms when water vapor in a cloud freezes into ice crystals.', 'La nieve se forma cuando el vapor de agua de una nube se congela en cristales de hielo.'],
+  ['Sleet is rain that freezes into little ice pellets before it hits the ground.', 'El aguanieve es lluvia que se congela en bolitas de hielo antes de llegar al suelo.'],
+  ['A blizzard is a snowstorm with strong winds that make it very hard to see.', 'Una ventisca es una tormenta de nieve con viento fuerte que hace muy difícil ver.'],
+  ['The calm center of a hurricane is called the eye.', 'El centro tranquilo de un huracán se llama el ojo.'],
+  ['Hurricanes, typhoons and cyclones are the same kind of storm with different names in different parts of the world.', 'Los huracanes, tifones y ciclones son el mismo tipo de tormenta con distintos nombres en diferentes partes del mundo.'],
+  ['Hurricane season in the Atlantic Ocean runs from June 1 to November 30.', 'La temporada de huracanes en el océano Atlántico va del 1 de junio al 30 de noviembre.'],
+  ['Tornado Alley is a part of the central United States that gets many tornadoes.', 'El Callejón de los Tornados es una parte del centro de Estados Unidos donde hay muchos tornados.'],
+  ['A tornado warning means a tornado has been seen or spotted on radar. Go to a safe place inside right away.', 'Una alerta de tornado quiere decir que se vio uno o apareció en el radar. Ve a un lugar seguro adentro de inmediato.'],
+  ['During a thunderstorm, the safest place is inside a building or a car with a hard roof.', 'Durante una tormenta eléctrica, el lugar más seguro es dentro de un edificio o de un carro con techo duro.'],
+  ['Lightning can strike the same place more than once. Tall buildings get hit many times a year.', 'Un rayo puede caer más de una vez en el mismo lugar. Los edificios altos reciben muchos rayos al año.'],
+  ['A drought is a long time with much less rain than usual.', 'Una sequía es un tiempo largo con mucha menos lluvia de lo normal.'],
+  ['Humidity is how much water vapor is in the air. High humidity makes the air feel sticky.', 'La humedad es cuánto vapor de agua hay en el aire. Mucha humedad hace que el aire se sienta pegajoso.'],
+  ['A heat wave is several days in a row that are much hotter than normal.', 'Una ola de calor son varios días seguidos mucho más calientes de lo normal.'],
+  ['Antarctica is the coldest, windiest and driest continent on Earth.', 'La Antártida es el continente más frío, con más viento y más seco de la Tierra.'],
+  ['Some places in Chile\'s Atacama Desert have gone years without rain.', 'Algunos lugares del desierto de Atacama, en Chile, han pasado años sin lluvia.'],
+  ['A double rainbow has a second, fainter rainbow outside the first one, with its colors in the opposite order.', 'Un arcoíris doble tiene un segundo arcoíris más clarito afuera del primero, con los colores al revés.']
+];
+FACT_MORE.candy = [
+  ['Chocolate starts as bitter seeds. Sugar and milk are added to make sweet milk chocolate.', 'El chocolate empieza como semillas amargas. Se le agrega azúcar y leche para hacer chocolate con leche dulce.'],
+  ['White chocolate is made from cocoa butter, sugar and milk, but no cocoa powder.', 'El chocolate blanco se hace con manteca de cacao, azúcar y leche, pero sin polvo de cacao.'],
+  ['Most of the world\'s cacao beans grow in West Africa, in countries like Ivory Coast and Ghana.', 'Casi todos los granos de cacao del mundo crecen en África del Oeste, en países como Costa de Marfil y Ghana.'],
+  ['Cacao trees only grow in warm, rainy places near the equator.', 'Los árboles de cacao solo crecen en lugares cálidos y lluviosos cerca del ecuador.'],
+  ['Hershey, Pennsylvania, is a town built around a chocolate factory. Its streetlights are shaped like Hershey\'s Kisses.', 'Hershey, Pensilvania, es un pueblo construido alrededor de una fábrica de chocolate. Sus faroles tienen forma de Kisses de Hershey.'],
+  ['Milk chocolate bars from Hershey first went on sale in 1900.', 'Las barras de chocolate con leche de Hershey se empezaron a vender en 1900.'],
+  ['Candy corn was first made in the 1880s.', 'Los dulces candy corn se hicieron por primera vez en los años 1880.'],
+  ['Jelly Belly makes jelly beans in dozens of flavors, even buttered popcorn.', 'Jelly Belly hace gomitas de frijol de docenas de sabores, hasta de palomitas con mantequilla.'],
+  ['Lollipops are hard candy on a stick. People have enjoyed candy on sticks for hundreds of years.', 'Las paletas son caramelo duro en un palito. La gente ha disfrutado dulces en palito por cientos de años.'],
+  ['Marshmallows were first made from a plant called the marsh mallow, which grows in wet places.', 'Los malvaviscos se hicieron primero con una planta llamada malvavisco, que crece en lugares húmedos.'],
+  ['A s\'more is a toasted marshmallow and chocolate squished between graham crackers.', 'Un s\'more es un malvavisco tostado con chocolate apachurrado entre dos galletas graham.'],
+  ['Cotton candy is made by spinning melted sugar so fast that it turns into thin threads.', 'El algodón de azúcar se hace girando azúcar derretida tan rápido que se vuelve hilitos delgados.'],
+  ['Gummy candy is chewy because of gelatin or pectin, which makes it jiggly.', 'Las gomitas son masticables por la gelatina o la pectina, que las hace temblorosas.'],
+  ['Kit Kat bars started in England in 1935.', 'Las barras Kit Kat empezaron en Inglaterra en 1935.'],
+  ['In Japan, Kit Kat comes in hundreds of flavors over the years, like green tea and strawberry.', 'En Japón, el Kit Kat ha salido en cientos de sabores con los años, como té verde y fresa.'],
+  ['The Twix bar was first sold in England in 1967.', 'La barra Twix se vendió primero en Inglaterra en 1967.'],
+  ['Skittles were first made in England in 1974 and came to the United States in 1979.', 'Los Skittles se hicieron primero en Inglaterra en 1974 y llegaron a Estados Unidos en 1979.'],
+  ['Life Savers candies got their name because they look like little life preserver rings.', 'Los dulces Life Savers se llaman así porque parecen salvavidas chiquitos.'],
+  ['Early chewing gum was made from chicle, a tree sap from Mexico and Central America.', 'El primer chicle se hacía con chicle de verdad, una savia de árboles de México y Centroamérica.'],
+  ['Caramel is made by slowly heating sugar until it turns golden brown.', 'El caramelo se hace calentando azúcar despacio hasta que se pone café dorado.'],
+  ['Mexican candies often mix sweet with salty, sour and chili spicy flavors.', 'Los dulces mexicanos muchas veces mezclan lo dulce con lo salado, lo ácido y el chile.'],
+  ['Halloween is the biggest candy holiday of the year in the United States.', 'Halloween es la fiesta con más dulces del año en Estados Unidos.'],
+  ['Candy canes are usually striped red and white and taste like peppermint.', 'Los bastones de caramelo casi siempre tienen rayas rojas y blancas y saben a menta.'],
+  ['Eating lots of sugar can cause cavities, so brushing after candy helps protect your teeth.', 'Comer mucha azúcar puede causar caries, así que cepillarte después de comer dulces ayuda a proteger tus dientes.'],
+  ['Rock candy is made by letting sugar crystals slowly grow on a string or stick for days.', 'Los dulces de cristal se hacen dejando que cristales de azúcar crezcan despacio en un hilo o palito por días.'],
+  ['Chocolate melts at about the temperature inside your mouth. That is why it melts on your tongue.', 'El chocolate se derrite a más o menos la temperatura de adentro de tu boca. Por eso se derrite en tu lengua.'],
+  ['The first chocolate bar was made in England in 1847.', 'La primera barra de chocolate se hizo en Inglaterra en 1847.']
+];
+FACT_MORE.space = [
+  ['There are eight planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune.', 'Hay ocho planetas: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno.'],
+  ['Mercury is the closest planet to the Sun and the smallest planet.', 'Mercurio es el planeta más cercano al Sol y el más pequeño.'],
+  ['Venus is the hottest planet, even hotter than Mercury, because its thick clouds trap heat.', 'Venus es el planeta más caliente, aún más que Mercurio, porque sus nubes gruesas atrapan el calor.'],
+  ['Venus spins backward compared to most planets, so on Venus the Sun rises in the west.', 'Venus gira al revés que la mayoría de los planetas, así que en Venus el Sol sale por el oeste.'],
+  ['Earth is the only planet we know of that has life.', 'La Tierra es el único planeta que conocemos que tiene vida.'],
+  ['Earth takes about 365 days to go all the way around the Sun. That is one year.', 'La Tierra tarda unos 365 días en darle la vuelta completa al Sol. Eso es un año.'],
+  ['The Moon takes about 27 days to go around Earth.', 'La Luna tarda unos 27 días en darle la vuelta a la Tierra.'],
+  ['The Moon does not make its own light. It shines because sunlight bounces off it.', 'La Luna no tiene luz propia. Brilla porque la luz del Sol rebota en ella.'],
+  ['The same side of the Moon always faces Earth.', 'Siempre vemos el mismo lado de la Luna desde la Tierra.'],
+  ['Twelve astronauts have walked on the Moon, all between 1969 and 1972.', 'Doce astronautas han caminado en la Luna, todos entre 1969 y 1972.'],
+  ['Buzz Aldrin was the second person to walk on the Moon, right after Neil Armstrong.', 'Buzz Aldrin fue la segunda persona en caminar en la Luna, justo después de Neil Armstrong.'],
+  ['On the Moon, you would weigh about one sixth of what you weigh on Earth, so you could jump much higher.', 'En la Luna pesarías como la sexta parte de lo que pesas en la Tierra, así que podrías saltar mucho más alto.'],
+  ['Mars has two tiny moons named Phobos and Deimos.', 'Marte tiene dos lunas pequeñitas llamadas Fobos y Deimos.'],
+  ['Robots called rovers drive around on Mars, taking pictures and studying rocks.', 'Unos robots llamados rovers manejan por Marte, tomando fotos y estudiando rocas.'],
+  ['A Mars rover named Perseverance landed in 2021 and carried a tiny helicopter named Ingenuity.', 'Un rover de Marte llamado Perseverance llegó en 2021 y llevaba un helicóptero pequeñito llamado Ingenuity.'],
+  ['Jupiter is so big that all the other planets could fit inside it.', 'Júpiter es tan grande que todos los demás planetas cabrían adentro.'],
+  ['Jupiter has dozens of moons. Its moon Ganymede is the biggest moon in the solar system.', 'Júpiter tiene docenas de lunas. Su luna Ganimedes es la más grande del sistema solar.'],
+  ['Saturn has more moons than any other planet, more than 200.', 'Saturno tiene más lunas que cualquier otro planeta, más de 200.'],
+  ['Uranus spins on its side, like a ball rolling around the Sun.', 'Urano gira de lado, como una pelota rodando alrededor del Sol.'],
+  ['Neptune has the fastest winds in the solar system.', 'Neptuno tiene los vientos más rápidos del sistema solar.'],
+  ['A comet is a ball of ice and dust. When it gets near the Sun, it grows a long glowing tail.', 'Un cometa es una bola de hielo y polvo. Cuando se acerca al Sol, le crece una cola larga que brilla.'],
+  ['A "shooting star" is not a star. It is a tiny space rock burning up in Earth\'s air.', 'Una "estrella fugaz" no es una estrella. Es una piedrita del espacio que se quema en el aire de la Tierra.'],
+  ['Stars twinkle because their light gets bounced around by Earth\'s moving air.', 'Las estrellas titilan porque el aire de la Tierra, que se mueve, desvía su luz.'],
+  ['The closest star to Earth is the Sun. The next closest is Proxima Centauri.', 'La estrella más cercana a la Tierra es el Sol. La siguiente es Próxima Centauri.'],
+  ['A constellation is a group of stars that makes a picture in the sky, like Orion the Hunter.', 'Una constelación es un grupo de estrellas que forma un dibujo en el cielo, como Orión, el cazador.'],
+  ['Astronauts on the space station drink water that has been cleaned and recycled, even from sweat!', '¡Los astronautas de la estación espacial toman agua que se limpia y se recicla, hasta la del sudor!'],
+  ['Yuri Gagarin, from the Soviet Union, was the first person to go to space, in 1961.', 'Yuri Gagarin, de la Unión Soviética, fue la primera persona en ir al espacio, en 1961.'],
+  ['Sally Ride became the first American woman in space in 1983.', 'Sally Ride fue la primera mujer de Estados Unidos en ir al espacio, en 1983.'],
+  ['The James Webb Space Telescope, launched in 2021, takes pictures of galaxies far, far away.', 'El telescopio espacial James Webb, lanzado en 2021, toma fotos de galaxias lejísimos.']
+];
+FACT_MORE.crayons = [
+  ['Edwin Binney and his cousin C. Harold Smith started the company that made the first Crayola crayons.', 'Edwin Binney y su primo C. Harold Smith fundaron la compañía que hizo los primeros crayones Crayola.'],
+  ['Before crayons, the company made black coloring for car tires and chalk for schools.', 'Antes de los crayones, la compañía hacía color negro para llantas y tiza para escuelas.'],
+  ['Crayola\'s dustless school chalk won a gold medal at the 1904 World\'s Fair.', 'La tiza sin polvo de Crayola ganó una medalla de oro en la Feria Mundial de 1904.'],
+  ['Crayola crayons are made in a factory in Easton, Pennsylvania.', 'Los crayones Crayola se hacen en una fábrica en Easton, Pensilvania.'],
+  ['Melted crayon wax is poured into molds with hundreds of crayon-shaped holes at once.', 'La cera derretida se echa en moldes con cientos de hoyos en forma de crayón al mismo tiempo.'],
+  ['Each crayon label shows the color name so you know which one you are grabbing.', 'Cada etiqueta de crayón dice el nombre del color para que sepas cuál estás agarrando.'],
+  ['Crayons have been made in colors that glow, glitter, smell like fruit and even change color.', 'Se han hecho crayones que brillan en la oscuridad, que tienen diamantina, que huelen a fruta y hasta que cambian de color.'],
+  ['The largest standard box of Crayola crayons has 152 colors.', 'La caja más grande de crayones Crayola tiene 152 colores.'],
+  ['Crayola\'s Hall of Fame honors retired colors, like Dandelion and Maize.', 'El Salón de la Fama de Crayola recuerda los colores retirados, como Dandelion y Maize.'],
+  ['Dandelion, a yellow crayon, retired in 2017 to make room for Bluetiful.', 'Dandelion, un crayón amarillo, se retiró en 2017 para hacer lugar a Bluetiful.'],
+  ['In 2020, Crayola made a box called Colors of the World with 24 crayons for many different skin tones.', 'En 2020, Crayola hizo una caja llamada Colores del Mundo con 24 crayones de muchos tonos de piel.'],
+  ['Red, yellow and blue are called primary colors.', 'El rojo, el amarillo y el azul se llaman colores primarios.'],
+  ['Mixing yellow and blue makes green.', 'Si mezclas amarillo y azul, sale verde.'],
+  ['Mixing red and yellow makes orange.', 'Si mezclas rojo y amarillo, sale naranja.'],
+  ['Mixing red and blue makes purple.', 'Si mezclas rojo y azul, sale morado.'],
+  ['Orange, green and purple are called secondary colors because you mix two primary colors to make them.', 'El naranja, el verde y el morado se llaman colores secundarios porque se hacen mezclando dos primarios.'],
+  ['Colors opposite each other on a color wheel, like red and green, are called complementary colors.', 'Los colores opuestos en la rueda de colores, como el rojo y el verde, se llaman complementarios.'],
+  ['Warm colors are reds, oranges and yellows. Cool colors are blues, greens and purples.', 'Los colores cálidos son rojos, naranjas y amarillos. Los fríos son azules, verdes y morados.'],
+  ['Pressing hard with a crayon makes a darker color. Pressing lightly makes a lighter color.', 'Si aprietas fuerte el crayón, el color sale más oscuro. Si aprietas suave, sale más claro.'],
+  ['A crayon rubbing is when you put paper over a bumpy thing, like a leaf or coin, and color over it to copy the texture.', 'Un calcado con crayón es cuando pones papel sobre algo con relieve, como una hoja o una moneda, y lo pintas para copiar su textura.'],
+  ['Crayon wax resists water, so if you draw with a white crayon and paint over it, a secret picture appears.', 'La cera del crayón no deja pasar el agua, así que si dibujas con crayón blanco y pintas encima, aparece un dibujo secreto.'],
+  ['Crayons should never be left in a hot car because they can melt.', 'Nunca dejes crayones en un carro caliente porque se pueden derretir.'],
+  ['Colored pencils have a core made of pigment mixed with wax or oil, covered in wood.', 'Los lápices de colores tienen un centro de pigmento mezclado con cera o aceite, cubierto de madera.'],
+  ['Markers have a felt tip that soaks up ink from inside the marker.', 'Los marcadores tienen una punta de fieltro que absorbe la tinta de adentro.'],
+  ['Long ago, people made paint colors from ground-up rocks, plants, bugs and even shells.', 'Hace mucho, la gente hacía pinturas con piedras molidas, plantas, insectos y hasta conchas.'],
+  ['Cave paintings made tens of thousands of years ago used colors from minerals like red ochre.', 'Las pinturas en cuevas de hace decenas de miles de años usaban colores de minerales como el ocre rojo.'],
+  ['Coloring can help your body and mind feel calmer.', 'Colorear puede ayudar a que tu cuerpo y tu mente se sientan más tranquilos.'],
+  ['Holding a crayon helps little hands get stronger for writing.', 'Agarrar un crayón ayuda a que las manos pequeñas se pongan más fuertes para escribir.'],
+  ['Rainbows always show their colors in the same order: red, orange, yellow, green, blue, indigo and violet.', 'Los arcoíris siempre muestran sus colores en el mismo orden: rojo, naranja, amarillo, verde, azul, añil y violeta.']
+];
+FACT_MORE.games = [
+  ['The Nintendo Entertainment System, called the NES, came to the United States in 1985.', 'El Nintendo Entertainment System, llamado NES, llegó a Estados Unidos en 1985.'],
+  ['Super Mario Bros. came out in 1985 and became one of the best-selling games ever.', 'Super Mario Bros. salió en 1985 y se volvió uno de los juegos más vendidos de la historia.'],
+  ['Mario\'s brother is named Luigi, and he usually wears green.', 'El hermano de Mario se llama Luigi y casi siempre se viste de verde.'],
+  ['Shigeru Miyamoto created Mario, Donkey Kong and The Legend of Zelda.', 'Shigeru Miyamoto creó a Mario, a Donkey Kong y La leyenda de Zelda.'],
+  ['In The Legend of Zelda, the hero is named Link. Zelda is the princess.', 'En La leyenda de Zelda, el héroe se llama Link. Zelda es la princesa.'],
+  ['The PlayStation came out in 1994 in Japan.', 'El PlayStation salió en 1994 en Japón.'],
+  ['The first Xbox came out in 2001.', 'El primer Xbox salió en 2001.'],
+  ['The Nintendo Wii, from 2006, had controllers you could swing like a tennis racket or bowling ball.', 'El Nintendo Wii, de 2006, tenía controles que podías mover como raqueta de tenis o bola de boliche.'],
+  ['The Nintendo Switch, from 2017, can be played on a TV or carried around like a handheld game.', 'El Nintendo Switch, de 2017, se puede jugar en la TV o llevar en la mano como consola portátil.'],
+  ['Minecraft first came out in 2009. Players build worlds out of blocks.', 'Minecraft salió por primera vez en 2009. Los jugadores construyen mundos con bloques.'],
+  ['In Minecraft, Creepers are green monsters that explode.', 'En Minecraft, los Creepers son monstruos verdes que explotan.'],
+  ['Markus Persson, nicknamed Notch, made the first version of Minecraft.', 'Markus Persson, apodado Notch, hizo la primera versión de Minecraft.'],
+  ['Kirby is a round pink hero who can swallow enemies and copy their powers.', 'Kirby es un héroe rosa y redondo que puede tragarse a sus enemigos y copiar sus poderes.'],
+  ['Pac-Man came out in 1980. The four ghosts are named Blinky, Pinky, Inky and Clyde.', 'Pac-Man salió en 1980. Los cuatro fantasmas se llaman Blinky, Pinky, Inky y Clyde.'],
+  ['Space Invaders, from 1978, was one of the first big arcade hits.', 'Space Invaders, de 1978, fue uno de los primeros grandes éxitos de las maquinitas.'],
+  ['An arcade is a place full of coin-operated game machines.', 'Un arcade es un lugar lleno de maquinitas de juegos que funcionan con monedas.'],
+  ['Tetris has seven shapes, called tetrominoes. Each one is made of four squares.', 'Tetris tiene siete figuras, llamadas tetrominós. Cada una está hecha de cuatro cuadritos.'],
+  ['Mario Kart lets players race as Mario characters and throw banana peels and shells.', 'Mario Kart deja que los jugadores corran como personajes de Mario y lancen cáscaras de plátano y caparazones.'],
+  ['The first Mario Kart, Super Mario Kart, came out in 1992.', 'El primer Mario Kart, Super Mario Kart, salió en 1992.'],
+  ['Video game music is written by composers, just like movie music.', 'La música de los videojuegos la escriben compositores, igual que la música de las películas.'],
+  ['Games are tested by people called game testers, who look for bugs before the game comes out.', 'Los juegos los prueban personas llamadas probadores, que buscan errores antes de que salga el juego.'],
+  ['A "bug" in a game is a mistake in the code that makes something go wrong.', 'Un "bug" en un juego es un error en el código que hace que algo salga mal.'],
+  ['Pixels are the tiny squares of color that make up a picture on a screen.', 'Los píxeles son los cuadritos de color que forman una imagen en una pantalla.'],
+  ['Old video games used chunky pixel art because the computers could only show a few colors and pixels.', 'Los videojuegos viejos usaban dibujos de píxeles grandes porque las computadoras solo podían mostrar pocos colores y píxeles.'],
+  ['Many video games are made with special programs called game engines.', 'Muchos videojuegos se hacen con programas especiales llamados motores de juego.'],
+  ['Esports are video game competitions, and some are watched by millions of people.', 'Los esports son competencias de videojuegos, y algunas las ven millones de personas.'],
+  ['Kids can learn to make their own simple games with free tools like Scratch.', 'Los niños pueden aprender a hacer sus propios juegos sencillos con herramientas gratis como Scratch.'],
+  ['Taking breaks from screens helps rest your eyes. Try looking at something far away for a little while.', 'Tomar descansos de las pantallas ayuda a que tus ojos descansen. Intenta mirar algo lejos un ratito.']
+];
+FACT_MORE.science = [
+  ['Gravity is the pull that makes things fall down to the ground.', 'La gravedad es la fuerza que hace que las cosas caigan al suelo.'],
+  ['Without air pushing back, a feather and a hammer fall at the same speed. An astronaut tested this on the Moon in 1971.', 'Sin aire que empuje, una pluma y un martillo caen a la misma velocidad. Un astronauta lo probó en la Luna en 1971.'],
+  ['Everything around you is a solid, a liquid or a gas.', 'Todo lo que te rodea es sólido, líquido o gas.'],
+  ['Air is made mostly of a gas called nitrogen, plus oxygen, which we need to breathe.', 'El aire está hecho más que nada de un gas llamado nitrógeno, y también de oxígeno, que necesitamos para respirar.'],
+  ['Plants give off oxygen, and people and animals breathe out carbon dioxide, which plants use.', 'Las plantas sueltan oxígeno, y las personas y los animales sacan dióxido de carbono, que las plantas usan.'],
+  ['Sound is made by things vibrating, or shaking back and forth very fast.', 'El sonido se hace cuando las cosas vibran, o sea, se mueven de un lado a otro muy rápido.'],
+  ['Thunder and lightning happen at the same time, but light travels much faster than sound, so you see the flash first.', 'El trueno y el relámpago pasan al mismo tiempo, pero la luz viaja mucho más rápido que el sonido, así que ves el destello primero.'],
+  ['White light is really all the colors of the rainbow mixed together.', 'La luz blanca en realidad son todos los colores del arcoíris mezclados.'],
+  ['A prism is a piece of glass that bends light and splits it into a rainbow.', 'Un prisma es un pedazo de vidrio que dobla la luz y la separa en un arcoíris.'],
+  ['The sky looks blue because air scatters blue sunlight more than other colors.', 'El cielo se ve azul porque el aire dispersa la luz azul del Sol más que los otros colores.'],
+  ['Magnets stick to iron and steel, but not to wood, plastic or most coins.', 'Los imanes se pegan al hierro y al acero, pero no a la madera, al plástico ni a la mayoría de las monedas.'],
+  ['Earth itself is like a giant magnet. That is why a compass needle points north.', 'La Tierra misma es como un imán gigante. Por eso la aguja de una brújula apunta al norte.'],
+  ['Electricity is the flow of tiny particles called electrons.', 'La electricidad es el movimiento de partículas pequeñitas llamadas electrones.'],
+  ['Static electricity is why a rubbed balloon can stick to a wall or make your hair stand up.', 'La electricidad estática es la razón por la que un globo frotado se pega a la pared o te para el pelo.'],
+  ['Metal is a good conductor, which means electricity and heat move through it easily.', 'El metal es buen conductor, o sea, la electricidad y el calor pasan por él fácilmente.'],
+  ['Baking soda and vinegar fizz together because they make carbon dioxide gas bubbles.', 'El bicarbonato y el vinagre hacen burbujas juntos porque producen gas de dióxido de carbono.'],
+  ['DNA is like an instruction book inside your cells that helps decide things like your eye color.', 'El ADN es como un libro de instrucciones dentro de tus células que ayuda a decidir cosas como el color de tus ojos.'],
+  ['Your body is made of trillions of tiny cells.', 'Tu cuerpo está hecho de billones de células pequeñitas.'],
+  ['Germs are so tiny you need a microscope to see them. Washing your hands for 20 seconds helps get rid of them.', 'Los gérmenes son tan chiquitos que necesitas un microscopio para verlos. Lavarte las manos por 20 segundos ayuda a quitarlos.'],
+  ['Marie Curie was the first person to win two Nobel Prizes, in physics and in chemistry.', 'Marie Curie fue la primera persona en ganar dos Premios Nobel, en física y en química.'],
+  ['Albert Einstein is famous for his ideas about light, time and energy.', 'Albert Einstein es famoso por sus ideas sobre la luz, el tiempo y la energía.'],
+  ['Scientists use the scientific method: ask a question, guess an answer, test it and look at what happened.', 'Los científicos usan el método científico: hacen una pregunta, adivinan una respuesta, la prueban y miran qué pasó.'],
+  ['A guess you can test in science is called a hypothesis.', 'Una suposición que puedes probar en ciencias se llama hipótesis.'],
+  ['Diamonds and the graphite in your pencil are both made of carbon, just arranged differently.', 'Los diamantes y el grafito de tu lápiz están hechos de carbono, pero acomodado de forma diferente.'],
+  ['Hot air rises. That is how hot air balloons float up.', 'El aire caliente sube. Así es como suben los globos aerostáticos.'],
+  ['Rubbing your hands together makes them warm because of friction.', 'Frotar tus manos las calienta por la fricción.'],
+  ['A lever, like a seesaw, helps you lift heavy things with less push.', 'Una palanca, como un sube y baja, te ayuda a levantar cosas pesadas con menos fuerza.'],
+  ['The Sun is about 93 million miles from Earth, and its energy gives us light and warmth.', 'El Sol está a unos 150 millones de kilómetros de la Tierra, y su energía nos da luz y calor.']
+];
+FACT_MORE.movies = [
+  ['The first movie theaters were called nickelodeons because a ticket cost a nickel.', 'Los primeros cines se llamaban nickelodeons porque un boleto costaba un nickel, o sea, 5 centavos.'],
+  ['Mickey Mouse first became famous in a cartoon called Steamboat Willie in 1928.', 'Mickey Mouse se hizo famoso por primera vez en una caricatura llamada Steamboat Willie, en 1928.'],
+  ['The Wizard of Oz, from 1939, starts in black and white and switches to color when Dorothy reaches Oz.', 'El mago de Oz, de 1939, empieza en blanco y negro y cambia a color cuando Dorothy llega a Oz.'],
+  ['Hand-drawn cartoons were made by drawing thousands of pictures, each one a little different.', 'Las caricaturas dibujadas a mano se hacían con miles de dibujos, cada uno un poquito diferente.'],
+  ['Stop-motion movies are made by moving clay or puppets a tiny bit, taking a photo, and doing it again and again.', 'Las películas de stop-motion se hacen moviendo plastilina o muñecos un poquito, tomando una foto, y repitiéndolo una y otra vez.'],
+  ['Pixar\'s lamp mascot, Luxo Jr., hops across the screen before many Pixar movies.', 'La lámpara mascota de Pixar, Luxo Jr., salta por la pantalla antes de muchas películas de Pixar.'],
+  ['In Toy Story, Woody is a cowboy doll and Buzz Lightyear is a space ranger toy.', 'En Toy Story, Woody es un muñeco vaquero y Buzz Lightyear es un juguete guardián espacial.'],
+  ['Coco, a Pixar movie from 2017, is about a boy named Miguel and Día de Muertos in Mexico.', 'Coco, una película de Pixar de 2017, trata de un niño llamado Miguel y el Día de Muertos en México.'],
+  ['Encanto, from 2021, is about the Madrigal family, who live in a magical house in Colombia.', 'Encanto, de 2021, trata de la familia Madrigal, que vive en una casa mágica en Colombia.'],
+  ['Lin-Manuel Miranda wrote the songs for Encanto, including "We Don\'t Talk About Bruno."', 'Lin-Manuel Miranda escribió las canciones de Encanto, como "No se habla de Bruno".'],
+  ['Moana, from 2016, is about a girl from the Pacific Islands who sails across the ocean.', 'Moana, de 2016, trata de una muchacha de las islas del Pacífico que navega por el océano.'],
+  ['The Lion King came out in 1994, and its story was later turned into a famous Broadway show.', 'El rey león salió en 1994, y su historia después se volvió un famoso musical de Broadway.'],
+  ['Frozen, from 2013, has the hit song "Let It Go."', 'Frozen, de 2013, tiene la canción famosa "Let It Go" ("Libre soy").'],
+  ['A director is the person in charge of telling the story of a movie and guiding the actors.', 'El director es la persona encargada de contar la historia de la película y guiar a los actores.'],
+  ['A screenplay, or script, is the written plan of everything the characters say and do.', 'El guion es el plan escrito de todo lo que los personajes dicen y hacen.'],
+  ['A storyboard is a comic-strip plan of a movie, drawn before filming starts.', 'Un storyboard es un plan de la película en forma de historieta, dibujado antes de filmar.'],
+  ['The music in a movie is called the score. It helps you feel happy, scared or excited.', 'La música de una película se llama banda sonora. Te ayuda a sentirte feliz, asustado o emocionado.'],
+  ['CGI means computer-generated imagery. It is how dinosaurs and dragons can look real in movies.', 'CGI quiere decir imágenes hechas por computadora. Así los dinosaurios y dragones se ven reales en las películas.'],
+  ['Jurassic Park, from 1993, mixed computer-made dinosaurs with giant robot dinosaurs.', 'Jurassic Park, de 1993, mezcló dinosaurios hechos por computadora con dinosaurios robots gigantes.'],
+  ['Stunt doubles are trained performers who do dangerous scenes in place of the actors.', 'Los dobles de riesgo son personas entrenadas que hacen las escenas peligrosas en lugar de los actores.'],
+  ['Some movies are filmed in a big empty room with a blue or green wall, and the world is added later.', 'Algunas películas se filman en un cuarto grande y vacío con una pared azul o verde, y el mundo se agrega después.'],
+  ['A 3D movie shows a slightly different picture to each eye, so things seem to pop out of the screen.', 'Una película en 3D le muestra una imagen un poquito diferente a cada ojo, y las cosas parecen salir de la pantalla.'],
+  ['Hollywood, in Los Angeles, California, is famous as the home of the American movie business.', 'Hollywood, en Los Ángeles, California, es famoso por ser el hogar de la industria del cine de Estados Unidos.'],
+  ['India makes more movies each year than any other country. Its Hindi-language movie business is often called Bollywood.', 'India hace más películas cada año que cualquier otro país. A su cine en idioma hindi muchas veces le dicen Bollywood.'],
+  ['Studio Ghibli in Japan made hand-drawn movies like My Neighbor Totoro.', 'El Estudio Ghibli, en Japón, hizo películas dibujadas a mano como Mi vecino Totoro.'],
+  ['A movie trailer is a short preview that shows bits of a movie before it comes out.', 'El tráiler es un avance corto que muestra partes de una película antes de que se estrene.'],
+  ['Closed captions put the words on the screen so people who are deaf or hard of hearing can follow along.', 'Los subtítulos ponen las palabras en la pantalla para que las personas sordas o con dificultad para oír puedan seguir la película.'],
+  ['The Super Mario Bros. Movie came out in 2023.', 'Super Mario Bros.: La película salió en 2023.']
+];
+FACT_MORE.books = [
+  ['Dr. Seuss\'s real name was Theodor Geisel.', 'El nombre verdadero de Dr. Seuss era Theodor Geisel.'],
+  ['Read Across America Day is celebrated around March 2, Dr. Seuss\'s birthday.', 'El Día de Leer a Través de América se celebra cerca del 2 de marzo, el cumpleaños de Dr. Seuss.'],
+  ['The Cat in the Hat was written using a small list of words that beginning readers know.', 'El gato en el sombrero se escribió con una lista pequeña de palabras que conocen los niños que empiezan a leer.'],
+  ['Where the Wild Things Are, by Maurice Sendak, came out in 1963.', 'Donde viven los monstruos, de Maurice Sendak, salió en 1963.'],
+  ['Goodnight Moon, by Margaret Wise Brown, has been read to children at bedtime since 1947.', 'Buenas noches, Luna, de Margaret Wise Brown, se les lee a los niños antes de dormir desde 1947.'],
+  ['Beatrix Potter wrote The Tale of Peter Rabbit and painted its pictures herself.', 'Beatrix Potter escribió El cuento de Perico, el conejo travieso, y pintó ella misma los dibujos.'],
+  ['Charlotte\'s Web, by E.B. White, is about a pig named Wilbur and a spider named Charlotte.', 'La telaraña de Carlota, de E.B. White, trata de un cerdito llamado Wilbur y una araña llamada Carlota.'],
+  ['Roald Dahl wrote Charlie and the Chocolate Factory and Matilda.', 'Roald Dahl escribió Charlie y la fábrica de chocolate y Matilda.'],
+  ['J.K. Rowling first had the idea for Harry Potter while sitting on a delayed train.', 'J.K. Rowling tuvo la idea de Harry Potter mientras estaba en un tren que iba retrasado.'],
+  ['The first Harry Potter book came out in 1997.', 'El primer libro de Harry Potter salió en 1997.'],
+  ['Diary of a Wimpy Kid, by Jeff Kinney, is written like a kid\'s journal with doodles.', 'El diario de Greg, de Jeff Kinney, está escrito como el diario de un niño con dibujitos.'],
+  ['A person who writes books is an author. A person who draws the pictures is an illustrator.', 'La persona que escribe libros es el autor. La persona que hace los dibujos es el ilustrador.'],
+  ['A graphic novel tells a story with comic-style pictures and speech bubbles.', 'Una novela gráfica cuenta una historia con dibujos tipo cómic y globos de diálogo.'],
+  ['Fiction books tell made-up stories. Nonfiction books tell about real things.', 'Los libros de ficción cuentan historias inventadas. Los de no ficción hablan de cosas reales.'],
+  ['The Caldecott Medal is given each year to the best American picture book.', 'La Medalla Caldecott se da cada año al mejor libro ilustrado de Estados Unidos.'],
+  ['The Newbery Medal is given each year to the best American children\'s book.', 'La Medalla Newbery se da cada año al mejor libro infantil de Estados Unidos.'],
+  ['Libraries let you borrow books for free with a library card.', 'Las bibliotecas te prestan libros gratis con una tarjeta de biblioteca.'],
+  ['Benjamin Franklin helped start one of the first lending libraries in America, in 1731.', 'Benjamin Franklin ayudó a fundar una de las primeras bibliotecas de préstamo de América, en 1731.'],
+  ['Books for people who are blind can be printed in braille or recorded as audiobooks.', 'Los libros para personas ciegas se pueden imprimir en braille o grabar como audiolibros.'],
+  ['An audiobook is a book read out loud that you can listen to.', 'Un audiolibro es un libro leído en voz alta que puedes escuchar.'],
+  ['Long ago, Egyptians wrote on papyrus, a paper made from a plant that grows by the Nile River.', 'Hace mucho, los egipcios escribían en papiro, un papel hecho de una planta que crece junto al río Nilo.'],
+  ['Before paper was common, people in Europe wrote books on animal skin called parchment.', 'Antes de que el papel fuera común, en Europa se escribían libros en piel de animal llamada pergamino.'],
+  ['The Gutenberg Bible was one of the first big books printed with moving metal letters.', 'La Biblia de Gutenberg fue uno de los primeros libros grandes impresos con letras de metal movibles.'],
+  ['Reading for just 20 minutes a day adds up to about 1.8 million words in a school year.', 'Leer solo 20 minutos al día suma alrededor de 1.8 millones de palabras en un año escolar.'],
+  ['Bookmarks help you save your place, so you do not have to fold the page corners.', 'Los separadores te ayudan a guardar tu lugar, para no tener que doblar las esquinas de las páginas.'],
+  ['The Little Prince, by Antoine de Saint-Exupéry, has been translated into hundreds of languages.', 'El principito, de Antoine de Saint-Exupéry, se ha traducido a cientos de idiomas.'],
+  ['Don Quixote, by Miguel de Cervantes, is one of the most famous books ever written in Spanish.', 'Don Quijote, de Miguel de Cervantes, es uno de los libros más famosos escritos en español.'],
+  ['Many kids\' favorite books, like Dog Man, started as comics drawn just for fun.', 'Muchos libros favoritos de los niños, como Dog Man, empezaron como cómics dibujados solo por diversión.'],
+  ['You can read the same book again and notice new things each time.', 'Puedes leer el mismo libro otra vez y notar cosas nuevas cada vez.']
+];
+FACT_MORE.cars = [
+  ['The first cars were sometimes called "horseless carriages."', 'A los primeros carros a veces les decían "carruajes sin caballos".'],
+  ['Bertha Benz took the first long road trip in a car in 1888, driving about 65 miles to visit her mother.', 'Bertha Benz hizo el primer viaje largo en carro en 1888, manejando unos 100 kilómetros para visitar a su mamá.'],
+  ['The Model T came in many colors at first, but for years it was made only in black.', 'Al principio el Modelo T venía en varios colores, pero por años solo se hizo en negro.'],
+  ['Early cars were started by turning a hand crank in the front.', 'Los primeros carros se encendían dándole vueltas a una manivela adelante.'],
+  ['Charles Kettering invented the electric car starter in 1911, so drivers no longer needed a crank.', 'Charles Kettering inventó el arranque eléctrico en 1911, así los conductores ya no necesitaban la manivela.'],
+  ['Henry Ford\'s moving assembly line started in 1913 and made cars much faster.', 'La línea de ensamblaje en movimiento de Henry Ford empezó en 1913 e hizo los carros mucho más rápido.'],
+  ['The first traffic signals with colored lights appeared in the early 1900s.', 'Los primeros semáforos con luces de colores aparecieron a principios de los años 1900.'],
+  ['Red means stop, yellow means slow down, and green means go.', 'El rojo quiere decir alto, el amarillo baja la velocidad y el verde siga.'],
+  ['Kids should ride in a car seat or booster seat until the seat belt fits them right.', 'Los niños deben ir en silla de carro o asiento elevado hasta que el cinturón les quede bien.'],
+  ['Kids under 13 are safest riding in the back seat.', 'Los niños menores de 13 años van más seguros en el asiento de atrás.'],
+  ['Airbags fill with gas in a split second to cushion people in a crash.', 'Las bolsas de aire se inflan con gas en una fracción de segundo para proteger a las personas en un choque.'],
+  ['Electric cars run on batteries instead of gasoline and are very quiet.', 'Los carros eléctricos funcionan con baterías en lugar de gasolina y son muy silenciosos.'],
+  ['Hybrid cars use both a gas engine and an electric motor.', 'Los carros híbridos usan un motor de gasolina y un motor eléctrico.'],
+  ['Self-driving cars use cameras and sensors to see the road.', 'Los carros que se manejan solos usan cámaras y sensores para ver el camino.'],
+  ['A car engine works by burning fuel to push pistons up and down very fast.', 'El motor de un carro funciona quemando combustible para empujar pistones arriba y abajo muy rápido.'],
+  ['The brakes on a car squeeze pads against the wheels to slow them down.', 'Los frenos de un carro aprietan unas almohadillas contra las ruedas para que vayan más despacio.'],
+  ['Tire treads are the grooves that help tires grip the road, especially when it rains.', 'El dibujo de las llantas son las ranuras que ayudan a que se agarren al camino, sobre todo cuando llueve.'],
+  ['The Indianapolis 500 is a famous car race of 500 miles, or 200 laps.', 'Las 500 Millas de Indianápolis son una famosa carrera de 500 millas, o sea, 200 vueltas.'],
+  ['NASCAR races take place on oval tracks, and cars can zoom around at close to 200 miles per hour.', 'Las carreras de NASCAR son en pistas ovaladas, y los carros pueden ir a casi 320 kilómetros por hora.'],
+  ['In car racing, a checkered flag means the race is over.', 'En las carreras de carros, la bandera a cuadros quiere decir que la carrera terminó.'],
+  ['Pit crews can change all four tires on a race car in just a few seconds.', 'Los equipos de pits pueden cambiar las cuatro llantas de un carro de carreras en solo unos segundos.'],
+  ['Monster trucks have giant tires taller than a grown-up.', 'Los monster trucks tienen llantas gigantes más altas que un adulto.'],
+  ['A school bus is yellow so it is easy to see.', 'El autobús escolar es amarillo para que sea fácil de ver.'],
+  ['When a school bus stops with its red lights flashing, cars must stop too.', 'Cuando un autobús escolar se detiene con sus luces rojas prendidas, los carros también deben detenerse.'],
+  ['Fire trucks, ambulances and police cars use sirens and flashing lights so other drivers move out of the way.', 'Los camiones de bomberos, ambulancias y patrullas usan sirenas y luces para que los demás carros se quiten del camino.'],
+  ['A license plate is like a name tag for a car.', 'Una placa es como una etiqueta con el nombre de un carro.'],
+  ['In most U.S. states, teens can start learning to drive with a learner\'s permit at 15 or 16.', 'En casi todos los estados de Estados Unidos, los adolescentes pueden empezar a aprender a manejar con un permiso a los 15 o 16 años.'],
+  ['The steering wheel turns the front wheels so the car can go left or right.', 'El volante gira las ruedas de adelante para que el carro vaya a la izquierda o a la derecha.'],
+  ['Car designers make clay models of new cars before they are built.', 'Los diseñadores de carros hacen modelos de arcilla de los carros nuevos antes de construirlos.']
+];
+FACT_MORE.beauty = [
+  ['Ancient Egyptians made perfume from flowers, oils and spices.', 'Los antiguos egipcios hacían perfume con flores, aceites y especias.'],
+  ['Cleopatra, a queen of Egypt, is famous for her dark eyeliner.', 'Cleopatra, una reina de Egipto, es famosa por su delineador oscuro.'],
+  ['People in ancient China painted their nails with colors made from things like flowers and beeswax.', 'En la antigua China se pintaban las uñas con colores hechos de cosas como flores y cera de abeja.'],
+  ['Soap is made by mixing fats or oils with a strong substance called lye.', 'El jabón se hace mezclando grasa o aceite con una sustancia fuerte llamada lejía.'],
+  ['Soap works because one end of each soap bit grabs water and the other end grabs dirt and oil.', 'El jabón funciona porque una punta de cada partícula agarra el agua y la otra agarra la mugre y la grasa.'],
+  ['Toothpaste helps fight cavities with an ingredient called fluoride.', 'La pasta de dientes ayuda a combatir las caries con un ingrediente llamado flúor.'],
+  ['A person who cuts and styles hair is called a hairstylist or barber.', 'La persona que corta y peina el cabello se llama estilista o barbero.'],
+  ['People who do hair, skin and nails professionally have to train and get a license.', 'Las personas que trabajan con cabello, piel y uñas tienen que estudiar y sacar una licencia.'],
+  ['Barbershops have long been a place for friends and neighbors to meet and talk.', 'Las barberías desde hace mucho son un lugar donde amigos y vecinos se juntan a platicar.'],
+  ['The red and white striped barber pole is a very old sign for a barbershop.', 'El poste de rayas rojas y blancas es un letrero muy viejo de las barberías.'],
+  ['Each hair on your head grows from a tiny pocket in your skin called a follicle.', 'Cada pelo de tu cabeza crece de un bolsillito en tu piel llamado folículo.'],
+  ['Most people have about 100,000 hairs on their head.', 'La mayoría de las personas tienen unos 100,000 pelos en la cabeza.'],
+  ['It is normal to lose dozens of hairs every day. New ones grow in their place.', 'Es normal que se caigan docenas de pelos cada día. Nuevos crecen en su lugar.'],
+  ['Curly, wavy and straight hair grow from follicles with different shapes.', 'El pelo rizado, ondulado y lacio crece de folículos con formas diferentes.'],
+  ['Braids and cornrows have been worn in Africa for thousands of years.', 'Las trenzas y las trenzas pegadas se han usado en África por miles de años.'],
+  ['Your skin is your body\'s biggest organ.', 'La piel es el órgano más grande de tu cuerpo.'],
+  ['Melanin is what gives skin, hair and eyes their color.', 'La melanina es lo que les da color a la piel, al pelo y a los ojos.'],
+  ['Sunscreen should go on before you go outside and be put on again after swimming.', 'El protector solar se debe poner antes de salir y otra vez después de nadar.'],
+  ['Lotion helps keep skin from getting dry and itchy.', 'La crema ayuda a que la piel no se reseque ni dé comezón.'],
+  ['Nails are made of keratin, the same material as your hair.', 'Las uñas están hechas de queratina, el mismo material que tu pelo.'],
+  ['Fingernails grow faster than toenails.', 'Las uñas de las manos crecen más rápido que las de los pies.'],
+  ['Lipstick colors often come from minerals and plant-based coloring.', 'Los colores del lápiz labial muchas veces vienen de minerales y colorantes de plantas.'],
+  ['Makeup artists work on movies and TV to make actors look like their characters, even monsters.', 'Los maquillistas trabajan en películas y TV para que los actores se vean como sus personajes, hasta como monstruos.'],
+  ['Face paint for kids is made to be gentle on skin and wash off with soap and water.', 'La pintura para la cara de los niños está hecha para ser suave con la piel y quitarse con agua y jabón.'],
+  ['Henna is a plant dye used for thousands of years to make reddish-brown designs on hands and hair.', 'La henna es un tinte de planta que se usa desde hace miles de años para hacer diseños café rojizo en manos y pelo.'],
+  ['Sarah Breedlove was the real name of Madam C.J. Walker.', 'Sarah Breedlove era el nombre verdadero de Madam C.J. Walker.'],
+  ['Mary Kay Ash started a beauty company in 1963 and gave top sellers pink cars.', 'Mary Kay Ash fundó una compañía de belleza en 1963 y les regalaba carros rosas a sus mejores vendedoras.'],
+  ['Feeling good about yourself is about much more than how you look. Kindness and being yourself matter most.', 'Sentirte bien contigo mismo es mucho más que cómo te ves. Ser amable y ser tú mismo es lo que más importa.']
+];
+for (const t of FACT_TOPICS) if (FACT_MORE[t.id]) t.f.push(...FACT_MORE[t.id]);
+/* ---------- Newer topics */
+/* New topics */
+const FACT_NEW = [];
+FACT_NEW.push({ id: 'mythical', e: '🐉', n: ['Mythical creatures', 'Criaturas mágicas'], f: [
+  ['Mythical creatures are animals from old stories and legends. They are not real, but people have told stories about them for thousands of years.', 'Las criaturas mágicas son animales de cuentos y leyendas antiguas. No son reales, pero la gente ha contado historias de ellas por miles de años.'],
+  ['Dragons appear in stories from all over the world, from Europe to China.', 'Los dragones aparecen en historias de todo el mundo, desde Europa hasta China.'],
+  ['In European stories, dragons often breathe fire and guard piles of treasure.', 'En las historias europeas, los dragones muchas veces echan fuego y cuidan montones de tesoros.'],
+  ['In Chinese stories, dragons are usually kind and wise and bring rain and good luck.', 'En las historias chinas, los dragones casi siempre son buenos y sabios y traen lluvia y buena suerte.'],
+  ['Chinese New Year parades often have a long dragon carried by many dancers.', 'En los desfiles del Año Nuevo Chino muchas veces hay un dragón largo que cargan muchos bailarines.'],
+  ['A unicorn is a horse-like creature with one horn on its forehead.', 'Un unicornio es una criatura parecida a un caballo con un cuerno en la frente.'],
+  ['The unicorn is the national animal of Scotland.', 'El unicornio es el animal nacional de Escocia.'],
+  ['Some people long ago thought narwhal tusks were unicorn horns.', 'Hace mucho, algunas personas creían que los colmillos de narval eran cuernos de unicornio.'],
+  ['A phoenix is a legendary bird that bursts into flames and is born again from its ashes.', 'El fénix es un ave legendaria que se prende en llamas y vuelve a nacer de sus cenizas.'],
+  ['Pegasus is a winged horse from Greek myths.', 'Pegaso es un caballo con alas de los mitos griegos.'],
+  ['A griffin has the body of a lion and the head and wings of an eagle.', 'Un grifo tiene cuerpo de león y cabeza y alas de águila.'],
+  ['Mermaids are sea creatures with the top half of a person and the tail of a fish.', 'Las sirenas son criaturas del mar con la mitad de arriba de persona y cola de pez.'],
+  ['The kraken is a giant sea monster from stories told by sailors in Norway.', 'El kraken es un monstruo marino gigante de las historias de los marineros de Noruega.'],
+  ['The kraken legend may have come from real giant squid, which can be about as long as a school bus.', 'La leyenda del kraken pudo venir de calamares gigantes de verdad, que pueden ser casi tan largos como un autobús escolar.'],
+  ['The Loch Ness Monster, nicknamed Nessie, is said to live in a lake in Scotland.', 'Del monstruo del lago Ness, apodado Nessie, se dice que vive en un lago de Escocia.'],
+  ['Bigfoot, also called Sasquatch, is said to be a giant hairy creature in the forests of North America.', 'Del Pie Grande, también llamado Sasquatch, se dice que es una criatura gigante y peluda de los bosques de América del Norte.'],
+  ['The yeti is a snow creature from stories in the Himalaya mountains.', 'El yeti es una criatura de la nieve de las historias de las montañas del Himalaya.'],
+  ['The chupacabra legend began in Puerto Rico in 1995. Its name means "goat sucker."', 'La leyenda del chupacabras empezó en Puerto Rico en 1995.'],
+  ['Quetzalcoatl was a feathered serpent god in Aztec stories.', 'Quetzalcóatl era un dios serpiente emplumada en las historias aztecas.'],
+  ['Alebrijes are brightly painted Mexican sculptures of imaginary creatures.', 'Los alebrijes son esculturas mexicanas pintadas con colores brillantes de criaturas imaginarias.'],
+  ['Pedro Linares, an artist in Mexico City, made the first alebrijes after dreaming about colorful creatures.', 'Pedro Linares, un artista de la Ciudad de México, hizo los primeros alebrijes después de soñar con criaturas de colores.'],
+  ['A centaur is half person and half horse, from Greek myths.', 'Un centauro es mitad persona y mitad caballo, de los mitos griegos.'],
+  ['The Minotaur, from Greek myths, had the head of a bull and lived in a maze called the Labyrinth.', 'El Minotauro, de los mitos griegos, tenía cabeza de toro y vivía en un laberinto.'],
+  ['Medusa, from Greek myths, had snakes for hair and could turn people to stone with a look.', 'Medusa, de los mitos griegos, tenía serpientes en vez de pelo y convertía a la gente en piedra con la mirada.'],
+  ['The hydra was a many-headed serpent. In the story, when one head was cut off, two grew back.', 'La hidra era una serpiente de muchas cabezas. En la historia, cuando le cortaban una cabeza, le salían dos.'],
+  ['The sphinx has the body of a lion and the head of a person. A giant sphinx statue stands in Egypt.', 'La esfinge tiene cuerpo de león y cabeza de persona. Una estatua gigante de esfinge está en Egipto.'],
+  ['Fairies are tiny magical people with wings in many European stories.', 'Las hadas son personitas mágicas con alas en muchas historias europeas.'],
+  ['Leprechauns are little shoemakers from Irish stories, said to hide pots of gold at the end of rainbows.', 'Los leprechauns son zapateros pequeñitos de las historias irlandesas, que dicen que esconden ollas de oro al final del arcoíris.'],
+  ['Trolls in Norwegian stories live under bridges or in mountains, and some turn to stone in sunlight.', 'Los troles de las historias noruegas viven debajo de los puentes o en las montañas, y algunos se vuelven piedra con la luz del sol.'],
+  ['In Japanese stories, a kitsune is a clever magical fox that can have up to nine tails.', 'En las historias japonesas, un kitsune es un zorro mágico y listo que puede tener hasta nueve colas.'],
+  ['The thunderbird is a powerful giant bird in stories of many Native American nations.', 'El pájaro trueno es un ave gigante y poderosa en las historias de muchos pueblos nativos de América.'],
+  ['A basilisk is a legendary snake king said to be deadly with just one look.', 'El basilisco es un rey serpiente legendario del que se dice que mataba con solo una mirada.'],
+  ['Cerberus was a giant three-headed dog in Greek myths.', 'Cerbero era un perro gigante de tres cabezas en los mitos griegos.'],
+  ['The tooth fairy is a modern legend about a fairy who leaves a gift for a lost tooth.', 'El hada de los dientes es una leyenda moderna de un hada que deja un regalo por un diente que se cayó.'],
+  ['In many Spanish-speaking countries, Ratoncito Pérez, a little mouse, takes lost teeth instead of a fairy.', 'En muchos países donde se habla español, el Ratoncito Pérez se lleva los dientes en vez de un hada.'],
+  ['La Llorona is a famous ghost story from Mexico and Latin America about a weeping woman.', 'La Llorona es una famosa historia de fantasmas de México y Latinoamérica sobre una mujer que llora.'],
+  ['El Cucuy, or the Coco, is a bogeyman from Latin American and Spanish stories.', 'El Cucuy, o el Coco, es un monstruo de las historias de Latinoamérica y España.'],
+  ['People have found real dinosaur fossils for thousands of years, and some think those bones inspired dragon and griffin stories.', 'La gente ha encontrado fósiles de dinosaurios por miles de años, y algunos creen que esos huesos inspiraron las historias de dragones y grifos.'],
+  ['Many fantasy books and movies, like How to Train Your Dragon, are full of mythical creatures.', 'Muchos libros y películas de fantasía, como Cómo entrenar a tu dragón, están llenos de criaturas mágicas.'],
+  ['You can invent your own mythical creature by mixing parts of real animals!', '¡Puedes inventar tu propia criatura mágica mezclando partes de animales de verdad!']
+] });
+FACT_NEW.push({ id: 'body', e: '🧠', n: ['Weird body science', 'Ciencia rara del cuerpo'], f: [
+  ['You are a tiny bit taller in the morning than at night, because the cushions in your spine squish down during the day.', 'Eres un poquito más alto en la mañana que en la noche, porque los cojincitos de tu columna se aplastan durante el día.'],
+  ['Your brain uses about one fifth of your body\'s energy, even though it is a small part of your weight.', 'Tu cerebro usa como la quinta parte de la energía de tu cuerpo, aunque pesa poquito.'],
+  ['The smallest bone in your body is in your ear. It is about the size of a grain of rice.', 'El hueso más pequeño de tu cuerpo está en tu oído. Es como del tamaño de un grano de arroz.'],
+  ['The biggest bone in your body is your thigh bone, called the femur.', 'El hueso más grande de tu cuerpo es el del muslo, llamado fémur.'],
+  ['Your fingerprints are only yours. Even identical twins have different fingerprints.', 'Tus huellas digitales son solo tuyas. Hasta los gemelos idénticos tienen huellas diferentes.'],
+  ['Your tongue print is one of a kind too!', '¡La huella de tu lengua también es única!'],
+  ['Your nose and ears slowly get a little bigger as you get older.', 'Tu nariz y tus orejas se hacen un poquito más grandes despacito al ir creciendo y envejeciendo.'],
+  ['You blink about 15 to 20 times every minute.', 'Parpadeas unas 15 a 20 veces cada minuto.'],
+  ['It is impossible to sneeze with your eyes open... almost! Your eyes close by reflex.', 'Es casi imposible estornudar con los ojos abiertos. Tus ojos se cierran solos por reflejo.'],
+  ['A sneeze can shoot out of your nose very fast, so always sneeze into your elbow.', 'Un estornudo sale de tu nariz muy rápido, así que siempre estornuda en tu codo.'],
+  ['Goosebumps happen when tiny muscles pull your hairs up straight.', 'La piel de gallina pasa cuando unos músculos pequeñitos levantan tus pelitos.'],
+  ['Hiccups happen when the muscle under your lungs, called the diaphragm, suddenly jumps.', 'El hipo pasa cuando el músculo debajo de tus pulmones, llamado diafragma, brinca de repente.'],
+  ['Your stomach growls when muscles squeeze air and food through your belly.', 'Tu panza gruñe cuando los músculos aprietan aire y comida por tu estómago.'],
+  ['Your stomach makes a new slimy lining every few days so its own acid does not hurt it.', 'Tu estómago hace una capa babosa nueva cada pocos días para que su propio ácido no lo lastime.'],
+  ['Your small intestine is about 20 feet long, all folded up inside your belly.', 'Tu intestino delgado mide unos 6 metros, todo doblado dentro de tu panza.'],
+  ['Your heart is about the size of your fist.', 'Tu corazón es más o menos del tamaño de tu puño.'],
+  ['Blood vessels in your body, laid end to end, would stretch around the Earth more than twice.', 'Los vasos sanguíneos de tu cuerpo, puestos uno tras otro, le darían la vuelta a la Tierra más de dos veces.'],
+  ['Your blood is red because of iron in it.', 'Tu sangre es roja por el hierro que tiene.'],
+  ['You have more than 600 muscles in your body.', 'Tienes más de 600 músculos en tu cuerpo.'],
+  ['Your tongue is made of eight muscles that work together.', 'Tu lengua está hecha de ocho músculos que trabajan juntos.'],
+  ['You make about a quart of spit every day. Spit helps you taste and digest food.', 'Haces como un litro de saliva cada día. La saliva te ayuda a saborear y digerir la comida.'],
+  ['Smell and taste work together. That is why food tastes boring when you have a stuffy nose.', 'El olfato y el gusto trabajan juntos. Por eso la comida no sabe a nada cuando tienes la nariz tapada.'],
+  ['Kids have 20 baby teeth. Grown-ups usually have 32 teeth.', 'Los niños tienen 20 dientes de leche. Los adultos casi siempre tienen 32.'],
+  ['Tooth enamel is the hardest thing in your whole body.', 'El esmalte de los dientes es lo más duro de todo tu cuerpo.'],
+  ['Your eyes see the world upside down, and your brain flips the picture right side up.', 'Tus ojos ven el mundo de cabeza, y tu cerebro voltea la imagen.'],
+  ['Each eye has a blind spot where it cannot see, but your brain fills in the gap.', 'Cada ojo tiene un punto ciego donde no ve, pero tu cerebro rellena el hueco.'],
+  ['Your pupils get bigger in the dark to let in more light.', 'Tus pupilas se hacen más grandes en la oscuridad para dejar entrar más luz.'],
+  ['You shed tiny flakes of skin all the time. Your body makes a whole new outer layer of skin about every month.', 'Todo el tiempo sueltas pedacitos de piel. Tu cuerpo hace una capa nueva de piel de afuera más o menos cada mes.'],
+  ['Your body has bacteria living in your belly that help you digest food.', 'Tu cuerpo tiene bacterias que viven en tu panza y te ayudan a digerir la comida.'],
+  ['Laughing is contagious. Hearing someone laugh can make you laugh too.', 'La risa es contagiosa. Escuchar a alguien reír te puede hacer reír a ti.'],
+  ['Yawning is contagious too! Even reading about yawning can make you yawn.', '¡Bostezar también es contagioso! Hasta leer sobre bostezos te puede hacer bostezar.'],
+  ['You cannot tickle yourself, because your brain knows the touch is coming.', 'No te puedes hacer cosquillas tú mismo, porque tu cerebro sabe que viene el toque.'],
+  ['Your brain keeps working while you sleep, sorting out what you learned that day.', 'Tu cerebro sigue trabajando mientras duermes, acomodando lo que aprendiste ese día.'],
+  ['Kids need more sleep than grown-ups because their bodies and brains are growing.', 'Los niños necesitan dormir más que los adultos porque su cuerpo y su cerebro están creciendo.'],
+  ['When you dream, your body is mostly still so you do not act out your dreams.', 'Cuando sueñas, tu cuerpo casi no se mueve para que no actúes tus sueños.'],
+  ['Your bones are alive. They grow and heal, and a broken bone can mend itself.', 'Tus huesos están vivos. Crecen y sanan, y un hueso roto se puede componer solo.'],
+  ['The skin on your palms and the bottoms of your feet has no hair.', 'La piel de tus palmas y de las plantas de tus pies no tiene pelo.'],
+  ['Your fingers wrinkle in water, which may help you grip wet things.', 'Tus dedos se arrugan en el agua, y eso tal vez te ayuda a agarrar cosas mojadas.'],
+  ['Brain freeze happens when something cold touches the roof of your mouth and blood vessels quickly change size.', 'El congelamiento de cerebro pasa cuando algo frío toca el paladar y los vasos sanguíneos cambian de tamaño rápido.'],
+  ['Your heart beats faster when you run, to send more oxygen to your muscles.', 'Tu corazón late más rápido cuando corres, para mandar más oxígeno a tus músculos.']
+] });
+FACT_NEW.push({ id: 'records', e: '🏆', n: ['World records', 'Récords mundiales'], f: [
+  ['Guinness World Records is a book, first published in 1955, that lists the biggest, fastest and most amazing things.', 'Guinness World Records es un libro, publicado por primera vez en 1955, que reúne lo más grande, lo más rápido y lo más increíble.'],
+  ['Robert Wadlow is the tallest person ever measured. He was 8 feet 11 inches tall.', 'Robert Wadlow es la persona más alta que se ha medido. Medía 2.72 metros.'],
+  ['Sultan Kösen, from Turkey, has held the record as the tallest living man since 2009. He is about 8 feet 2 inches tall.', 'Sultan Kösen, de Turquía, tiene el récord del hombre vivo más alto desde 2009. Mide unos 2.51 metros.'],
+  ['In 2009, Usain Bolt set the world record for running 100 meters in just 9.58 seconds.', 'En 2009, Usain Bolt rompió el récord mundial al correr 100 metros en solo 9.58 segundos.'],
+  ['Michael Phelps has won 23 Olympic gold medals in swimming, more than anyone ever.', 'Michael Phelps ha ganado 23 medallas de oro olímpicas en natación, más que nadie.'],
+  ['Simone Biles has won more world and Olympic gymnastics medals than any other gymnast.', 'Simone Biles ha ganado más medallas mundiales y olímpicas de gimnasia que cualquier otra gimnasta.'],
+  ['Wayne Gretzky, nicknamed The Great One, holds the record for the most points in NHL hockey history.', 'Wayne Gretzky, apodado El Grande, tiene el récord de más puntos en la historia del hockey de la NHL.'],
+  ['In 2023, LeBron James became the top scorer in NBA history.', 'En 2023, LeBron James se volvió el máximo anotador en la historia de la NBA.'],
+  ['Cal Ripken Jr. played in 2,632 baseball games in a row, a Major League record.', 'Cal Ripken Jr. jugó 2,632 partidos de béisbol seguidos, un récord de Grandes Ligas.'],
+  ['Pelé, from Brazil, is the only soccer player to win three World Cups.', 'Pelé, de Brasil, es el único futbolista que ha ganado tres Copas Mundiales.'],
+  ['Mount Everest, between Nepal and China, is the tallest mountain above sea level. It is about 29,000 feet tall.', 'El monte Everest, entre Nepal y China, es la montaña más alta sobre el nivel del mar. Mide unos 8,849 metros.'],
+  ['Edmund Hillary and Tenzing Norgay were the first people known to reach the top of Mount Everest, in 1953.', 'Edmund Hillary y Tenzing Norgay fueron las primeras personas que se sabe que llegaron a la cima del Everest, en 1953.'],
+  ['The Burj Khalifa in Dubai is the tallest building in the world. It is more than half a mile tall.', 'El Burj Khalifa, en Dubái, es el edificio más alto del mundo. Mide más de 800 metros.'],
+  ['The blue whale is the biggest animal that has ever lived, even bigger than any dinosaur.', 'La ballena azul es el animal más grande que ha existido, aún más grande que cualquier dinosaurio.'],
+  ['The cheetah is the fastest land animal. It can run about 70 miles per hour in short bursts.', 'El guepardo es el animal terrestre más rápido. Puede correr unos 110 kilómetros por hora por ratitos.'],
+  ['The peregrine falcon is the fastest animal of all. When it dives, it can go more than 200 miles per hour.', 'El halcón peregrino es el animal más rápido de todos. Cuando se lanza en picada, puede ir a más de 320 kilómetros por hora.'],
+  ['The giraffe is the tallest animal. Some are taller than 18 feet.', 'La jirafa es el animal más alto. Algunas miden más de 5.5 metros.'],
+  ['The ostrich lays the biggest eggs of any living bird.', 'El avestruz pone los huevos más grandes de cualquier ave viva.'],
+  ['The Amazon rainforest is the biggest rainforest in the world.', 'La selva amazónica es la selva tropical más grande del mundo.'],
+  ['The Sahara is the biggest hot desert in the world, about as big as the United States.', 'El Sahara es el desierto caliente más grande del mundo, casi tan grande como Estados Unidos.'],
+  ['Russia is the biggest country in the world by land.', 'Rusia es el país más grande del mundo por territorio.'],
+  ['Vatican City is the smallest country in the world. It is inside the city of Rome.', 'La Ciudad del Vaticano es el país más pequeño del mundo. Está dentro de la ciudad de Roma.'],
+  ['Angel Falls in Venezuela is the tallest waterfall in the world.', 'El Salto Ángel, en Venezuela, es la cascada más alta del mundo.'],
+  ['The Great Wall of China is the longest wall ever built, thousands of miles long.', 'La Gran Muralla China es el muro más largo jamás construido, de miles de kilómetros.'],
+  ['The Great Wall of China cannot be seen from space with just your eyes. That is a myth!', 'La Gran Muralla China no se puede ver desde el espacio a simple vista. ¡Eso es un mito!'],
+  ['The longest a person has stayed in space in one trip is about 437 days, by cosmonaut Valeri Polyakov.', 'Lo más que una persona ha estado en el espacio en un solo viaje son unos 437 días, el cosmonauta Valeri Polyakov.'],
+  ['Jeanne Calment of France lived to be 122 years old, the oldest person ever confirmed.', 'Jeanne Calment, de Francia, vivió hasta los 122 años, la persona más longeva confirmada.'],
+  ['Shigeru Miyamoto\'s Super Mario series is one of the best-selling video game series ever.', 'La serie Super Mario, de Shigeru Miyamoto, es una de las series de videojuegos más vendidas de la historia.'],
+  ['The Bible is the best-selling book of all time.', 'La Biblia es el libro más vendido de todos los tiempos.'],
+  ['People have set records for the most dominoes toppled, with millions falling in a row.', 'La gente ha roto récords de más fichas de dominó derribadas, con millones cayendo en fila.'],
+  ['Some records are funny, like the most T-shirts worn at once or the biggest bubble blown.', 'Algunos récords son chistosos, como más camisetas puestas a la vez o la burbuja más grande.'],
+  ['Jesse Owens set three world records and tied a fourth in less than an hour in 1935.', 'Jesse Owens rompió tres récords mundiales e igualó un cuarto en menos de una hora, en 1935.'],
+  ['Florence Griffith Joyner set the women\'s 100-meter world record in 1988: 10.49 seconds.', 'Florence Griffith Joyner rompió el récord mundial femenino de 100 metros en 1988: 10.49 segundos.'],
+  ['Serena Williams won 23 Grand Slam singles titles, the most by any woman in the modern era of tennis.', 'Serena Williams ganó 23 títulos de Grand Slam en individuales, la mayor cantidad de cualquier mujer en la era moderna del tenis.'],
+  ['The longest river in the world is the Nile or the Amazon. Scientists still argue about which!', '¡El río más largo del mundo es el Nilo o el Amazonas! Los científicos todavía discuten cuál.'],
+  ['Lake Baikal in Russia is the deepest lake in the world.', 'El lago Baikal, en Rusia, es el lago más profundo del mundo.'],
+  ['The Pacific Ocean is the biggest ocean. It covers about a third of Earth.', 'El océano Pacífico es el más grande. Cubre como la tercera parte de la Tierra.'],
+  ['Records are made to be broken. Every time someone breaks one, there is a new goal to beat.', 'Los récords se hacen para romperse. Cada vez que alguien rompe uno, hay una nueva meta.'],
+  ['To set a Guinness World Record, someone has to check and measure it carefully, following the rules.', 'Para que un récord Guinness cuente, alguien tiene que revisarlo y medirlo con cuidado, siguiendo las reglas.'],
+  ['You can set your own personal records, like reading more books this month than last month!', '¡Puedes romper tus propios récords, como leer más libros este mes que el mes pasado!']
+] });
+FACT_NEW.push({ id: 'ushistory', e: '🔔', n: ['American history', 'Historia de Estados Unidos'], f: [
+  ['Native American peoples lived in North America for thousands of years before Europeans arrived.', 'Los pueblos nativos americanos vivieron en América del Norte por miles de años antes de que llegaran los europeos.'],
+  ['The Declaration of Independence was approved on July 4, 1776. That is why the Fourth of July is America\'s birthday.', 'La Declaración de Independencia se aprobó el 4 de julio de 1776. Por eso el 4 de julio es el cumpleaños de Estados Unidos.'],
+  ['Thomas Jefferson wrote most of the Declaration of Independence.', 'Thomas Jefferson escribió la mayor parte de la Declaración de Independencia.'],
+  ['The United States started with 13 colonies. That is why the flag has 13 stripes.', 'Estados Unidos empezó con 13 colonias. Por eso la bandera tiene 13 franjas.'],
+  ['The U.S. flag has 50 stars, one for each state.', 'La bandera de Estados Unidos tiene 50 estrellas, una por cada estado.'],
+  ['George Washington was the first president of the United States.', 'George Washington fue el primer presidente de Estados Unidos.'],
+  ['George Washington\'s false teeth were not made of wood. They were made of things like ivory and animal teeth.', 'Los dientes postizos de George Washington no eran de madera. Eran de cosas como marfil y dientes de animales.'],
+  ['The U.S. Constitution, the country\'s main set of rules, was written in 1787.', 'La Constitución de Estados Unidos, el conjunto principal de reglas del país, se escribió en 1787.'],
+  ['The Bill of Rights is the first 10 changes to the Constitution. It protects freedoms like speech and religion.', 'La Carta de Derechos son los primeros 10 cambios a la Constitución. Protege libertades como la de expresión y la de religión.'],
+  ['Washington, D.C., became the capital in 1800. D.C. stands for District of Columbia.', 'Washington, D.C., se volvió la capital en 1800. D.C. quiere decir Distrito de Columbia.'],
+  ['John Adams was the first president to live in the White House, in 1800.', 'John Adams fue el primer presidente que vivió en la Casa Blanca, en 1800.'],
+  ['The Liberty Bell has a famous crack and has not been rung for a long time.', 'La Campana de la Libertad tiene una grieta famosa y hace mucho que no se toca.'],
+  ['The Statue of Liberty was a gift from France and was put up in New York Harbor in 1886.', 'La Estatua de la Libertad fue un regalo de Francia y se colocó en el puerto de Nueva York en 1886.'],
+  ['The Statue of Liberty is green because its copper skin turned green from wind and rain over time.', 'La Estatua de la Libertad es verde porque su piel de cobre se puso verde con el viento y la lluvia con los años.'],
+  ['Paul Revere rode at night in 1775 to warn that British soldiers were coming. He probably did not shout "The British are coming!"', 'Paul Revere cabalgó de noche en 1775 para avisar que venían los soldados británicos. Probablemente no gritó "¡Vienen los británicos!"'],
+  ['Lewis and Clark explored the western part of the country from 1804 to 1806, helped by a Shoshone woman named Sacagawea.', 'Lewis y Clark exploraron el oeste del país de 1804 a 1806, con la ayuda de una mujer shoshone llamada Sacagawea.'],
+  ['Abraham Lincoln was president during the Civil War and worked to end slavery.', 'Abraham Lincoln fue presidente durante la Guerra Civil y luchó para terminar con la esclavitud.'],
+  ['The 13th Amendment ended slavery in the United States in 1865.', 'La Enmienda 13 terminó con la esclavitud en Estados Unidos en 1865.'],
+  ['Abraham Lincoln was the tallest president, at about 6 feet 4 inches.', 'Abraham Lincoln fue el presidente más alto, de casi 1.93 metros.'],
+  ['The transcontinental railroad, finished in 1869, connected the East and West coasts by train.', 'El ferrocarril transcontinental, terminado en 1869, conectó por tren las costas del este y del oeste.'],
+  ['Ellis Island in New York welcomed millions of immigrants between 1892 and 1954.', 'La isla Ellis, en Nueva York, recibió a millones de inmigrantes entre 1892 y 1954.'],
+  ['Women won the right to vote across the United States in 1920, with the 19th Amendment.', 'Las mujeres ganaron el derecho a votar en todo Estados Unidos en 1920, con la Enmienda 19.'],
+  ['Susan B. Anthony worked for many years to help women win the right to vote.', 'Susan B. Anthony trabajó muchos años para que las mujeres ganaran el derecho a votar.'],
+  ['The Wright brothers made the first powered airplane flight in 1903, in North Carolina.', 'Los hermanos Wright hicieron el primer vuelo en avión con motor en 1903, en Carolina del Norte.'],
+  ['Mount Rushmore shows the faces of four presidents carved into a mountain in South Dakota.', 'El monte Rushmore muestra las caras de cuatro presidentes talladas en una montaña de Dakota del Sur.'],
+  ['The four faces on Mount Rushmore are George Washington, Thomas Jefferson, Theodore Roosevelt and Abraham Lincoln.', 'Las cuatro caras del monte Rushmore son George Washington, Thomas Jefferson, Theodore Roosevelt y Abraham Lincoln.'],
+  ['The teddy bear is named after President Theodore "Teddy" Roosevelt.', 'El osito de peluche, o "teddy bear", se llama así por el presidente Theodore "Teddy" Roosevelt.'],
+  ['Yellowstone became the first national park in the world in 1872.', 'Yellowstone se volvió el primer parque nacional del mundo en 1872.'],
+  ['Alaska and Hawaii were the last two states to join, both in 1959.', 'Alaska y Hawái fueron los dos últimos estados en unirse, los dos en 1959.'],
+  ['The United States bought Alaska from Russia in 1867.', 'Estados Unidos le compró Alaska a Rusia en 1867.'],
+  ['The Pledge of Allegiance was written in 1892.', 'El Juramento a la Bandera se escribió en 1892.'],
+  ['"The Star-Spangled Banner" became the national anthem in 1931. Its words were written by Francis Scott Key in 1814.', '"The Star-Spangled Banner" se volvió el himno nacional en 1931. Su letra la escribió Francis Scott Key en 1814.'],
+  ['The bald eagle is the national bird of the United States.', 'El águila calva es el ave nacional de Estados Unidos.'],
+  ['Thanksgiving became a national holiday in 1863, when Abraham Lincoln declared it.', 'El Día de Acción de Gracias se volvió fiesta nacional en 1863, cuando Abraham Lincoln lo declaró.'],
+  ['In 1969, American astronauts landed on the Moon for the first time.', 'En 1969, astronautas estadounidenses llegaron a la Luna por primera vez.'],
+  ['The U.S. has three branches of government: Congress makes laws, the president carries them out and the courts explain them.', 'Estados Unidos tiene tres poderes: el Congreso hace las leyes, el presidente las hace cumplir y las cortes las explican.'],
+  ['Every 10 years, the U.S. counts everyone who lives in the country. This is called the census.', 'Cada 10 años, Estados Unidos cuenta a todas las personas que viven en el país. Esto se llama el censo.'],
+  ['Benjamin Franklin was an inventor, writer and one of the Founding Fathers. He helped write the Declaration of Independence.', 'Benjamin Franklin fue inventor, escritor y uno de los Padres Fundadores. Ayudó a escribir la Declaración de Independencia.'],
+  ['The first American public school opened in Boston in 1635.', 'La primera escuela pública de Estados Unidos abrió en Boston en 1635.'],
+  ['People from all over the world have moved to the United States, which is why it is sometimes called a nation of immigrants.', 'Gente de todo el mundo se ha mudado a Estados Unidos, por eso a veces le dicen un país de inmigrantes.']
+] });
+FACT_NEW.push({ id: 'weirdanimals', e: '🐙', n: ['Weird animals', 'Animales raros'], f: [
+  ['The platypus is a mammal that lays eggs, has a duck-like bill and glows under special blue light.', 'El ornitorrinco es un mamífero que pone huevos, tiene pico como de pato y brilla con una luz azul especial.'],
+  ['Male platypuses have a venomous spur on their back legs.', 'Los ornitorrincos machos tienen un espolón venenoso en las patas de atrás.'],
+  ['An axolotl is a salamander from Mexico that can grow back lost legs and even parts of its heart.', 'El ajolote es una salamandra de México que puede volver a hacer crecer patas perdidas y hasta partes de su corazón.'],
+  ['Axolotls look like they are always smiling.', 'Los ajolotes parecen estar siempre sonriendo.'],
+  ['Tardigrades, or water bears, are tiny animals that can survive freezing, boiling and even outer space.', 'Los tardígrados, u osos de agua, son animalitos que pueden sobrevivir congelados, hervidos y hasta en el espacio.'],
+  ['The naked mole-rat lives underground, almost never gets cancer and can live more than 30 years.', 'La rata topo desnuda vive bajo tierra, casi nunca tiene cáncer y puede vivir más de 30 años.'],
+  ['The blobfish looks like a droopy blob out of water, but deep in the ocean it looks like a normal fish.', 'El pez borrón parece una bola aguada fuera del agua, pero en lo profundo del mar se ve como un pez normal.'],
+  ['The star-nosed mole has 22 pink tentacles on its nose to feel for food.', 'El topo de nariz estrellada tiene 22 tentáculos rosas en la nariz para sentir la comida.'],
+  ['The aye-aye, a lemur from Madagascar, taps on trees with a long skinny finger to find bugs.', 'El aye-aye, un lémur de Madagascar, golpea los árboles con un dedo largo y flaco para encontrar insectos.'],
+  ['Pangolins are covered in hard scales and roll into a ball when they are scared.', 'Los pangolines están cubiertos de escamas duras y se hacen bolita cuando tienen miedo.'],
+  ['An octopus can change its color and skin texture in less than a second.', 'Un pulpo puede cambiar su color y la textura de su piel en menos de un segundo.'],
+  ['Each arm of an octopus can taste and touch things on its own.', 'Cada brazo de un pulpo puede saborear y tocar cosas por su cuenta.'],
+  ['A mantis shrimp can punch so fast it can crack a snail shell.', 'El camarón mantis puede dar un golpe tan rápido que rompe la concha de un caracol.'],
+  ['Mantis shrimp have up to 16 kinds of color-sensing cells in their eyes. People have only three.', 'El camarón mantis tiene hasta 16 tipos de células para ver colores en sus ojos. Las personas solo tenemos tres.'],
+  ['A starfish can grow back a lost arm. Some can even grow a whole new body from one arm.', 'Una estrella de mar puede volver a hacer crecer un brazo perdido. Algunas hasta hacen un cuerpo nuevo de un solo brazo.'],
+  ['Starfish do not have blood or a brain.', 'Las estrellas de mar no tienen sangre ni cerebro.'],
+  ['Jellyfish have been around for more than 500 million years, longer than dinosaurs.', 'Las medusas existen desde hace más de 500 millones de años, más que los dinosaurios.'],
+  ['One kind of jellyfish, the immortal jellyfish, can turn back into a baby when it gets old.', 'Un tipo de medusa, la medusa inmortal, puede volver a ser bebé cuando envejece.'],
+  ['Sea cucumbers can shoot out their insides to scare away enemies, then grow them back.', 'Los pepinos de mar pueden sacar sus órganos para asustar a sus enemigos, y luego les vuelven a crecer.'],
+  ['The anglerfish lives in the deep, dark ocean and uses a glowing lure on its head to catch food.', 'El rape abisal vive en lo profundo y oscuro del mar y usa una lucecita en la cabeza para atrapar comida.'],
+  ['Sloths move so slowly that tiny plants called algae can grow on their fur.', 'Los perezosos se mueven tan despacio que unas plantitas llamadas algas les crecen en el pelo.'],
+  ['Sloths only come down from their trees about once a week to go to the bathroom.', 'Los perezosos bajan de sus árboles como una vez a la semana para ir al baño.'],
+  ['Wombats make poop shaped like cubes.', 'Los wómbats hacen popó en forma de cubitos.'],
+  ['A hummingbird\'s heart can beat more than 1,000 times a minute.', 'El corazón de un colibrí puede latir más de 1,000 veces por minuto.'],
+  ['Hummingbirds are the only birds that can fly backward.', 'Los colibríes son las únicas aves que pueden volar hacia atrás.'],
+  ['Flamingos are pink because of the shrimp and algae they eat.', 'Los flamencos son rosas por los camarones y las algas que comen.'],
+  ['Flamingos often stand on one leg, even when they sleep.', 'Los flamencos muchas veces se paran en una pata, hasta cuando duermen.'],
+  ['Cows have one stomach with four parts, which helps them digest grass.', 'Las vacas tienen un estómago con cuatro partes, que les ayuda a digerir el pasto.'],
+  ['Koalas sleep up to 20 hours a day.', 'Los koalas duermen hasta 20 horas al día.'],
+  ['Snails have thousands of tiny teeth on a tongue-like ribbon called a radula.', 'Los caracoles tienen miles de dientecitos en una especie de lengua llamada rádula.'],
+  ['Butterflies taste with their feet.', 'Las mariposas saborean con las patas.'],
+  ['Crickets hear with ears on their front legs.', 'Los grillos oyen con oídos que tienen en las patas de adelante.'],
+  ['Fireflies make their own light with chemicals inside their bodies.', 'Las luciérnagas hacen su propia luz con sustancias dentro de su cuerpo.'],
+  ['The archerfish spits water to knock bugs off leaves and into the water.', 'El pez arquero escupe agua para tumbar insectos de las hojas al agua.'],
+  ['Electric eels can make a shock of more than 600 volts, about five times stronger than a wall outlet in a U.S. home.', 'Las anguilas eléctricas pueden dar un choque de más de 600 voltios, como cinco veces más fuerte que un enchufe de una casa en Estados Unidos.'],
+  ['A group of flamingos is called a flamboyance.', 'Un grupo de flamencos en inglés se llama "flamboyance".'],
+  ['Seahorse dads carry the eggs and give birth to the babies.', 'Los papás caballitos de mar cargan los huevos y tienen a los bebés.'],
+  ['The dumbo octopus has fins that look like big elephant ears.', 'El pulpo dumbo tiene aletas que parecen orejas grandes de elefante.'],
+  ['Shrimp hearts are in their heads.', 'El corazón de los camarones está en su cabeza.'],
+  ['Owls cannot move their eyes, so they turn their heads very far instead.', 'Los búhos no pueden mover los ojos, así que giran muchísimo la cabeza.']
+] });
+FACT_NEW.push({ id: 'wild', e: '🦁', n: ['Wild animals', 'Animales salvajes'], f: [
+  ['Lions are the only big cats that live in groups, called prides.', 'Los leones son los únicos felinos grandes que viven en grupos, llamados manadas.'],
+  ['A lion\'s roar can be heard about 5 miles away.', 'El rugido de un león se puede oír a unos 8 kilómetros.'],
+  ['In a lion pride, the females do most of the hunting.', 'En una manada de leones, las hembras hacen casi toda la cacería.'],
+  ['Every tiger has its own pattern of stripes, like a fingerprint.', 'Cada tigre tiene su propio dibujo de rayas, como una huella digital.'],
+  ['Tigers are the biggest cats in the world.', 'Los tigres son los felinos más grandes del mundo.'],
+  ['Unlike most cats, tigers like to swim.', 'A diferencia de casi todos los gatos, a los tigres les gusta nadar.'],
+  ['Cheetahs cannot roar, but they can purr and chirp like birds.', 'Los guepardos no pueden rugir, pero pueden ronronear y piar como pájaros.'],
+  ['African elephants are the biggest land animals on Earth.', 'Los elefantes africanos son los animales terrestres más grandes de la Tierra.'],
+  ['An elephant\'s trunk has tens of thousands of muscles.', 'La trompa de un elefante tiene decenas de miles de músculos.'],
+  ['Elephants use their trunks to smell, drink, grab food and give hugs.', 'Los elefantes usan la trompa para oler, tomar agua, agarrar comida y abrazarse.'],
+  ['Elephants can recognize themselves in a mirror.', 'Los elefantes se pueden reconocer en un espejo.'],
+  ['Giraffes have the same number of neck bones as people: seven.', 'Las jirafas tienen el mismo número de huesos en el cuello que las personas: siete.'],
+  ['A giraffe\'s tongue is dark purple and can be about 20 inches long.', 'La lengua de una jirafa es morada oscura y puede medir unos 50 centímetros.'],
+  ['Zebras each have a unique stripe pattern.', 'Cada cebra tiene un dibujo de rayas único.'],
+  ['Hippos spend most of the day in water to stay cool. Their name means "river horse."', 'Los hipopótamos pasan casi todo el día en el agua para estar frescos. Su nombre quiere decir "caballo de río".'],
+  ['Rhinos have thick skin, but they can still get sunburned. They roll in mud to protect their skin.', 'Los rinocerontes tienen la piel gruesa, pero se pueden quemar con el sol. Se revuelcan en el lodo para protegerla.'],
+  ['Gorillas are the largest apes. They mostly eat plants.', 'Los gorilas son los simios más grandes. Comen más que nada plantas.'],
+  ['Chimpanzees use sticks as tools to fish termites out of their mounds.', 'Los chimpancés usan palitos como herramientas para sacar termitas de sus nidos.'],
+  ['Orangutans live in trees in the rainforests of Borneo and Sumatra.', 'Los orangutanes viven en los árboles de las selvas de Borneo y Sumatra.'],
+  ['Polar bears have black skin under their white-looking fur, which may help soak up the sun\'s warmth.', 'Los osos polares tienen la piel negra debajo de su pelaje que se ve blanco, y eso tal vez les ayuda a absorber el calor del sol.'],
+  ['Polar bears are strong swimmers and can swim for days.', 'Los osos polares son buenos nadadores y pueden nadar por días.'],
+  ['Grizzly bears can run as fast as a horse for short distances.', 'Los osos pardos pueden correr tan rápido como un caballo en distancias cortas.'],
+  ['Pandas eat bamboo for up to 12 hours a day.', 'Los pandas comen bambú hasta 12 horas al día.'],
+  ['Baby pandas are born pink and tiny, about the size of a stick of butter.', 'Los bebés panda nacen rosados y chiquitos, como del tamaño de una barra de mantequilla.'],
+  ['Wolves live in family groups called packs, and they howl to talk to each other.', 'Los lobos viven en grupos familiares llamados manadas, y aúllan para comunicarse.'],
+  ['Kangaroos can hop more than 25 feet in one jump.', 'Los canguros pueden saltar más de 7 metros de un brinco.'],
+  ['Baby kangaroos, called joeys, grow inside their mother\'s pouch.', 'Los bebés canguro crecen dentro de la bolsa de su mamá.'],
+  ['Crocodiles have been around since the time of the dinosaurs.', 'Los cocodrilos existen desde la época de los dinosaurios.'],
+  ['Alligators live in the United States and China. Crocodiles live in many more places.', 'Los caimanes americanos viven en Estados Unidos y China. Los cocodrilos viven en muchos más lugares.'],
+  ['Bald eagles build some of the biggest bird nests in the world.', 'Las águilas calvas construyen algunos de los nidos de ave más grandes del mundo.'],
+  ['Owls can fly almost silently because of their soft, special feathers.', 'Los búhos pueden volar casi sin hacer ruido por sus plumas suaves y especiales.'],
+  ['Bats are the only mammals that can truly fly.', 'Los murciélagos son los únicos mamíferos que de verdad pueden volar.'],
+  ['Many bats find their way in the dark by making sounds and listening to the echoes.', 'Muchos murciélagos se orientan en la oscuridad haciendo sonidos y escuchando el eco.'],
+  ['Dolphins sleep with one half of their brain at a time.', 'Los delfines duermen con una mitad del cerebro a la vez.'],
+  ['Dolphins call each other with their own special whistles, like names.', 'Los delfines se llaman entre ellos con silbidos especiales, como nombres.'],
+  ['Blue whales are among the loudest animals. Their calls can travel hundreds of miles underwater.', 'Las ballenas azules son de los animales más ruidosos. Sus llamadas viajan cientos de kilómetros bajo el agua.'],
+  ['Sharks have been around for more than 400 million years.', 'Los tiburones existen desde hace más de 400 millones de años.'],
+  ['Sharks can lose and replace thousands of teeth in their lives.', 'Los tiburones pueden perder y reponer miles de dientes en su vida.'],
+  ['Sea otters hold hands while they sleep so they do not float away from each other.', 'Las nutrias marinas se toman de las manos mientras duermen para no separarse flotando.'],
+  ['Many wild animals are endangered, so people work in parks and zoos to protect them.', 'Muchos animales salvajes están en peligro, por eso la gente trabaja en parques y zoológicos para protegerlos.']
+] });
+FACT_NEW.push({ id: 'world', e: '🌐', n: ['Around the world', 'Alrededor del mundo'], f: [
+  ['There are seven continents: Africa, Antarctica, Asia, Australia, Europe, North America and South America.', 'Hay siete continentes: África, Antártida, Asia, Australia, Europa, América del Norte y América del Sur.'],
+  ['Asia is the biggest continent, and it has the most people.', 'Asia es el continente más grande y el que tiene más gente.'],
+  ['There are five oceans: the Pacific, Atlantic, Indian, Southern and Arctic.', 'Hay cinco océanos: Pacífico, Atlántico, Índico, Antártico y Ártico.'],
+  ['There are about 195 countries in the world.', 'Hay unos 195 países en el mundo.'],
+  ['People around the world speak more than 7,000 languages.', 'La gente en el mundo habla más de 7,000 idiomas.'],
+  ['India and China each have more than a billion people.', 'India y China tienen cada una más de mil millones de personas.'],
+  ['The equator is an imaginary line around the middle of the Earth. Places near it are warm all year.', 'El ecuador es una línea imaginaria alrededor de la mitad de la Tierra. Los lugares cerca de él son cálidos todo el año.'],
+  ['When it is summer in the United States, it is winter in Australia and Argentina.', 'Cuando es verano en Estados Unidos, es invierno en Australia y Argentina.'],
+  ['Earth is split into time zones, so when it is morning in one country it can be night in another.', 'La Tierra se divide en husos horarios, así que cuando es de mañana en un país puede ser de noche en otro.'],
+  ['Japan is made of thousands of islands.', 'Japón está formado por miles de islas.'],
+  ['In Japan, people often take off their shoes before going into a home.', 'En Japón, la gente muchas veces se quita los zapatos antes de entrar a una casa.'],
+  ['The Great Pyramid of Giza in Egypt is about 4,500 years old.', 'La Gran Pirámide de Guiza, en Egipto, tiene unos 4,500 años.'],
+  ['The Eiffel Tower in Paris, France, was built in 1889 and gets a little taller in hot weather because metal expands.', 'La Torre Eiffel, en París, Francia, se construyó en 1889 y crece un poquito con el calor porque el metal se expande.'],
+  ['Italy is shaped like a boot.', 'Italia tiene forma de bota.'],
+  ['Pizza was first made in Naples, Italy.', 'La pizza se hizo por primera vez en Nápoles, Italia.'],
+  ['Australia is both a country and a continent.', 'Australia es un país y también un continente.'],
+  ['Kangaroos and koalas live in the wild only in Australia.', 'Los canguros y los koalas viven en libertad solo en Australia.'],
+  ['Brazil is the biggest country in South America, and people there speak Portuguese.', 'Brasil es el país más grande de América del Sur, y ahí se habla portugués.'],
+  ['Carnival in Rio de Janeiro, Brazil, is a giant party with parades, music and dancing.', 'El Carnaval de Río de Janeiro, en Brasil, es una fiesta gigante con desfiles, música y baile.'],
+  ['Canada has more lakes than the rest of the world put together.', 'Canadá tiene más lagos que todo el resto del mundo junto.'],
+  ['Mexico City is one of the biggest cities in the world.', 'La Ciudad de México es una de las ciudades más grandes del mundo.'],
+  ['Antarctica has no countries. Scientists from many nations live there to do research.', 'La Antártida no tiene países. Científicos de muchas naciones viven ahí para investigar.'],
+  ['Penguins live in the Southern Hemisphere, mostly around Antarctica. No penguins live at the North Pole.', 'Los pingüinos viven en el hemisferio sur, casi todos cerca de la Antártida. En el Polo Norte no hay pingüinos.'],
+  ['Iceland has volcanoes, glaciers and hot springs all on the same island.', 'Islandia tiene volcanes, glaciares y aguas termales en la misma isla.'],
+  ['In Norway, in summer, the sun can stay up all night. It is called the midnight sun.', 'En Noruega, en verano, el sol se puede quedar arriba toda la noche. Se llama el sol de medianoche.'],
+  ['Kenya and Tanzania are famous for safaris, where people watch lions, elephants and zebras.', 'Kenia y Tanzania son famosas por los safaris, donde la gente ve leones, elefantes y cebras.'],
+  ['Mount Kilimanjaro in Tanzania is the tallest mountain in Africa.', 'El monte Kilimanjaro, en Tanzania, es la montaña más alta de África.'],
+  ['Nigeria has the most people of any country in Africa.', 'Nigeria es el país con más gente de África.'],
+  ['The Taj Mahal in India is a famous white marble building made in memory of a queen.', 'El Taj Mahal, en India, es un famoso edificio de mármol blanco hecho en memoria de una reina.'],
+  ['People in many countries eat with chopsticks, like in China, Japan and Korea.', 'En muchos países la gente come con palillos, como en China, Japón y Corea.'],
+  ['In many countries, football means soccer. It is the most popular sport in the world.', 'En muchos países, "football" quiere decir fútbol. Es el deporte más popular del mundo.'],
+  ['The World Cup is held every four years, and teams from all over the world compete.', 'La Copa Mundial se juega cada cuatro años, y compiten equipos de todo el mundo.'],
+  ['The Olympic rings stand for the continents coming together in friendship.', 'Los aros olímpicos representan a los continentes unidos en amistad.'],
+  ['Saying hello is different around the world: some people bow, some shake hands and some kiss on the cheek.', 'Saludar es diferente en el mundo: algunos se inclinan, otros se dan la mano y otros se dan un beso en la mejilla.'],
+  ['"Hola" means hello in Spanish, "bonjour" in French and "konnichiwa" in Japanese.', '"Hello" es hola en inglés, "bonjour" en francés y "konnichiwa" en japonés.'],
+  ['The Amazon rainforest spreads across nine countries in South America.', 'La selva amazónica se extiende por nueve países de América del Sur.'],
+  ['The Dead Sea is so salty that people float on top of it easily.', 'El mar Muerto es tan salado que la gente flota fácilmente.'],
+  ['Venice, Italy, has canals instead of streets in many places, and people travel by boat.', 'Venecia, Italia, tiene canales en vez de calles en muchas partes, y la gente viaja en bote.'],
+  ['London\'s famous clock tower bell is nicknamed Big Ben.', 'La campana de la famosa torre del reloj de Londres tiene el apodo de Big Ben.'],
+  ['A map shows the world on flat paper. A globe is a round model of Earth.', 'Un mapa muestra el mundo en papel plano. Un globo terráqueo es un modelo redondo de la Tierra.']
+] });
+FACT_NEW.push({ id: 'latin', e: '💃', n: ['Latin cultures', 'Culturas latinas'], f: [
+  ['Latin America includes Mexico, Central America, South America and parts of the Caribbean.', 'América Latina incluye México, Centroamérica, Sudamérica y partes del Caribe.'],
+  ['Most people in Latin America speak Spanish. In Brazil, they speak Portuguese.', 'La mayoría de la gente en América Latina habla español. En Brasil se habla portugués.'],
+  ['Many Indigenous languages are still spoken in Latin America, like Quechua, Guaraní, Nahuatl and Maya languages.', 'Todavía se hablan muchas lenguas indígenas en América Latina, como el quechua, el guaraní, el náhuatl y las lenguas mayas.'],
+  ['The words chocolate, tomato and avocado come from Nahuatl, the language of the Aztecs.', 'Las palabras chocolate, tomate y aguacate vienen del náhuatl, el idioma de los aztecas.'],
+  ['In Paraguay, most people speak both Spanish and Guaraní.', 'En Paraguay, la mayoría de la gente habla español y guaraní.'],
+  ['Tango is a dance and music style that started around Buenos Aires, Argentina, and Montevideo, Uruguay.', 'El tango es un baile y estilo de música que empezó en Buenos Aires, Argentina, y Montevideo, Uruguay.'],
+  ['Cumbia is a music and dance style from Colombia that is now loved all over Latin America.', 'La cumbia es un estilo de música y baile de Colombia que ahora se quiere en toda América Latina.'],
+  ['Samba is the famous dance of Brazil\'s Carnival.', 'La samba es el famoso baile del Carnaval de Brasil.'],
+  ['Merengue and bachata are music styles from the Dominican Republic.', 'El merengue y la bachata son estilos de música de República Dominicana.'],
+  ['Mariachi music is so special to Mexico that the world honors it as an important part of human culture.', 'La música de mariachi es tan especial para México que el mundo la reconoce como parte importante de la cultura humana.'],
+  ['Maracas are shaker instruments, often made from dried gourds filled with seeds.', 'Las maracas son instrumentos que se sacuden, muchas veces hechas de guajes secos llenos de semillas.'],
+  ['Corn has been grown in Mexico for about 9,000 years.', 'El maíz se cultiva en México desde hace unos 9,000 años.'],
+  ['Tortillas, arepas and pupusas are all made from corn dough.', 'Las tortillas, las arepas y las pupusas se hacen con masa de maíz.'],
+  ['Arepas are a favorite food in Venezuela and Colombia.', 'Las arepas son una comida favorita en Venezuela y Colombia.'],
+  ['Pupusas are thick stuffed corn cakes from El Salvador.', 'Las pupusas son tortillas gruesas rellenas de El Salvador.'],
+  ['Empanadas are stuffed pastries eaten in many Latin American countries.', 'Las empanadas son pastelitos rellenos que se comen en muchos países latinoamericanos.'],
+  ['Potatoes first came from the Andes mountains in Peru and Bolivia. There are thousands of kinds!', 'Las papas vienen de los Andes, en Perú y Bolivia. ¡Hay miles de tipos!'],
+  ['Ceviche is a dish from Peru made with fresh fish and lime juice.', 'El ceviche es un platillo de Perú hecho con pescado fresco y jugo de limón.'],
+  ['Dulce de leche is a sweet caramel spread loved in Argentina and many other countries.', 'El dulce de leche es un dulce de caramelo muy querido en Argentina y muchos otros países.'],
+  ['Churros are fried dough sticks covered in sugar, often dipped in hot chocolate.', 'Los churros son palitos de masa fritos cubiertos de azúcar, muchas veces mojados en chocolate caliente.'],
+  ['Mole is a rich Mexican sauce that can have more than 20 ingredients, including chocolate and chiles.', 'El mole es una salsa mexicana que puede tener más de 20 ingredientes, como chocolate y chiles.'],
+  ['Guatemalan weavers make colorful fabrics with patterns that can show which town they come from.', 'Las tejedoras de Guatemala hacen telas de colores con diseños que pueden mostrar de qué pueblo vienen.'],
+  ['Mola art from Panama is made by sewing layers of colorful cloth.', 'El arte de la mola de Panamá se hace cosiendo capas de tela de colores.'],
+  ['The Day of the Dead uses bright orange marigold flowers, called cempasúchil.', 'El Día de Muertos usa flores color naranja brillante llamadas cempasúchil.'],
+  ['Sugar skulls, or calaveras de azúcar, are decorated for Day of the Dead.', 'Las calaveras de azúcar se decoran para el Día de Muertos.'],
+  ['Piñatas are filled with candy and broken at birthday parties and holidays.', 'Las piñatas se llenan de dulces y se rompen en cumpleaños y fiestas.'],
+  ['In many Latin American families, grandparents, aunts, uncles and cousins are a big part of everyday life.', 'En muchas familias latinoamericanas, los abuelos, tíos y primos son una parte importante de la vida diaria.'],
+  ['Soccer, called fútbol, is the most popular sport in most of Latin America.', 'El fútbol es el deporte más popular en casi toda América Latina.'],
+  ['Brazil has won the soccer World Cup five times, more than any other country.', 'Brasil ha ganado la Copa Mundial de fútbol cinco veces, más que cualquier otro país.'],
+  ['Frida Kahlo and Diego Rivera were famous Mexican painters. Rivera painted giant wall paintings called murals.', 'Frida Kahlo y Diego Rivera fueron pintores mexicanos famosos. Rivera pintaba pinturas gigantes en paredes llamadas murales.'],
+  ['The Andes are the longest mountain range above water in the world, running along South America.', 'Los Andes son la cordillera más larga sobre el agua del mundo, a lo largo de América del Sur.'],
+  ['The Galápagos Islands of Ecuador are home to giant tortoises that can live more than 100 years.', 'Las islas Galápagos de Ecuador tienen tortugas gigantes que pueden vivir más de 100 años.'],
+  ['Lake Titicaca, between Peru and Bolivia, is one of the highest lakes boats can sail on.', 'El lago Titicaca, entre Perú y Bolivia, es uno de los lagos navegables más altos del mundo.'],
+  ['Chichén Itzá in Mexico is a huge pyramid built by the Maya.', 'Chichén Itzá, en México, es una gran pirámide construida por los mayas.'],
+  ['At Chichén Itzá, a shadow shaped like a snake slides down the pyramid steps on the first days of spring and fall.', 'En Chichén Itzá, una sombra con forma de serpiente baja por los escalones de la pirámide al principio de la primavera y del otoño.'],
+  ['The Maya invented a way to write the number zero more than 1,500 years ago.', 'Los mayas inventaron una forma de escribir el número cero hace más de 1,500 años.'],
+  ['Simón Bolívar helped many South American countries win independence from Spain. Bolivia is named after him.', 'Simón Bolívar ayudó a muchos países de Sudamérica a independizarse de España. Bolivia se llama así por él.'],
+  ['In Spanish, people often use two last names: one from their father and one from their mother.', 'En español, la gente muchas veces usa dos apellidos: uno del papá y uno de la mamá.'],
+  ['"Sobremesa" is the Spanish word for staying at the table to talk after a meal.', '"Sobremesa" es la palabra en español para quedarse a platicar en la mesa después de comer.'],
+  ['Some Latin American families celebrate a child\'s saint\'s day, or santo, as well as their birthday.', 'Algunas familias latinoamericanas celebran el día del santo de un niño además de su cumpleaños.']
+] });
+FACT_NEW.push({ id: 'caribbean', e: '🏝️', n: ['Caribbean cultures', 'Culturas del Caribe'], f: [
+  ['The Caribbean is a sea with thousands of islands between North and South America.', 'El Caribe es un mar con miles de islas entre América del Norte y América del Sur.'],
+  ['Caribbean islands include Cuba, Jamaica, Haiti, the Dominican Republic, Puerto Rico, Trinidad and Tobago, Barbados and the Bahamas.', 'Entre las islas del Caribe están Cuba, Jamaica, Haití, República Dominicana, Puerto Rico, Trinidad y Tobago, Barbados y las Bahamas.'],
+  ['Cuba is the biggest island in the Caribbean.', 'Cuba es la isla más grande del Caribe.'],
+  ['Haiti and the Dominican Republic share one island, called Hispaniola.', 'Haití y República Dominicana comparten una isla, llamada La Española.'],
+  ['In 1804, Haiti became the first country to be founded by people who freed themselves from slavery.', 'En 1804, Haití se volvió el primer país fundado por personas que se liberaron de la esclavitud.'],
+  ['People in the Caribbean speak many languages, including Spanish, English, French, Dutch and Haitian Creole.', 'En el Caribe se hablan muchos idiomas, como español, inglés, francés, neerlandés y criollo haitiano.'],
+  ['The Taíno people lived on many Caribbean islands long before Columbus arrived.', 'El pueblo taíno vivía en muchas islas del Caribe mucho antes de que llegara Colón.'],
+  ['Words like hammock, hurricane and barbecue come from the Taíno language.', 'Palabras como hamaca, huracán y barbacoa vienen del idioma taíno.'],
+  ['Puerto Rico\'s Taíno name was Borikén, which is why Puerto Ricans are sometimes called Boricuas.', 'El nombre taíno de Puerto Rico era Borikén, por eso a los puertorriqueños a veces les dicen boricuas.'],
+  ['El Yunque in Puerto Rico is the only tropical rainforest in the U.S. National Forest system.', 'El Yunque, en Puerto Rico, es el único bosque tropical lluvioso del sistema de Bosques Nacionales de Estados Unidos.'],
+  ['Puerto Rico has bioluminescent bays where the water glows blue when you move it.', 'Puerto Rico tiene bahías bioluminiscentes donde el agua brilla azul cuando la mueves.'],
+  ['Reggae music, made famous by Bob Marley, comes from Jamaica.', 'La música reggae, que hizo famosa Bob Marley, viene de Jamaica.'],
+  ['Reggaeton grew in Puerto Rico in the 1990s, mixing reggae, hip-hop and Latin sounds.', 'El reguetón creció en Puerto Rico en los años 1990, mezclando reggae, hip-hop y sonidos latinos.'],
+  ['The steelpan, a drum made from an oil barrel, was invented in Trinidad and Tobago.', 'El steelpan, un tambor hecho de un barril de aceite, se inventó en Trinidad y Tobago.'],
+  ['Calypso and soca are music styles from Trinidad and Tobago.', 'El calipso y la soca son estilos de música de Trinidad y Tobago.'],
+  ['Bomba and plena are traditional music and dance styles from Puerto Rico.', 'La bomba y la plena son música y bailes tradicionales de Puerto Rico.'],
+  ['In bomba, the dancer leads and the drummer follows the dancer\'s moves.', 'En la bomba, el bailador guía y el tamborero sigue sus movimientos.'],
+  ['Son cubano, from Cuba, is one of the roots of salsa music.', 'El son cubano, de Cuba, es una de las raíces de la salsa.'],
+  ['The güiro is a scraped gourd instrument heard in Puerto Rican, Cuban and Dominican music.', 'El güiro es un instrumento de calabaza que se raspa y se escucha en la música puertorriqueña, cubana y dominicana.'],
+  ['The cuatro, a small guitar with ten strings, is the national instrument of Puerto Rico.', 'El cuatro, una guitarra pequeña de diez cuerdas, es el instrumento nacional de Puerto Rico.'],
+  ['Carnival is celebrated with costumes, music and parades on many Caribbean islands.', 'El Carnaval se celebra con disfraces, música y desfiles en muchas islas del Caribe.'],
+  ['Mofongo is a Puerto Rican dish made from mashed fried plantains with garlic.', 'El mofongo es un platillo puertorriqueño de plátano frito machacado con ajo.'],
+  ['Arroz con gandules, rice with pigeon peas, is a favorite holiday dish in Puerto Rico.', 'El arroz con gandules es un platillo favorito de las fiestas en Puerto Rico.'],
+  ['Jerk is a Jamaican way of cooking with a spicy seasoning and smoke.', 'El jerk es una forma jamaiquina de cocinar con un sazón picante y humo.'],
+  ['Ackee and saltfish is the national dish of Jamaica.', 'El ackee con bacalao es el platillo nacional de Jamaica.'],
+  ['Mangú, mashed green plantains, is a favorite breakfast in the Dominican Republic.', 'El mangú, puré de plátano verde, es un desayuno favorito en República Dominicana.'],
+  ['Griot, crispy fried pork, is a popular dish in Haiti.', 'El griot, cerdo frito crujiente, es un platillo popular en Haití.'],
+  ['Haitians eat soup joumou, a pumpkin soup, on January 1 to celebrate their independence.', 'Los haitianos comen sopa joumou, una sopa de calabaza, el 1 de enero para celebrar su independencia.'],
+  ['Cuban sandwiches are made with roast pork, ham, Swiss cheese, pickles and mustard on pressed bread.', 'El sándwich cubano se hace con cerdo asado, jamón, queso suizo, pepinillos y mostaza en pan prensado.'],
+  ['Plantains look like big bananas but are usually cooked before eating.', 'Los plátanos machos parecen bananas grandes pero casi siempre se cocinan antes de comerlos.'],
+  ['Tostones are slices of green plantain that are fried, smashed and fried again.', 'Los tostones son rebanadas de plátano verde que se fríen, se aplastan y se vuelven a freír.'],
+  ['Dominoes is a hugely popular game in the Caribbean, often played outside with friends.', 'El dominó es un juego muy popular en el Caribe, muchas veces se juega afuera con amigos.'],
+  ['Baseball is a favorite sport in Cuba, Puerto Rico and the Dominican Republic.', 'El béisbol es un deporte favorito en Cuba, Puerto Rico y República Dominicana.'],
+  ['Cricket is a favorite sport in Jamaica, Barbados and Trinidad and Tobago.', 'El críquet es un deporte favorito en Jamaica, Barbados y Trinidad y Tobago.'],
+  ['Jamaica is famous for super fast runners, like Usain Bolt and Shelly-Ann Fraser-Pryce.', 'Jamaica es famosa por sus corredores súper rápidos, como Usain Bolt y Shelly-Ann Fraser-Pryce.'],
+  ['Roberto Clemente, Puerto Rico\'s baseball hero, has a day named after him in Major League Baseball every September.', 'Roberto Clemente, el héroe del béisbol de Puerto Rico, tiene un día con su nombre en las Grandes Ligas cada septiembre.'],
+  ['Celia Cruz, from Cuba, became one of the most famous salsa singers in the world.', 'Celia Cruz, de Cuba, se volvió una de las cantantes de salsa más famosas del mundo.'],
+  ['Many Caribbean islands were formed by volcanoes, and some still have active ones.', 'Muchas islas del Caribe se formaron por volcanes, y algunas todavía tienen volcanes activos.'],
+  ['Coral reefs around Caribbean islands are home to colorful fish and sea turtles.', 'Los arrecifes de coral alrededor de las islas del Caribe son el hogar de peces de colores y tortugas marinas.'],
+  ['Caribbean culture mixes Taíno, African, European and Asian roots in its food, music and words.', 'La cultura del Caribe mezcla raíces taínas, africanas, europeas y asiáticas en su comida, su música y sus palabras.']
+] });
+FACT_NEW.push({ id: 'bible', e: '📖', n: ['Bible facts', 'Datos de la Biblia'], f: [
+  ['The Bible is not just one book. It is a collection of many books written over hundreds of years.', 'La Biblia no es un solo libro. Es una colección de muchos libros escritos durante cientos de años.'],
+  ['The word Bible comes from a Greek word that means "books."', 'La palabra Biblia viene de una palabra griega que quiere decir "libros".'],
+  ['The Bible has two main parts: the Old Testament and the New Testament.', 'La Biblia tiene dos partes principales: el Antiguo Testamento y el Nuevo Testamento.'],
+  ['Most Protestant Bibles have 66 books. Catholic Bibles have 73.', 'La mayoría de las Biblias protestantes tienen 66 libros. Las Biblias católicas tienen 73.'],
+  ['The first book of the Bible is Genesis, which means "beginning."', 'El primer libro de la Biblia es Génesis, que quiere decir "origen" o "principio".'],
+  ['The last book of the Bible is Revelation.', 'El último libro de la Biblia es Apocalipsis.'],
+  ['The Bible was first written mostly in Hebrew and Greek, with a little in Aramaic.', 'La Biblia se escribió primero casi toda en hebreo y griego, con un poquito en arameo.'],
+  ['The whole Bible has been translated into more than 700 languages, and parts of it into thousands more.', 'La Biblia completa se ha traducido a más de 700 idiomas, y partes de ella a miles más.'],
+  ['Psalms is the longest book in the Bible. It has 150 songs and prayers.', 'Salmos es el libro más largo de la Biblia. Tiene 150 cantos y oraciones.'],
+  ['Psalm 117 is the shortest chapter in the Bible, with only two verses.', 'El Salmo 117 es el capítulo más corto de la Biblia, con solo dos versículos.'],
+  ['Psalm 119 is the longest chapter in the Bible, with 176 verses.', 'El Salmo 119 es el capítulo más largo de la Biblia, con 176 versículos.'],
+  ['In most English Bibles, the shortest verse is "Jesus wept." It is John 11:35.', 'En la mayoría de las Biblias en inglés, el versículo más corto es "Jesús lloró". Es Juan 11:35.'],
+  ['The Bible was split into chapters in the 1200s and into numbered verses in the 1500s.', 'La Biblia se dividió en capítulos en los años 1200 y en versículos numerados en los años 1500.'],
+  ['The Dead Sea Scrolls were found in caves in 1947. They include some of the oldest copies of Bible books ever found.', 'Los Rollos del Mar Muerto se encontraron en cuevas en 1947. Tienen algunas de las copias más antiguas de libros de la Biblia.'],
+  ['Genesis tells that God made the world in six days and rested on the seventh day.', 'Génesis cuenta que Dios hizo el mundo en seis días y descansó el séptimo día.'],
+  ['In the Bible, Adam and Eve were the first people, and they lived in the Garden of Eden.', 'En la Biblia, Adán y Eva fueron las primeras personas, y vivían en el jardín del Edén.'],
+  ['In the Bible, Noah built a giant boat called an ark and brought animals onto it two by two.', 'En la Biblia, Noé construyó un barco gigante llamado arca y subió a los animales de dos en dos.'],
+  ['After the flood, a dove came back to Noah carrying an olive leaf.', 'Después del diluvio, una paloma regresó con Noé trayendo una hoja de olivo.'],
+  ['In the Bible, God put a rainbow in the sky as a sign of a promise to Noah.', 'En la Biblia, Dios puso un arcoíris en el cielo como señal de una promesa a Noé.'],
+  ['Methuselah is the oldest person in the Bible. It says he lived 969 years!', 'Matusalén es la persona más anciana de la Biblia. ¡Dice que vivió 969 años!'],
+  ['God promised Abraham that his family would be as many as the stars in the sky.', 'Dios le prometió a Abraham que su familia sería tan numerosa como las estrellas del cielo.'],
+  ['Joseph\'s father gave him a special colorful coat, and his brothers became jealous.', 'El papá de José le regaló una túnica especial de colores, y sus hermanos le tuvieron celos.'],
+  ['As a baby, Moses was put in a basket in the Nile River and found by a princess of Egypt.', 'De bebé, Moisés fue puesto en una canasta en el río Nilo y lo encontró una princesa de Egipto.'],
+  ['In the Bible, Moses led the Israelites out of Egypt, and the Red Sea opened so they could cross.', 'En la Biblia, Moisés sacó a los israelitas de Egipto, y el mar Rojo se abrió para que pudieran cruzar.'],
+  ['The Ten Commandments were written on two stone tablets and given to Moses.', 'Los Diez Mandamientos se escribieron en dos tablas de piedra y se le dieron a Moisés.'],
+  ['The walls of Jericho fell after the people marched around the city and blew trumpets.', 'Las murallas de Jericó cayeron después de que el pueblo marchó alrededor de la ciudad y tocó trompetas.'],
+  ['Samson was famous for his great strength, which was tied to his long hair.', 'Sansón era famoso por su gran fuerza, que estaba ligada a su cabello largo.'],
+  ['Ruth stayed loyal to her mother-in-law Naomi and said, "Where you go, I will go."', 'Rut fue leal a su suegra Noemí y le dijo: "A dondequiera que tú vayas, iré yo".'],
+  ['David was a young shepherd who beat the giant Goliath with a sling and a stone.', 'David era un joven pastor que venció al gigante Goliat con una honda y una piedra.'],
+  ['King Solomon was known for being very wise. Many wise sayings are in the book of Proverbs.', 'El rey Salomón era conocido por ser muy sabio. Muchos dichos sabios están en el libro de Proverbios.'],
+  ['Queen Esther was brave and spoke up to save her people.', 'La reina Ester fue valiente y habló para salvar a su pueblo.'],
+  ['In the Bible, Daniel was put in a den of lions, and the lions did not hurt him.', 'En la Biblia, Daniel fue echado a un foso de leones, y los leones no le hicieron daño.'],
+  ['In the Bible, Jonah was swallowed by a huge fish and was inside it for three days and three nights.', 'En la Biblia, Jonás fue tragado por un pez enorme y estuvo dentro tres días y tres noches.'],
+  ['The New Testament says Jesus was born in Bethlehem and laid in a manger.', 'El Nuevo Testamento dice que Jesús nació en Belén y fue acostado en un pesebre.'],
+  ['The first four books of the New Testament are Matthew, Mark, Luke and John. They are called the Gospels.', 'Los primeros cuatro libros del Nuevo Testamento son Mateo, Marcos, Lucas y Juan. Se llaman los Evangelios.'],
+  ['Jesus chose twelve disciples. Some of them, like Peter, were fishermen.', 'Jesús escogió a doce discípulos. Algunos, como Pedro, eran pescadores.'],
+  ['Jesus taught with short stories called parables, like the Good Samaritan and the Lost Sheep.', 'Jesús enseñaba con historias cortas llamadas parábolas, como el Buen Samaritano y la Oveja Perdida.'],
+  ['The story of Jesus feeding 5,000 people with five loaves of bread and two fish is in all four Gospels.', 'La historia de Jesús dando de comer a 5,000 personas con cinco panes y dos peces está en los cuatro Evangelios.'],
+  ['Zacchaeus was a short man who climbed a tree so he could see Jesus.', 'Zaqueo era un hombre bajito que se subió a un árbol para poder ver a Jesús.'],
+  ['Paul wrote many letters to churches, and they became books of the New Testament.', 'Pablo escribió muchas cartas a iglesias, y se volvieron libros del Nuevo Testamento.']
+] });
+FACT_NEW.push({ id: 'inventors', e: '⚙️', n: ['Inventors', 'Inventores'], f: [
+  ['Thomas Edison got more than 1,000 patents in the United States.', 'Thomas Edison obtuvo más de 1,000 patentes en Estados Unidos.'],
+  ['Edison invented the phonograph, one of the first machines that could record sound and play it back.', 'Edison inventó el fonógrafo, una de las primeras máquinas que podía grabar sonido y volver a tocarlo.'],
+  ['Alexander Graham Bell got a patent for the telephone in 1876.', 'Alexander Graham Bell obtuvo la patente del teléfono en 1876.'],
+  ['The Wright brothers\' first flight lasted only 12 seconds. They also ran a bicycle shop.', 'El primer vuelo de los hermanos Wright duró solo 12 segundos. También tenían una tienda de bicicletas.'],
+  ['Benjamin Franklin invented bifocal glasses and the lightning rod.', 'Benjamin Franklin inventó los lentes bifocales y el pararrayos.'],
+  ['Alessandro Volta made the first battery in 1800. The word "volt" comes from his name.', 'Alessandro Volta hizo la primera pila en 1800. La palabra "voltio" viene de su nombre.'],
+  ['Samuel Morse helped create the telegraph and Morse code, which sends messages with dots and dashes.', 'Samuel Morse ayudó a crear el telégrafo y el código Morse, que manda mensajes con puntos y rayas.'],
+  ['Nikola Tesla worked on alternating current, the kind of electricity that comes out of wall outlets.', 'Nikola Tesla trabajó con la corriente alterna, el tipo de electricidad que sale de los enchufes.'],
+  ['Galileo made his own telescopes and used one to see four moons of Jupiter in 1610.', 'Galileo hizo sus propios telescopios y usó uno para ver cuatro lunas de Júpiter en 1610.'],
+  ['Archimedes, in ancient Greece, designed a spinning screw that lifts water. It is still used today.', 'Arquímedes, en la antigua Grecia, diseñó un tornillo giratorio que sube agua. Todavía se usa hoy.'],
+  ['Alfred Nobel invented dynamite and later used his money to start the Nobel Prizes.', 'Alfred Nobel inventó la dinamita y después usó su dinero para crear los Premios Nobel.'],
+  ['Ada Lovelace wrote what many call the first computer program, back in the 1840s.', 'Ada Lovelace escribió lo que muchos llaman el primer programa de computadora, en los años 1840.'],
+  ['Grace Hopper helped create early computer languages. Her team once found a real moth stuck inside a computer!', 'Grace Hopper ayudó a crear los primeros lenguajes de computadora. ¡Su equipo una vez encontró una polilla de verdad atorada dentro de una computadora!'],
+  ['Tim Berners-Lee invented the World Wide Web in 1989.', 'Tim Berners-Lee inventó la World Wide Web en 1989.'],
+  ['Hedy Lamarr was a movie star who helped invent a radio idea that later helped make Wi-Fi and Bluetooth possible.', 'Hedy Lamarr era una estrella de cine que ayudó a inventar una idea de radio que después ayudó a hacer posibles el Wi-Fi y el Bluetooth.'],
+  ['Philo Farnsworth got the idea for electronic TV as a teenager, while looking at rows plowed in a field.', 'Philo Farnsworth tuvo la idea de la televisión electrónica de adolescente, mirando los surcos arados en un campo.'],
+  ['Guillermo González Camarena, from Mexico, invented an early color TV system.', 'Guillermo González Camarena, de México, inventó uno de los primeros sistemas de televisión a color.'],
+  ['László Bíró invented a ballpoint pen. In Argentina, where he lived, pens are still called "birome."', 'László Bíró inventó un bolígrafo. En Argentina, donde vivió, a los bolígrafos todavía les dicen "birome".'],
+  ['Martin Cooper made the first call on a handheld cell phone in 1973. The phone weighed about 2.5 pounds!', 'Martin Cooper hizo la primera llamada con un celular de mano en 1973. ¡El teléfono pesaba más de un kilo!'],
+  ['Steven Sasson built the first digital camera in 1975. It was about as big as a toaster.', 'Steven Sasson construyó la primera cámara digital en 1975. Era casi del tamaño de una tostadora.'],
+  ['Marie Van Brittan Brown and her husband invented a home security system with a camera in the 1960s.', 'Marie Van Brittan Brown y su esposo inventaron un sistema de seguridad para casas con cámara en los años 1960.'],
+  ['Granville Woods had about 60 patents, many of them to make trains safer.', 'Granville Woods tuvo unas 60 patentes, muchas para hacer los trenes más seguros.'],
+  ['Elijah McCoy invented a device that oiled train engines while they ran, so they did not have to stop.', 'Elijah McCoy inventó un aparato que aceitaba los motores de tren mientras andaban, para que no tuvieran que parar.'],
+  ['Dr. Patricia Bath invented a laser tool for eye surgery. She was the first Black woman doctor to get a medical patent.', 'La doctora Patricia Bath inventó una herramienta láser para cirugía de los ojos. Fue la primera doctora negra en obtener una patente médica.'],
+  ['Sarah Boone improved the ironing board in 1892 so shirt sleeves were easier to iron.', 'Sarah Boone mejoró la tabla de planchar en 1892 para que las mangas de las camisas fueran más fáciles de planchar.'],
+  ['Lonnie Johnson, an engineer who worked with NASA, invented the Super Soaker water gun.', 'Lonnie Johnson, un ingeniero que trabajó con la NASA, inventó la pistola de agua Super Soaker.'],
+  ['Josephine Cochrane invented a dishwasher in 1886 because she wanted her fancy dishes washed without chipping.', 'Josephine Cochrane inventó un lavaplatos en 1886 porque quería lavar sus platos finos sin que se despostillaran.'],
+  ['Margaret Knight invented a machine that makes flat-bottomed paper bags, like grocery bags.', 'Margaret Knight inventó una máquina que hace bolsas de papel con fondo plano, como las del supermercado.'],
+  ['Ruth Wakefield created the chocolate chip cookie in the 1930s.', 'Ruth Wakefield creó la galleta con chispas de chocolate en los años 1930.'],
+  ['Frank Epperson was 11 when he left a drink with a stick outside on a cold night. It froze, and that became the Popsicle.', 'Frank Epperson tenía 11 años cuando dejó una bebida con un palito afuera en una noche fría. Se congeló, y así nació la paleta helada.'],
+  ['Chester Greenwood came up with earmuffs when he was 15 because his ears got cold ice skating.', 'Chester Greenwood inventó las orejeras a los 15 años porque se le congelaban las orejas al patinar.'],
+  ['George Nissen built the first modern trampoline when he was 16.', 'George Nissen construyó el primer trampolín moderno cuando tenía 16 años.'],
+  ['George de Mestral invented Velcro after noticing how burrs stuck to his dog\'s fur.', 'George de Mestral inventó el velcro después de ver cómo los abrojos se pegaban al pelo de su perro.'],
+  ['Percy Spencer discovered microwave cooking when a candy bar in his pocket melted near a radar machine.', 'Percy Spencer descubrió la cocina con microondas cuando una barra de dulce se derritió en su bolsillo cerca de una máquina de radar.'],
+  ['Alexander Fleming discovered penicillin in 1928 when he noticed mold stopping germs from growing.', 'Alexander Fleming descubrió la penicilina en 1928 al ver que un moho no dejaba crecer a los gérmenes.'],
+  ['Earle Dickson invented the Band-Aid in 1920 for his wife, who often cut her fingers while cooking.', 'Earle Dickson inventó la curita Band-Aid en 1920 para su esposa, que se cortaba seguido los dedos cocinando.'],
+  ['Walter Hunt invented the safety pin in 1849.', 'Walter Hunt inventó el seguro o imperdible en 1849.'],
+  ['James Naismith invented basketball in 1891, using peach baskets as the hoops.', 'James Naismith inventó el básquetbol en 1891, usando canastas de duraznos como aros.'],
+  ['George Ferris built the first Ferris wheel for the 1893 World\'s Fair in Chicago.', 'George Ferris construyó la primera rueda de la fortuna para la Feria Mundial de 1893 en Chicago.'],
+  ['Stephanie Kwolek invented Kevlar, a fiber five times stronger than steel for its weight.', 'Stephanie Kwolek inventó el kevlar, una fibra cinco veces más fuerte que el acero para su peso.']
+] });
+FACT_TOPICS.push(...FACT_NEW);
+/* Topic groups: the Fun facts menu opens one group at a time, and grown-ups turn groups on and off */
+const FACT_CATS = [
+  { id: 'play', e: '🧸', n: ['Toys & games', 'Juguetes y juegos'], t: ['lego', 'pokemon', 'games', 'candy'] },
+  { id: 'arts', e: '🎨', n: ['Art, style & stories', 'Arte, estilo e historias'], t: ['crayons', 'books', 'movies', 'beauty'] },
+  { id: 'sci', e: '🔬', n: ['Science & how things work', 'Ciencia y cómo funcionan las cosas'], t: ['science', 'body', 'space', 'weather', 'water', 'cars'] },
+  { id: 'animals', e: '🦋', n: ['Animals & creatures', 'Animales y criaturas'], t: ['dinos', 'wild', 'weirdanimals', 'mythical'] },
+  { id: 'people', e: '👑', n: ['People & history', 'Gente e historia'], t: ['blackhist', 'ushistory', 'inventors', 'records'] },
+  { id: 'places', e: '🌎', n: ['Cultures & places', 'Culturas y lugares'], t: ['world', 'hispanic', 'latin', 'caribbean'] },
+  { id: 'faith', e: '🕊️', n: ['Faith', 'Fe'], t: ['bible'] },
+];
+{ const inCat = new Set(FACT_CATS.flatMap(c => c.t)), rest = FACT_TOPICS.filter(t => !inCat.has(t.id)).map(t => t.id); if (rest.length) FACT_CATS.push({ id: 'more', e: '💡', n: ['More topics', 'Más temas'], t: rest }); }
 /* ---------- Fun facts: short, true facts about topics kids love. No points or stars, just curiosity.
    A child can stay in one favorite topic as long as they like, or tap Surprise me for something new.
-   What they have read, saved and starred is kept in learn/<childId>.facts. Grown-ups can hide topics. */
+   Reading every fact in a topic earns that topic's badge (a medal with the topic's picture).
+   What they have read, saved, starred and earned is kept in learn/<childId>.facts.
+   Grown-ups can turn all Fun facts off, or turn topics on and off one group or one topic at a time. */
 const FACT_BY = Object.fromEntries(FACT_TOPICS.map(t => [t.id, t]));
 const factLang = () => (langNow() === 'es' ? 1 : 0);
 const topicName = t => t.n[factLang()];
+const catName = c => c.n[factLang()];
+const fL = (en, es) => (factLang() ? es : en);
 function factOf(id) { const [t, i] = String(id).split(':'), tp = FACT_BY[t], f = tp && tp.f[Number(i)]; return f ? { id, topic: tp, i: Number(i), text: f[factLang()] } : null; }
-function factTopicsFor(k) { const off = (k && k.factsOff) || []; return FACT_TOPICS.filter(t => !off.includes(t.id)); }
-function factsDoc(id) { const d = learnDoc(id); d.facts = d.facts || {}; const f = d.facts; f.seen = f.seen || {}; f.saved = f.saved || []; f.fav = f.fav || []; f.read = f.read || {}; return f; }
+function factTopicsFor(k) { if (!k || k.noFacts) return []; const off = k.factsOff || []; return FACT_TOPICS.filter(t => !off.includes(t.id)); }
+function factsDoc(id) { const d = learnDoc(id); d.facts = d.facts || {}; const f = d.facts; f.seen = f.seen || {}; f.saved = f.saved || []; f.fav = f.fav || []; f.read = f.read || {}; f.badges = f.badges || {}; return f; }
 let factSaveT = null;
 function factsSave(k) { clearTimeout(factSaveT); factSaveT = setTimeout(() => S.store.set('learn/' + k.id, learnDoc(k.id)).catch(storeErr), 500); }
+/* Marks a fact as read. Returns true when this fact finishes its topic and earns the badge. */
 function factMark(k, id) {
-  const fd = factsDoc(k.id), [t, i] = id.split(':'), s = fd.seen[t] || (fd.seen[t] = []);
-  const fresh = !s.includes(Number(i)); if (fresh) s.push(Number(i));
+  const fd = factsDoc(k.id), [t, i] = id.split(':'), tp = FACT_BY[t], s = fd.seen[t] || (fd.seen[t] = []);
+  if (!s.includes(Number(i))) s.push(Number(i));
   const d = todayStr(); fd.read[d] = (fd.read[d] || 0) + 1;
   const days = Object.keys(fd.read).sort(); while (days.length > 90) delete fd.read[days.shift()];
+  const won = !!(tp && !fd.badges[t] && s.length >= tp.f.length);
+  if (won) fd.badges[t] = d;
   factsSave(k);
-  return fresh && FACT_BY[t] && s.length === FACT_BY[t].f.length;
+  return won;
 }
 function factsReadBetween(k, from, to) { const r = (S.learns[k.id] && S.learns[k.id].facts && S.learns[k.id].facts.read) || {}; let n = 0; for (const [d, c] of Object.entries(r)) if (d >= from && d <= to) n += c; return n; }
 function factPickSurprise(k, avoid) {
@@ -6009,15 +7052,28 @@ function factPickSurprise(k, avoid) {
   const unseen = all.filter(i => !seen.includes(i)), pool = unseen.length ? unseen : all;
   return `${tp.id}:${pool[rnd(pool.length)]}`;
 }
+const factWonLine = tp => fL(`You finished ${topicName(tp)}! You earned a badge!`, `¡Terminaste ${topicName(tp)}! ¡Ganaste una medalla!`);
 function factShow(k, F) {
   F.done = false; F.allDone = factMark(k, F.id);
-  if (k.mode === 'little') { const f = factOf(F.id); if (f) setTimeout(() => speak(f.text, true), 300); }
+  const f = factOf(F.id);
+  if (F.allDone) { play('cheer'); buzz([30, 60, 30]); setTimeout(() => { const el = $('.fact-all .fmedal'); if (el) burst(el); }, 120); }
+  if (k.mode === 'little' && f) setTimeout(() => speak(F.allDone ? [f.text, factWonLine(f.topic)] : f.text, true), 300);
 }
+/* A medal: ribbon on top, gold disc with the topic's picture */
+const fMedal = (tp, cls = '') => `<span class="fmedal ${cls}" title="${esc(topicName(tp))}" translate="no"><span class="fm-rib" aria-hidden="true"></span><span class="fm-disc"><span class="oe">${tp.e}</span></span></span>`;
+function factOpen(k) { const o = UI.factOpen = UI.factOpen || {}; return o[k.id] || (o[k.id] = new Set()); }
 ACT.factsOpen = () => { const k = kidById(UI.childId); if (!k) return; unlockSpeech(); play('tap'); UI.lrn = null; UI.lrnPick = null; UI.facts = { view: 'home' }; window.scrollTo(0, 0); render(); };
 ACT.factsClose = () => { try { speechSynthesis.cancel(); } catch (e) {} UI.facts = null; window.scrollTo(0, 0); render(); };
-ACT.factsBack = () => { try { speechSynthesis.cancel(); } catch (e) {} UI.facts = { view: 'home' }; window.scrollTo(0, 0); render(); };
+ACT.factsBack = () => { try { speechSynthesis.cancel(); } catch (e) {} UI.facts = { view: 'home' }; const y = UI.factsY || 0; UI.factsY = 0; render(); window.scrollTo(0, y); };
+ACT.factCat = d => {
+  const k = kidById(UI.childId), c = FACT_CATS.find(x => x.id === d.v); if (!k || !c) return;
+  const o = factOpen(k); unlockSpeech(); play('tap');
+  if (o.has(c.id)) o.delete(c.id); else { o.add(c.id); if (k.mode === 'little') speak(catName(c), true); }
+  UI._keepScroll = true; render();
+};
 ACT.factGo = d => {
   const k = kidById(UI.childId); if (!k) return; unlockSpeech(); play('tap');
+  if (UI.facts && UI.facts.view === 'home') UI.factsY = window.scrollY;
   const fd = factsDoc(k.id); let F;
   if (d.v === 'surprise') { const id = factPickSurprise(k); if (!id) return; F = { view: 'card', mode: 'surprise', id }; }
   else if (d.v === 'saved') { const list = fd.saved.filter(id => factOf(id) && factTopicsFor(k).some(t => id.startsWith(t.id + ':'))); if (!list.length) return; F = { view: 'card', mode: 'saved', order: list, pos: 0, id: list[0] }; }
@@ -6048,29 +7104,44 @@ ACT.factFav = d => {
   const at = fd.fav.indexOf(d.v); if (at >= 0) fd.fav.splice(at, 1); else { fd.fav.push(d.v); play('star'); }
   factsSave(k); UI._keepScroll = true; render();
 };
+function factTile(t, fd) {
+  const n = Math.min((fd.seen[t.id] || []).length, t.f.length), all = t.f.length, fav = fd.fav.includes(t.id), won = !!fd.badges[t.id];
+  return `<button class="ftopic ${fav ? 'fav' : ''} ${won ? 'full' : ''}" data-a="factGo" data-v="topic" data-t="${t.id}"><span class="oe">${t.e}</span><b translate="no">${esc(topicName(t))}</b>
+    <span class="fbar2" aria-hidden="true"><i style="width:${Math.round(n / all * 100)}%"></i></span><small class="num" translate="no">${fav ? '⭐ ' : ''}${n}/${all}${won ? ' 🏅' : ''}</small></button>`;
+}
 function factsHome(k) {
-  const fd = factsDoc(k.id), little = k.mode === 'little';
-  const topics = factTopicsFor(k).slice().sort((a, b) => (fd.fav.includes(b.id) ? 1 : 0) - (fd.fav.includes(a.id) ? 1 : 0));
-  const saved = fd.saved.filter(id => factOf(id) && topics.some(t => id.startsWith(t.id + ':')));
+  const fd = factsDoc(k.id), little = k.mode === 'little', topics = factTopicsFor(k), ids = new Set(topics.map(t => t.id));
+  const saved = fd.saved.filter(id => factOf(id) && ids.has(String(id).split(':')[0]));
   if (!topics.length) return `<div class="row"><button class="back" data-a="factsClose">← Back</button></div><div class="card empty"><div class="big-e">💡</div><h2>No fact topics yet</h2><p class="muted">A grown-up can pick topics in the Practice settings.</p></div>`;
+  const favs = topics.filter(t => fd.fav.includes(t.id));
+  const badges = FACT_TOPICS.filter(t => fd.badges[t.id]).sort((a, b) => String(fd.badges[a.id]).localeCompare(String(fd.badges[b.id])));
+  const cats = FACT_CATS.map(c => ({ c, list: c.t.map(id => FACT_BY[id]).filter(t => t && ids.has(t.id)) })).filter(x => x.list.length);
+  const open = factOpen(k), one = cats.length === 1;
   return `<div class="row"><button class="back" data-a="factsClose">← Back</button></div>
     <div class="greet"><h1>Fun facts</h1><p class="muted">Pick a topic you love, or tap Surprise me.</p>
-    ${little ? `<button class="say" data-a="say" data-t="${esc('Fun facts! Pick a picture, or tap the dice for a surprise.')}" aria-label="Read aloud">🔊</button>` : ''}</div>
+    ${little ? `<button class="say" data-a="say" data-t="${esc('Fun facts! Tap a group to see its topics, or tap the dice for a surprise.')}" aria-label="Read aloud">🔊</button>` : ''}</div>
     <button class="btn kid big full" data-a="factGo" data-v="surprise">🎲 Surprise me!</button>
     ${saved.length ? `<button class="btn ghost full" data-a="factGo" data-v="saved">❤️ My saved facts <span class="num">(${saved.length})</span></button>` : ''}
-    <div class="ftopics">${topics.map(t => {
-      const n = (fd.seen[t.id] || []).length, all = t.f.length, fav = fd.fav.includes(t.id);
-      return `<button class="ftopic ${fav ? 'fav' : ''} ${n >= all ? 'full' : ''}" data-a="factGo" data-v="topic" data-t="${t.id}"><span class="oe">${t.e}</span><b translate="no">${esc(topicName(t))}</b>
-        <span class="fbar2" aria-hidden="true"><i style="width:${Math.round(n / all * 100)}%"></i></span><small class="num" translate="no">${fav ? '⭐ ' : ''}${n}/${all}${n >= all ? ' ✓' : ''}</small></button>`;
+    <section class="card fbadges"><div class="fb-head"><span class="oe">🏅</span><b>My badges</b><span class="fb-n num">${badges.length}</span></div>
+      ${badges.length ? `<div class="fb-shelf">${badges.map(t => fMedal(t)).join('')}</div>` : `<p class="small muted">Read every fact in a topic to earn its badge.</p>`}</section>
+    ${favs.length ? `<h2 class="fsec">⭐ My favorites</h2><div class="ftopics">${favs.map(t => factTile(t, fd)).join('')}</div>` : ''}
+    <h2 class="fsec">All topics</h2>
+    <div class="fcats">${cats.map(({ c, list }) => {
+      const on = one || open.has(c.id), won = list.filter(t => fd.badges[t.id]).length;
+      return `<section class="fcat ${on ? 'open' : ''}"><button class="fcat-bar" data-a="${one ? 'noop' : 'factCat'}" data-v="${c.id}" aria-expanded="${on}"><span class="oe">${c.e}</span><span class="fcat-n"><b translate="no">${esc(catName(c))}</b><small translate="no">${list.map(t => t.e).join(' ')}</small></span>${won ? `<span class="fcat-w num" translate="no">🏅 ${won}</span>` : ''}${one ? '' : `<span class="wxcaret" aria-hidden="true">${on ? '▲' : '▼'}</span>`}</button>
+        ${on ? `<div class="ftopics">${list.map(t => factTile(t, fd)).join('')}</div>` : ''}</section>`;
     }).join('')}</div>`;
 }
 function factCard(k) {
   const F = UI.facts, fd = factsDoc(k.id);
   if (F.done) {
-    const tp = FACT_BY[F.topic], others = shuffle(factTopicsFor(k).filter(t => t.id !== F.topic)).slice(0, 2);
+    const tp = FACT_BY[F.topic], won = !!(tp && fd.badges[tp.id] && F.mode === 'topic');
+    const cat = FACT_CATS.find(c => c.t.includes(F.topic)), pool = factTopicsFor(k).filter(t => t.id !== F.topic && !fd.badges[t.id]);
+    const others = shuffle(pool.filter(t => cat && cat.t.includes(t.id))).concat(shuffle(pool.filter(t => !(cat && cat.t.includes(t.id))))).slice(0, 2);
     return `<div class="row"><button class="back" data-a="factsBack">← Topics</button></div>
-      <div class="focus fact-done"><div class="bige">${tp ? tp.e : '💡'}</div>
+      <div class="focus fact-done">${won ? fMedal(tp, 'big') : `<div class="bige">${tp ? tp.e : '💡'}</div>`}
       <h1>${F.mode === 'saved' ? 'That was all your saved facts!' : 'You read every fact here!'}</h1>
+      ${won ? `<p class="fact-won" translate="no">${esc(fL(`You have the ${topicName(tp)} badge!`, `¡Tienes la medalla de ${topicName(tp)}!`))}</p>` : ''}
       ${others.length && F.mode !== 'saved' ? `<p class="muted">Try one of these next:</p><div class="ftopics">${others.map(t => `<button class="ftopic" data-a="factGo" data-v="topic" data-t="${t.id}"><span class="oe">${t.e}</span><b translate="no">${esc(topicName(t))}</b></button>`).join('')}</div>` : ''}
       <button class="btn kid big full" data-a="factAgain">Read them again</button>
       <button class="btn ghost full" data-a="factGo" data-v="surprise">🎲 Surprise me!</button></div>`;
@@ -6082,7 +7153,7 @@ function factCard(k) {
     <div class="factcard"><div class="fact-head"><span class="oe">${f.topic.e}</span><span class="fact-topic" translate="no">${esc(topicName(f.topic))}</span></div>
       <p class="fact-kicker">Did you know?</p>
       <p class="fact-text ${k.mode === 'little' ? 'big' : ''}" translate="no">${esc(f.text)}</p>
-      ${F.allDone ? `<p class="fact-all">🎉 You've read every fact in this topic!</p>` : ''}
+      ${F.allDone ? `<div class="fact-all">${fMedal(f.topic)}<span translate="no">${esc(factWonLine(f.topic))}</span></div>` : ''}
       <div class="fact-tools">
         <button class="ftool" data-a="factSay" aria-label="Read this fact to me">🔊 <span>Read to me</span></button>
         <button class="ftool ${saved ? 'on' : ''}" data-a="factSave" aria-pressed="${saved}">❤️ <span>${saved ? 'Saved' : 'Save'}</span></button>
@@ -6091,24 +7162,46 @@ function factCard(k) {
     <button class="btn kid big full" data-a="factNext">${F.mode === 'surprise' ? '🎲 Another surprise' : F.pos + 1 >= F.order.length ? 'Finish' : 'Next fact →'}</button>`;
 }
 function factsView(k) { return UI.facts.view === 'card' ? factCard(k) : factsHome(k); }
-/* Grown-up card in Practice */
+/* Grown-up card in Practice: one main switch, then topic groups that open and close */
 function factsParent(k) {
-  const fd = (S.learns[k.id] && S.learns[k.id].facts) || { seen: {}, saved: [], fav: [] }, off = k.factsOff || [];
-  const total = FACT_TOPICS.reduce((a, t) => a + t.f.length, 0), seenN = Object.values(fd.seen || {}).reduce((a, s) => a + s.length, 0);
-  const week = factsReadBetween(k, weekStart(todayStr()), todayStr());
-  const favs = (fd.fav || []).map(id => FACT_BY[id]).filter(Boolean), saved = (fd.saved || []).map(factOf).filter(Boolean);
-  return `<div class="card stack"><h3>💡 Fun facts</h3>
+  const fd = (S.learns[k.id] && S.learns[k.id].facts) || {}, seen = fd.seen || {}, won = fd.badges || {}, off = k.factsOff || [], on = !k.noFacts;
+  const po = UI.pfOpen = UI.pfOpen || {};
+  const head = `<button class="toggle" data-a="factsAllSet" aria-pressed="${on}"><span><b>Show Fun facts</b><br><span class="small muted">The Fun facts button in Learn</span></span><span class="switch ${on ? 'on' : ''}"></span></button>`;
+  if (!on) return `<div class="card stack"><h3>💡 Fun facts</h3>${head}<p class="small muted">Fun facts are turned off. Turn them on to pick topics.</p></div>`;
+  const total = FACT_TOPICS.reduce((a, t) => a + t.f.length, 0), seenN = FACT_TOPICS.reduce((a, t) => a + Math.min((seen[t.id] || []).length, t.f.length), 0);
+  const week = factsReadBetween(k, weekStart(todayStr()), todayStr()), shown = FACT_TOPICS.filter(t => !off.includes(t.id)).length;
+  const favs = (fd.fav || []).map(id => FACT_BY[id]).filter(Boolean), saved = (fd.saved || []).map(factOf).filter(Boolean), badges = FACT_TOPICS.filter(t => won[t.id]);
+  const row = (key, e, title, sub, body) => { const op = !!po[key]; return `<div class="ditem ${op ? 'on' : ''}"><button class="drow" data-a="pfOpen" data-v="${key}" aria-expanded="${op}"><span class="de">${e}</span><span class="dn">${title}<br><span class="small muted num">${sub}</span></span><span class="wxcaret" aria-hidden="true">${op ? '▲' : '▼'}</span></button>${op ? `<div class="dbody stack">${body()}</div>` : ''}</div>`; };
+  return `<div class="card stack"><h3>💡 Fun facts</h3>${head}
     <p class="small num">${week} facts read this week. ${seenN} of ${total} facts read so far.</p>
-    ${favs.length ? `<p class="small"><b>Favorite topics:</b> <span translate="no">${favs.map(t => `${t.e} ${esc(topicName(t))}`).join(', ')}</span></p>` : ''}
-    <p class="small muted">Tap a topic to hide it or show it.</p>
-    <div class="choices sm ftoggles">${FACT_TOPICS.map(t => { const on = !off.includes(t.id); return `<button class="choice ${on ? 'on' : ''}" data-a="factTopicSet" data-v="${t.id}" aria-pressed="${on}"><span translate="no">${t.e} ${esc(topicName(t))}</span></button>`; }).join('')}</div>
-    ${saved.length ? `<h3>Saved facts</h3><ul class="factlist small" translate="no">${saved.slice(0, 20).map(f => `<li>${f.topic.e} ${esc(f.text)}</li>`).join('')}</ul>` : ''}</div>`;
+    ${badges.length ? `<p class="small"><b>Badges earned</b> <span class="num">(${badges.length})</span> <span translate="no">${badges.map(t => `🏅 ${esc(topicName(t))}`).join(', ')}</span></p>` : ''}
+    ${favs.length ? `<p class="small"><b>Favorite topics</b> <span translate="no">${favs.map(t => `${t.e} ${esc(topicName(t))}`).join(', ')}</span></p>` : ''}
+    <div class="row pf-all"><span class="small muted num">${shown} of ${FACT_TOPICS.length} topics on</span><span class="grow"></span><button class="btn ghost sm" data-a="factCatSet" data-v="all" data-on="1" ${shown === FACT_TOPICS.length ? 'disabled' : ''}>All on</button><button class="btn ghost sm" data-a="factCatSet" data-v="all" data-on="0" ${shown === 0 ? 'disabled' : ''}>All off</button></div>
+    <p class="small muted">Tap a group to open it, then turn topics on or off.</p>
+    <div class="pfcats">${FACT_CATS.map(c => {
+      const list = c.t.map(id => FACT_BY[id]).filter(Boolean), n = list.filter(t => !off.includes(t.id)).length;
+      return row('c:' + c.id, c.e, `<b translate="no">${esc(catName(c))}</b>`, `${n} of ${list.length} on`, () => `
+        ${list.length > 1 ? `<div class="row"><button class="btn ghost sm" data-a="factCatSet" data-v="${c.id}" data-on="1" ${n === list.length ? 'disabled' : ''}>All on</button><button class="btn ghost sm" data-a="factCatSet" data-v="${c.id}" data-on="0" ${n === 0 ? 'disabled' : ''}>All off</button></div>` : ''}
+        ${list.map(t => { const ton = !off.includes(t.id), r = Math.min((seen[t.id] || []).length, t.f.length); return `<button class="toggle slim" data-a="factTopicSet" data-v="${t.id}" aria-pressed="${ton}"><span><span translate="no">${t.e} <b>${esc(topicName(t))}</b>${won[t.id] ? ' 🏅' : ''}</span><br><span class="small muted num">${r} of ${t.f.length} read</span></span><span class="switch ${ton ? 'on' : ''}"></span></button>`; }).join('')}`);
+    }).join('')}
+    ${saved.length ? row('saved', '❤️', `<b>Saved facts</b> <span class="num">(${saved.length})</span>`, '', () => `<ul class="factlist small" translate="no">${saved.slice(0, 30).map(f => `<li>${f.topic.e} ${esc(f.text)}</li>`).join('')}</ul>`) : ''}
+    </div></div>`;
 }
+const factsKidSet = (k, patch) => { saveSettings({ children: kids().map(x => (x.id === k.id ? { ...x, ...patch } : x)) }); UI._keepScroll = true; render(); };
+ACT.factsAllSet = () => { const k = kidById(UI.pchild); if (k) factsKidSet(k, { noFacts: !k.noFacts }); };
 ACT.factTopicSet = d => {
   const k = kidById(UI.pchild); if (!k || !FACT_BY[d.v]) return;
   const off = (k.factsOff || []).slice(), at = off.indexOf(d.v); if (at >= 0) off.splice(at, 1); else off.push(d.v);
-  saveSettings({ children: kids().map(x => (x.id === k.id ? { ...x, factsOff: off } : x)) }); UI._keepScroll = true; render();
+  factsKidSet(k, { factsOff: off });
 };
+ACT.factCatSet = d => {
+  const k = kidById(UI.pchild); if (!k) return;
+  const ids = d.v === 'all' ? FACT_TOPICS.map(t => t.id) : ((FACT_CATS.find(c => c.id === d.v) || {}).t || []); if (!ids.length) return;
+  let off = (k.factsOff || []).filter(id => !ids.includes(id)); if (d.on !== '1') off = off.concat(ids);
+  factsKidSet(k, { factsOff: off });
+};
+ACT.pfOpen = d => { const o = UI.pfOpen = UI.pfOpen || {}; o[d.v] = !o[d.v]; UI._keepScroll = true; render(); };
+ACT.noop = () => {};
 
 /* ============================== Phone reminders (for the app's own website) ==============================
    1. Calendar file: every task with a time becomes a repeating event with an alert, so the phone
@@ -7530,6 +8623,20 @@ const ES = {
 "You can switch any time in Grown-up settings.": "Puedes cambiarlo cuando quieras en la configuración para adultos.",
 "Give the task a name.": "Ponle un nombre a la tarea.",
 "Gymnast balance. Stand on one foot with your arms out wide. Then switch feet. Look at one spot to help you balance.": "Equilibrio de gimnasta. Párate en un pie con los brazos bien abiertos. Luego cambia de pie. Mira un punto fijo para mantener el equilibrio.",
+"Fun facts! Tap a group to see its topics, or tap the dice for a surprise.": "¡Datos curiosos! Toca un grupo para ver sus temas, o toca el dado para una sorpresa.",
+"My badges": "Mis medallas",
+"Read every fact in a topic to earn its badge.": "Lee todos los datos de un tema para ganar su medalla.",
+"⭐ My favorites": "⭐ Mis favoritos",
+"My favorites": "Mis favoritos",
+"All topics": "Todos los temas",
+"Show Fun facts": "Mostrar Datos curiosos",
+"The Fun facts button in Learn": "El botón de Datos curiosos en Aprender",
+"Fun facts are turned off. Turn them on to pick topics.": "Los Datos curiosos están apagados. Actívalos para elegir temas.",
+"Badges earned": "Medallas ganadas",
+"All on": "Activar todos",
+"All off": "Apagar todos",
+"Tap a group to open it, then turn topics on or off.": "Toca un grupo para abrirlo y luego activa o apaga temas.",
+"Reward saved.": "Premio guardado.",
 "Mad": "Enojado",
 "Sad": "Triste",
 "Worried": "Preocupado",
@@ -7914,6 +9021,8 @@ const ES_RX = [
   [/^The answer is (\d+)$/, 'La respuesta es $1'],
   [/^Finish a round of 10 to earn a star\. (\d) stars? left today\.$/, (m, n) => `Termina una ronda de 10 para ganar una estrella. ${plural(n, 'Queda 1 estrella', `Quedan ${n} estrellas`)} hoy.`],
   [/^Question (\d+) of (\d+)$/, 'Pregunta $1 de $2'],
+  [/^There is 1!$/, '¡Hay 1!'],
+  [/^There are (\d+)!$/, '¡Hay $1!'],
   [/^What letter does (.+) start with\?$/, '¿Con qué letra empieza $1?'],
   [/^Spell the word (.+)\.$/, 'Deletrea la palabra $1.'],
   [/^(\d+) is more than (\d+)$/, '$1 es más que $2'],
@@ -7926,6 +9035,9 @@ const ES_RX = [
   [/^Saved fact (\d+) of (\d+)$/, 'Dato guardado $1 de $2'],
   [/^(\d+) facts? read this week\. (\d+) of (\d+) facts read so far\.$/, (m, a, b, c) => `${a} ${plural(a, 'dato leído', 'datos leídos')} esta semana. ${b} de ${c} datos leídos hasta ahora.`],
   [/^Fun facts read: (\d+)$/, 'Datos curiosos leídos: $1'],
+  [/^(\d+) of (\d+) topics on$/, '$1 de $2 temas activados'],
+  [/^(\d+) of (\d+) on$/, '$1 de $2 activados'],
+  [/^(\d+) of (\d+) read$/, '$1 de $2 leídos'],
   [/^(\d+) rounds? finished(?:, last on (.+))?\.$/, (m, n, d) => `${n} ${plural(n, 'ronda terminada', 'rondas terminadas')}${d ? `, la última el ${d}` : ''}.`],
   [/^(\d+) to (\d+)$/, 'del $1 al $2'],
   [/^Numbers (\d+) to (\d+)$/, 'Números del $1 al $2'],
@@ -8384,7 +9496,8 @@ const PXART = {
   "💄": '||.......rr|......rrrr|......rrrR|......rrrR|......rrrR|.....hyyyyh|.....hyyyyh|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....qqqqqq',
   "💡": '||......yyyy|....yyyyyyyy|...ywwyyyyyyy|...ywyyyyyyyy|...yyyyyyyyyy|...yyyyyyyyyy|....yyyyyyyy|.....yyyyyy|......hyyh|.....llllll|.....gggggg|.....llllll|......gggg',
   "🎲": '||...wwwwwwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..wwwwwkkwwwww|..wwwwwkkwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..llllllllllll|...llllllllll',
-  "⚖": '||.......yy|..yyyyyyyyyyyy|..h....yy....h|.h.h...yy...h.h|h...h..yy..h...h|yyyyy..yy..yyyyy|.yyy...yy...yyy|.......yy|.......yy|.......yy|.....hhhhhh|....yyyyyyyy'
+  "⚖": '||.......yy|..yyyyyyyyyyyy|..h....yy....h|.h.h...yy...h.h|h...h..yy..h...h|yyyyy..yy..yyyyy|.yyy...yy...yyy|.......yy|.......yy|.......yy|.....hhhhhh|....yyyyyyyy',
+  "🏅": '..BBBbb...rrrr|...BBBbb.rrrr|....BBBbrrrr|.....BBBrrr|......BBrr|.......hh|......hhhh|....hwyooyhh|....hwyooyyh|...hyooooooyh|...hyyooooyyh|...hyyooooyyh|...hhooyyoohh|....hyyyyyyh|.....hhyyhh|......hhhh'
 };
 const PXCELL = {}, PXC = {};
 const pxKey = e => String(e).replace(/\uFE0F/g, '');
@@ -8439,7 +9552,6 @@ function pxify(root) {
     n.parentNode.replaceChild(frag, n);
   }
 }
-
 /* ============================== Demo: a pretend family, saved only in this browser ==============================
    build.py adds this to the demo page, just before the app starts.
    Maya (code 1 1 1 1) and Leo (code 🍎 🐶 ⭐ 🚗). The grown-up passcode is 1 2 3 4. */
