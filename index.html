@@ -4,7 +4,7 @@
 <meta name="theme-color" content="#EDF1F8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@500;700;800&family=Lexend:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@500;700;800&family=Lexend:wght@400;600;700&family=Fredoka:wght@400;500;600;700&family=Shrikhand&family=Silkscreen&display=swap">
 <style>
 /* Layout: phone-first single-column app shell; sticky top bar, fixed bottom tab bar, content capped at 680px. */
 :root {
@@ -952,6 +952,13 @@ a.mini { display: inline-flex; align-items: center; text-decoration: none; font-
 .pdots i.on { background: var(--good); box-shadow: none; }
 .lvlup { padding: 12px 14px; border-radius: 18px; background: var(--good-soft); font-weight: 600; }
 .lvlup b { color: var(--good); }
+.sets { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.setbox { position: relative; display: grid; place-items: center; min-height: 170px; padding: 14px 8px; border-radius: 22px; background: var(--surface); box-shadow: var(--shadow), inset 0 0 0 3px var(--kid-soft); }
+.setbox.right { box-shadow: var(--shadow), inset 0 0 0 4px var(--good); background: var(--good-soft); }
+.setbox.wrong { box-shadow: var(--shadow), inset 0 0 0 4px var(--hard); animation: shake .35s; }
+.setpics { display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 4px; max-width: 150px; font-size: 1.4rem; line-height: 1; }
+.setn { position: absolute; top: 6px; right: 10px; font-family: var(--font-display); font-size: 1.4rem; }
+.lrn-say.big { font-size: 1.25rem; font-weight: 700; }
 .lrn-choices.pics .lchoice { width: 100%; padding: 8px 0; font-size: 3.6rem; min-height: 112px; line-height: 1; }
 .lpic.sm { font-size: 4.5rem; }
 .colmath { display: grid; gap: 4px 6px; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; }
@@ -979,6 +986,124 @@ a.mini { display: inline-flex; align-items: center; text-decoration: none; font-
 .lpill.h { background: var(--hard-soft); color: var(--hard); }
 .tblbars { display: grid; gap: 4px; }
 @media (max-width: 380px) { .lchoice.big { font-size: 2.4rem; } .tile { width: 50px; height: 58px; font-size: 1.7rem; } .slot { width: 38px; } }
+
+/* ============================== Retro look ==============================
+   A second look the family can switch on (Settings › Look). Same app and layout: cream paper with halftone dots,
+   thick ink outlines, chunky offset shadows, bright fills and playful fonts. Turned on by data-skin="retro" on <html>.
+   The --shadow token carries the outline (a 3px ring) plus a hard offset shadow, so everything that already uses
+   the shadow gets the retro edge without changing its size. */
+:root[data-skin="retro"] {
+  --bg: #FFF4DC; --surface: #FFFBF0; --surface-2: #FFEBC2; --ink: #2A1A3D; --muted: #5E4A75; --line: #2A1A3D;
+  --primary: #3B5BDB; --on-primary: #FFFFFF; --star: #E8A400; --star-soft: #FFE59A; --good: #0B7D70; --good-soft: #C4F0E9;
+  --hard: #D9480F; --hard-soft: #FFD8C2; --rough: #3B5BDB; --rough-soft: #DCE3FF; --danger: #C2255C;
+  --outline: #2A1A3D; --sun: #FFD23F; --tomato: #F2542D; --tangerine: #FF9F1C; --teal: #2EC4B6; --cobalt: #3B5BDB; --pink: #FF7AB6;
+  --dots: rgba(42, 26, 61, .11);
+  --shadow: 0 0 0 3px var(--outline), 4px 5px 0 3px var(--outline);
+  --shadow-sm: 0 0 0 3px var(--outline), 2px 3px 0 3px var(--outline);
+  --font-display: "Shrikhand", "Baloo 2", Georgia, serif;
+  --font-body: "Fredoka", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-pixel: "Silkscreen", ui-monospace, monospace;
+  --r: 22px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-skin="retro"]:not([data-theme="light"]) {
+    --bg: #1C1230; --surface: #2B1E48; --surface-2: #3A2A5E; --ink: #FFF4DC; --muted: #CDBDE6; --line: #9C86C9;
+    --primary: #7C93FF; --on-primary: #12091F; --star: #FFD23F; --star-soft: #4A3A12; --good: #4FE0CF; --good-soft: #123E3A;
+    --hard: #FF9F6B; --hard-soft: #4A2416; --rough: #9AAEFF; --rough-soft: #262E55; --danger: #FF7AA8;
+    --outline: #0A0514; --dots: rgba(255, 244, 220, .07);
+    color-scheme: dark;
+  }
+}
+:root[data-skin="retro"][data-theme="dark"] {
+  --bg: #1C1230; --surface: #2B1E48; --surface-2: #3A2A5E; --ink: #FFF4DC; --muted: #CDBDE6; --line: #9C86C9;
+  --primary: #7C93FF; --on-primary: #12091F; --star: #FFD23F; --star-soft: #4A3A12; --good: #4FE0CF; --good-soft: #123E3A;
+  --hard: #FF9F6B; --hard-soft: #4A2416; --rough: #9AAEFF; --rough-soft: #262E55; --danger: #FF7AA8;
+  --outline: #0A0514; --dots: rgba(255, 244, 220, .07); color-scheme: dark;
+}
+[data-skin="retro"] body { background-color: var(--bg); background-image: radial-gradient(var(--dots) 1.3px, transparent 1.7px); background-size: 16px 16px; }
+[data-skin="retro"] h1, [data-skin="retro"] h2 { font-weight: 400; letter-spacing: .005em; }
+[data-skin="retro"] h3 { font-family: var(--font-body); font-weight: 700; }
+[data-skin="retro"] .label, [data-skin="retro"] .lrn-prog, [data-skin="retro"] .fact-kicker, [data-skin="retro"] .step .time, [data-skin="retro"] .clock { font-family: var(--font-pixel); font-weight: 400; letter-spacing: .06em; }
+[data-skin="retro"] .lact, [data-skin="retro"] .ftopic, [data-skin="retro"] .kname { font-weight: 400; }
+/* buttons and chips */
+[data-skin="retro"] .btn { border-radius: 18px; box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .btn.primary { background: var(--cobalt); color: #fff; box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .btn.kid { box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .btn.ghost { background: var(--surface); box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .btn.danger { background: var(--surface); box-shadow: 0 0 0 3px var(--danger), 2px 3px 0 3px var(--danger); }
+[data-skin="retro"] .btn:active, [data-skin="retro"] .back:active, [data-skin="retro"] .lact:active, [data-skin="retro"] .lchoice:active, [data-skin="retro"] .kcard:active, [data-skin="retro"] .key:active { transform: translate(2px, 3px); }
+[data-skin="retro"] .chip.star, [data-skin="retro"] .chip.pts, [data-skin="retro"] .chip.coin { background: var(--sun); color: #2A1A3D; }
+[data-skin="retro"] .choice, [data-skin="retro"] .seg, [data-skin="retro"] .pre, [data-skin="retro"] .opt, [data-skin="retro"] .face, [data-skin="retro"] .icon-btn, [data-skin="retro"] .cbtn { box-shadow: inset 0 0 0 3px var(--line); background: var(--surface); }
+[data-skin="retro"] .choice.on, [data-skin="retro"] .seg.on, [data-skin="retro"] .pre.on { background: var(--sun); color: #2A1A3D; box-shadow: inset 0 0 0 3px var(--outline), 2px 3px 0 0 var(--outline); }
+[data-skin="retro"] .opt.on { background: var(--sun); color: #2A1A3D; box-shadow: inset 0 0 0 3px var(--outline); }
+[data-skin="retro"] .input { border: 3px solid var(--line); border-radius: 14px; background: var(--surface); }
+[data-skin="retro"] .say { background: var(--cobalt); box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .check { box-shadow: inset 0 0 0 3px var(--line); background: var(--surface); }
+[data-skin="retro"] .step.done .check { background: var(--teal); color: #2A1A3D; box-shadow: inset 0 0 0 3px var(--outline); }
+[data-skin="retro"] .progress { height: 16px; box-shadow: inset 0 0 0 3px var(--outline); background: var(--surface); }
+[data-skin="retro"] .progress > i { background: linear-gradient(90deg, var(--tomato), var(--tangerine), var(--sun), var(--teal)); }
+[data-skin="retro"] .toast { background: var(--ink); color: var(--bg); box-shadow: 0 0 0 3px var(--outline), 4px 5px 0 3px var(--tomato); }
+/* tab bar */
+[data-skin="retro"] .tabs { background: var(--cobalt); box-shadow: 0 -3px 0 var(--outline); }
+[data-skin="retro"] .tab { color: #FFFBF0; }
+[data-skin="retro"] .tab.on { color: #FFFBF0; }
+[data-skin="retro"] .tab.on .ti { background: var(--sun); border-radius: 14px; box-shadow: 0 0 0 3px var(--outline); }
+[data-skin="retro"] .tab.on::after { background: var(--sun); box-shadow: 0 0 0 2px var(--outline); }
+/* start screen, today, timer */
+[data-skin="retro"] .hero { color: #2A1A3D; background: repeating-conic-gradient(from 0deg at 82% 22%, #FFD23F 0 10deg, #FFC21F 10deg 20deg); }
+[data-skin="retro"] .hero.sky-evening { color: #FFFBF0; background: repeating-conic-gradient(from 0deg at 82% 22%, #3B5BDB 0 10deg, #4A6AE6 10deg 20deg); }
+[data-skin="retro"] .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: linear-gradient(#F2542D 0 25%, #FF9F1C 25% 50%, #FFD23F 50% 75%, #2EC4B6 75%); }
+[data-skin="retro"] .hname { background: #FFFBF0; box-shadow: 0 0 0 3px #2A1A3D; }
+[data-skin="retro"] .kcard { box-shadow: var(--shadow); }
+[data-skin="retro"] .kring { background: conic-gradient(var(--kid) calc(var(--p) * 1%), var(--surface-2) 0); box-shadow: 0 0 0 3px var(--outline); }
+[data-skin="retro"] .upnext { color: #2A1A3D; background: repeating-linear-gradient(135deg, #2EC4B6 0 14px, #43D1C3 14px 28px); box-shadow: var(--shadow); }
+[data-skin="retro"] .upnext .go { background: var(--cobalt); box-shadow: 0 0 0 3px #2A1A3D, 2px 3px 0 3px #2A1A3D; }
+[data-skin="retro"] .sec-head { background: var(--sun); color: #2A1A3D; border-bottom: 3px solid var(--outline); }
+[data-skin="retro"] .dial { box-shadow: var(--shadow), inset 0 0 0 12px var(--tangerine), inset 0 0 0 15px var(--outline); }
+/* learn */
+[data-skin="retro"] .lrn-q { background-color: #FFD23F; background-image: repeating-conic-gradient(from 0deg at 50% 45%, #FFD23F 0 10deg, #FFC21F 10deg 20deg); color: #2A1A3D; }
+[data-skin="retro"] .lrn-q .muted, [data-skin="retro"] .lrn-say { color: #2A1A3D; }
+[data-skin="retro"] .lchoice:not(.right):not(.wrong):not(.hint) { box-shadow: 0 0 0 3px var(--outline), 0 7px 0 3px var(--outline); color: #2A1A3D; }
+[data-skin="retro"] .lrn-choices:not(.pics) .lchoice:nth-child(4n+1):not(.right):not(.wrong):not(.hint) { background: var(--tomato); }
+[data-skin="retro"] .lrn-choices:not(.pics) .lchoice:nth-child(4n+2):not(.right):not(.wrong):not(.hint) { background: var(--teal); }
+[data-skin="retro"] .lrn-choices:not(.pics) .lchoice:nth-child(4n+3):not(.right):not(.wrong):not(.hint) { background: var(--cobalt); color: #fff; }
+[data-skin="retro"] .lrn-choices:not(.pics) .lchoice:nth-child(4n+4):not(.right):not(.wrong):not(.hint) { background: var(--sun); }
+[data-skin="retro"] .lact { box-shadow: var(--shadow); }
+[data-skin="retro"] .lacts .lact:nth-child(5n+1) { background: #FFD6E8; color: #2A1A3D; }
+[data-skin="retro"] .lacts .lact:nth-child(5n+2) { background: #C9F2EC; color: #2A1A3D; }
+[data-skin="retro"] .lacts .lact:nth-child(5n+3) { background: #FFE9A6; color: #2A1A3D; }
+[data-skin="retro"] .lacts .lact:nth-child(5n+4) { background: #D6E0FF; color: #2A1A3D; }
+[data-skin="retro"] .lacts .lact:nth-child(5n+5) { background: #FFDCC7; color: #2A1A3D; }
+[data-skin="retro"] .lacts .lact small { color: #5E4A75; }
+[data-skin="retro"] .factsbtn, [data-skin="retro"] .ptsbanner { background: var(--sun); color: #2A1A3D; box-shadow: var(--shadow); }
+[data-skin="retro"] .factsbtn small { color: #5E4A75; }
+[data-skin="retro"] .ptsbanner b, [data-skin="retro"] .chip.pts { font-family: var(--font-pixel); font-weight: 400; }
+[data-skin="retro"] .setbox, [data-skin="retro"] .ftopic, [data-skin="retro"] .factcard { box-shadow: var(--shadow); }
+[data-skin="retro"] .lkey { box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .lkey.go { background: var(--teal); color: #2A1A3D; }
+[data-skin="retro"] .colmath .cm.ans.box { box-shadow: inset 0 0 0 3px var(--line); }
+/* pet and parent */
+[data-skin="retro"] .petroom { background: radial-gradient(circle at 50% 30%, #FFFBF0, #FFD6E8 75%); }
+[data-skin="retro"] .ptab.on { box-shadow: var(--shadow-sm); }
+[data-skin="retro"] .stat { box-shadow: inset 0 0 0 3px var(--line); background: var(--surface); }
+/* Look picker (setup and Settings) */
+.lookpick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lookbtn { display: grid; gap: 8px; align-content: start; padding: 10px; border-radius: 18px; text-align: left; box-shadow: inset 0 0 0 2px var(--line); background: var(--surface); }
+.lookbtn.on { box-shadow: inset 0 0 0 3px var(--primary), 0 0 0 2px var(--primary); }
+.lookbtn b { font-size: 1rem; }
+.lookbtn small { color: var(--muted); font-size: .8rem; line-height: 1.3; }
+.lookprev { position: relative; height: 70px; border-radius: 12px; overflow: hidden; }
+.lookprev.calm { background: #EDF1F8; box-shadow: inset 0 0 0 1px #D6DDEA; }
+.lookprev.calm i { position: absolute; border-radius: 10px; background: #fff; box-shadow: 0 2px 8px rgba(20, 30, 60, .12); }
+.lookprev.calm i:nth-child(1) { left: 8px; right: 8px; top: 8px; height: 20px; }
+.lookprev.calm i:nth-child(2) { left: 8px; width: 45%; top: 36px; height: 24px; background: #2556D0; }
+.lookprev.calm i:nth-child(3) { right: 8px; width: 35%; top: 36px; height: 24px; }
+.lookprev.retro { background-color: #FFF4DC; background-image: radial-gradient(rgba(42, 26, 61, .14) 1.2px, transparent 1.6px); background-size: 9px 9px; box-shadow: inset 0 0 0 3px #2A1A3D; }
+.lookprev.retro i { position: absolute; border: 3px solid #2A1A3D; box-shadow: 3px 3px 0 #2A1A3D; }
+.lookprev.retro i:nth-child(1) { left: 9px; right: 11px; top: 9px; height: 22px; border-radius: 10px; background: repeating-conic-gradient(from 0deg at 85% 50%, #FFD23F 0 12deg, #FFC21F 12deg 24deg); }
+.lookprev.retro i:nth-child(2) { left: 9px; width: 28px; height: 28px; top: 35px; border-radius: 50%; background: #F2542D; }
+.lookprev.retro i:nth-child(3) { left: 46px; right: 11px; top: 37px; height: 22px; border-radius: 999px; background: #2EC4B6; }
 .card.demo { background: var(--star-soft); box-shadow: none; }
 </style>
 <div id="app"></div><script>window.AZ_LS_KEY = "a-z-demo-data";</script>
@@ -1066,17 +1191,58 @@ function unlockSpeech() {
   if (speechUnlocked) return;
   try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); speechUnlocked = true; } catch (e) {}
 }
-function speak(text, asIs) {
+/* ---------- Reading voice
+   Phones and computers come with many voices. Some sound natural (marked Premium, Enhanced, Natural or Neural, or Google's),
+   some sound robotic, and some are joke voices. We pick the most natural one this device has, and a grown-up can pick a
+   different one in Settings. The choice is saved on this device only, because every device has different voices.
+   Speech can come in parts (an array), with a short pause between them, so a word is never said twice in a rush. */
+const VOICE_KEY = 'a-z-voice';
+const VOICE_JOKE = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|deranged|hysterical|pipe organ/i;
+const VOICE_FLAT = /\b(fred|junior|ralph|kathy|princess|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley|zira|david|mark|hazel)\b/i;
+const VOICE_GOOD = /\b(ava|zoe|allison|samantha|evan|nathan|joelle|noelle|susan|tom|nicky|aaron|serena|karen|moira|tessa|daniel|jenny|aria|guy|michelle|emma|brian|andrew|paulina|monica|mónica|marisol|ximena|sabina|helena|jorge|juan|diego|angelica|angélica|isabela|elvira|dalia|jorge|alvaro|álvaro)\b/i;
+function voicePrefs() { try { return JSON.parse(localStorage.getItem(VOICE_KEY) || '{}') || {}; } catch (e) { return {}; } }
+function voicePrefsSave(p) { try { localStorage.setItem(VOICE_KEY, JSON.stringify(p)); } catch (e) {} }
+function voiceScore(v, es) {
+  const n = v.name || '', l = (v.lang || '').replace('_', '-');
+  let sc = 0;
+  if (es) { if (/^es-(US|MX)/i.test(l)) sc += 8; else if (/^es-419/i.test(l)) sc += 7; else if (/^es-/i.test(l)) sc += 4; }
+  else { if (/^en-US/i.test(l)) sc += 8; else if (/^en-(GB|AU|CA|IE|NZ)/i.test(l)) sc += 5; else sc += 2; }
+  if (/premium/i.test(n)) sc += 45; else if (/enhanced|neural|natural/i.test(n)) sc += 38; else if (/google/i.test(n)) sc += 22; else if (/online/i.test(n)) sc += 15;
+  if (VOICE_GOOD.test(n)) sc += 10;
+  if (VOICE_FLAT.test(n)) sc -= 25;
+  if (VOICE_JOKE.test(n)) sc -= 200;
+  if (v.default) sc += 1;
+  return sc;
+}
+function voiceList(es) {
+  let vs = []; try { vs = speechSynthesis.getVoices(); } catch (e) {}
+  return vs.filter(v => (es ? /^es([-_]|$)/i : /^en([-_]|$)/i).test(v.lang || '')).sort((a, b) => voiceScore(b, es) - voiceScore(a, es));
+}
+function voiceFor(es) {
+  const list = voiceList(es), want = voicePrefs()[es ? 'es' : 'en'];
+  return (want && list.find(v => v.voiceURI === want)) || list.find(v => voiceScore(v, es) > -100) || list[0] || null;
+}
+const voiceRate = () => (voicePrefs().slow ? 0.78 : 0.9);
+let speakGen = 0; const speakKeep = [];
+function speak(text, asIs, opt = {}) {
   try {
-    const es = typeof langNow === 'function' && langNow() === 'es';
-    const u = new SpeechSynthesisUtterance(es && !asIs ? tr(text) : text); u.rate = 0.92; u.pitch = 1.05; u.lang = es ? 'es-US' : 'en-US';
-    const vs = speechSynthesis.getVoices().filter(v => (es ? /^es(-|_|$)/i : /^en(-|_|$)/i).test(v.lang));
-    const pick = es ? (vs.find(v => /^es[-_](US|MX)/i.test(v.lang) && /paulina|google|monica|sabina|helena/i.test(v.name)) || vs.find(v => /^es[-_](US|MX)/i.test(v.lang)) || vs[0])
-      : (vs.find(v => /samantha|google us english|aria|jenny|zira/i.test(v.name)) || vs.find(v => v.default) || vs[0]);
-    if (pick) u.voice = pick;
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    const es = typeof langNow === 'function' && langNow() === 'es', gen = ++speakGen;
+    const parts = (Array.isArray(text) ? text : [text]).map(p => (typeof p === 'string' ? { t: p, raw: asIs } : p)).filter(p => p && p.t);
+    const voice = voiceFor(es);
+    speechSynthesis.cancel(); speakKeep.length = 0;
+    const say = i => {
+      if (gen !== speakGen || i >= parts.length) return;
+      const p = parts[i], u = new SpeechSynthesisUtterance(es && !p.raw ? tr(p.t) : p.t);
+      u.rate = voiceRate() * (p.slow ? 0.85 : 1); u.pitch = 1; u.lang = voice ? voice.lang : es ? 'es-US' : 'en-US'; if (voice) u.voice = voice;
+      let moved = false; const next = () => { if (moved) return; moved = true; setTimeout(() => say(i + 1), opt.gap || 650); };
+      u.onend = next; u.onerror = next;
+      if (i < parts.length - 1) setTimeout(next, 1500 + u.text.split(/\s+/).length * 550); /* some browsers forget to say when they finish */
+      speakKeep.push(u); speechSynthesis.speak(u);
+    };
+    say(0);
   } catch (e) {}
 }
+try { speechSynthesis.addEventListener('voiceschanged', () => { if (UI && UI.view === 'parent' && UI.ptab === 'settings') render(); }); } catch (e) {}
 
 /* ============================== Content library ============================== */
 const MODES = {
@@ -1616,7 +1782,7 @@ function scheduleRender() {
 document.addEventListener('focusout', () => { if (renderWhenIdle) setTimeout(() => { if (!isTyping() && renderWhenIdle) { renderWhenIdle = false; render(); } }, 50); });
 
 function render() {
-  applyLangArrays();
+  applyLangArrays(); applySkin();
   const y = window.scrollY, keep = UI._keepScroll; UI._keepScroll = false;
   let html = '';
   try {
@@ -1892,7 +2058,7 @@ function childForm(d, isNew) {
     <div class="field"><span>Picture</span><div class="emojis">${AVATARS.map(a => `<button class="emo ${d.avatar === a ? 'on' : ''}" data-a="cfSet" data-f="avatar" data-v="${a}" aria-label="Picture ${a}">${a}</button>`).join('')}</div></div>
     <div class="field"><span>Color</span><div class="colors">${COLORS.map(c => `<button class="sw ${d.color === c.id ? 'on' : ''}" style="background:${c.c}" data-a="cfSet" data-f="color" data-v="${c.id}" aria-label="${c.n}"></button>`).join('')}</div></div>
     <div class="field"><span>Reading font</span><div class="choices"><button class="choice ${d.font !== 'easy' ? 'on' : ''}" data-a="cfSet" data-f="font" data-v="standard">Standard</button><button class="choice ${d.font === 'easy' ? 'on' : ''}" data-a="cfSet" data-f="font" data-v="easy" style="font-family:Lexend,var(--font-body);letter-spacing:.03em">Easy-read<small>Dyslexia-friendly spacing</small></button></div></div>
-    <div class="field"><span>Learning practice</span><div class="choices">${Object.entries(LEARN_LEVELS).map(([id, n]) => `<button class="choice ${learnLevel({ mode: d.mode, learn: d.learn }) === id ? 'on' : ''}" data-a="cfSet" data-f="learn" data-v="${id}">${n}<small>${id === 'early' ? 'Letters, sounds, spelling, numbers to 100' : id === 'school' ? 'Adding, subtracting, times tables, spelling' : 'Hide the Learn tab'}</small></button>`).join('')}</div></div>
+    <div class="field"><span>Learning practice</span><div class="choices">${Object.entries(LEARN_LEVELS).map(([id, n]) => `<button class="choice ${learnLevel({ mode: d.mode, learn: d.learn }) === id ? 'on' : ''}" data-a="cfSet" data-f="learn" data-v="${id}">${n}<small>${id === 'early' ? 'Letters, spelling, numbers, more or less' : id === 'school' ? 'Adding, subtracting, times tables, spelling' : 'Hide the Learn tab'}</small></button>`).join('')}</div></div>
     <div class="field"><span>Secret code type</span><div class="choices">${Object.entries(CODE_TYPES).map(([id, n]) => `<button class="choice ${d.codeType === id ? 'on' : ''}" data-a="cfSet" data-f="codeType" data-v="${id}">${n}</button>`).join('')}</div>
       <p class="small muted">Pictures work well for children who can't read yet.</p></div>
     <div class="field"><span>Secret code: tap 4</span>
@@ -1935,6 +2101,7 @@ function viewSetup() {
         <p class="muted">It takes about 5 minutes. You can change everything later in Grown-up mode.</p>
         <label class="field"><span>App name</span><input class="input" id="su-name" data-in="suName" value="${esc(st.name)}" maxlength="24" autocomplete="off"></label>
       </div>
+      <div class="card stack"><h3>Pick a look</h3>${lookPicker('suSkin')}<p class="small muted">You can switch any time in Grown-up settings.</p></div>
       <div class="card stack consent"><h3>Before you start</h3>
         <p class="small">${onOwnSite() ? "Your family's information stays on this device. Nothing is sent to the A-Z team. No ads, no tracking, nothing sold." : "Your family's information is saved privately in your Claude account. No ads, no tracking, nothing sold."}</p>
         ${UI.showPrivacy ? privacyNotice() + `<button class="btn ghost" data-a="togglePrivacy">Hide the privacy notice</button>` : `<button class="btn ghost" data-a="togglePrivacy">Read the privacy notice</button>`}
@@ -2005,7 +2172,7 @@ ACT.suFinish = async () => {
     const ch = k._template ? makeChart(k.mode, k._faith) : { sections: [], rewards: makeChart(k.mode, false).rewards };
     await saveChart(k.id, ch);
   }
-  const settings = { appName: st.name || 'A-Z', pinHash: await hash(st.pin1.join('|')), warnMin: 5, warnStyle: 'both', sound: true, devoOn: true, allowRemove: true, children, setupDone: true, createdAt: todayStr(), lang: langNow(), consent: { v: PRIVACY_V, at: new Date().toISOString(), guardian: true } };
+  const settings = { appName: st.name || 'A-Z', pinHash: await hash(st.pin1.join('|')), warnMin: 5, warnStyle: 'both', sound: true, devoOn: true, allowRemove: true, children, setupDone: true, createdAt: todayStr(), lang: langNow(), skin: st.skin === 'retro' ? 'retro' : 'calm', consent: { v: PRIVACY_V, at: new Date().toISOString(), guardian: true } };
   S.settings = settings;
   await S.store.set('app/settings', settings).catch(storeErr);
   UI.setup = null; go('who');
@@ -3146,7 +3313,9 @@ function parentSettings() {
   const st = S.settings || {}, pc = UI.pc || (UI.pc = { a: [], b: [], open: false });
   const wm = st.warnMin || 5, ws = st.warnStyle || 'both', prompts = st.prompts || {};
   return `<div class="hello"><h1>Settings</h1></div>
+    ${pLookCard()}
     ${pLangCard()}
+    ${pVoiceCard()}
     <div class="card stack"><label class="field"><span>App name</span><input class="input" id="set-name" data-in="setName" value="${esc(UI.nameDraft != null ? UI.nameDraft : appName())}" maxlength="24" autocomplete="off"></label><button class="btn ghost" data-a="saveName">Save name</button></div>
     <div class="card stack"><h3>Timer warning</h3><p class="small muted">The visual timer warns when this many minutes are left.</p>
       <div class="stepper"><button data-a="setWarn" data-n="-1" aria-label="One minute less">−</button><output class="num">${wm} min</output><button data-a="setWarn" data-n="1" aria-label="One minute more">+</button></div>
@@ -5009,6 +5178,41 @@ function pLangCard() {
     <p class="small muted">Changes the words, buttons and reading voice for the whole family. Names and tasks you typed yourself stay the way you wrote them.</p></div>`;
 }
 
+function pVoiceCard() {
+  const es = langNow() === 'es', list = voiceList(es).filter(v => voiceScore(v, es) > -100).slice(0, 20), cur = voiceFor(es), slow = !!voicePrefs().slow;
+  return `<div class="card stack"><h3>🔊 Reading voice</h3>
+    ${list.length ? `<label class="field"><span>Voice on this device</span><select class="input" data-ch="voicePick" translate="no">${list.map((v, i) => `<option value="${esc(v.voiceURI)}" ${cur && cur.voiceURI === v.voiceURI ? 'selected' : ''}>${esc(v.name)}${i === 0 ? ' ★' : ''}</option>`).join('')}</select></label>
+      <p class="small muted">★ sounds the most natural of the voices this device has.</p>` : `<p class="small muted">This device hasn't shared its voices yet. Tap Test the voice, then come back.</p>`}
+    <div class="choices sm"><button class="choice ${!slow ? 'on' : ''}" data-a="voiceSlow" data-v="0">Normal speed</button><button class="choice ${slow ? 'on' : ''}" data-a="voiceSlow" data-v="1">Slower</button></div>
+    <button class="btn ghost" data-a="voiceTest">▶ Test the voice</button>
+    <p class="small muted">For a more natural voice on an iPhone or iPad, open Settings, then Accessibility, then Read & Speak (Spoken Content on older iPhones), then Voices. Download a voice marked Enhanced or Premium, then pick it here. Each phone, tablet and computer keeps its own choice.</p></div>`;
+}
+ACT.voicePick = (d, el) => { const p = voicePrefs(); p[langNow() === 'es' ? 'es' : 'en'] = el.value; voicePrefsSave(p); unlockSpeech(); ACT.voiceTest(); UI._keepScroll = true; render(); };
+ACT.voiceSlow = d => { const p = voicePrefs(); p.slow = d.v === '1'; voicePrefsSave(p); ACT.voiceTest(); UI._keepScroll = true; render(); };
+ACT.voiceTest = () => { unlockSpeech(); speak(['Hi! This is the voice that reads to your kids.', 'Great job! Keep practicing.']); setTimeout(() => { if (UI.view === 'parent') { UI._keepScroll = true; render(); } }, 600); };
+
+/* ---------- Look: Calm (the original) or Retro. Saved for the whole family in settings.skin. */
+const SKINS = { calm: ['Calm', 'Soft colors and fewer details. The original look.'], retro: ['Retro', 'Bright colors, bold outlines and playful letters.'] };
+function skinNow() { return (S.settings && S.settings.setupDone ? S.settings.skin : UI.setup && UI.setup.skin) || 'calm'; }
+function applySkin() {
+  const sk = skinNow() === 'retro' ? 'retro' : 'calm', root = document.documentElement;
+  if (root.dataset.skin === sk) return;
+  root.dataset.skin = sk;
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', sk === 'retro' ? '#FFF4DC' : '#EDF1F8');
+  try { localStorage.setItem('a-z-skin', sk); } catch (e) {}
+}
+try { if (localStorage.getItem('a-z-skin') === 'retro') document.documentElement.dataset.skin = 'retro'; } catch (e) {}
+function lookPicker(act) {
+  const cur = skinNow();
+  return `<div class="lookpick">${Object.entries(SKINS).map(([id, [n, sub]]) => `<button class="lookbtn ${cur === id ? 'on' : ''}" data-a="${act}" data-v="${id}" aria-pressed="${cur === id}">
+    <span class="lookprev ${id}" aria-hidden="true"><i></i><i></i><i></i></span><b>${n}</b><small>${sub}</small></button>`).join('')}</div>`;
+}
+function pLookCard() {
+  return `<div class="card stack"><h3>🎨 Look</h3>${lookPicker('skinSet')}<p class="small muted">Changes how the app looks for everyone in the family. Everything stays in the same place.</p></div>`;
+}
+ACT.skinSet = d => { if (!SKINS[d.v]) return; saveSettings({ skin: d.v }); play('tap'); UI._keepScroll = true; render(); };
+ACT.suSkin = d => { if (!SKINS[d.v]) return; UI.setup.skin = d.v; play('tap'); UI._keepScroll = true; render(); };
+
 /* ============================== Tough moments and great moments ==============================
    A grown-up logs a moment in three taps: what kind, what happened, what helped.
    Saved in moments/<id>. Reports show when tough moments happen and what helps most. */
@@ -5124,7 +5328,8 @@ const L_ACTS = {
   early: [
     { id: 'letters', e: '🔤', n: 'Letters', sub: 'Find the letter' },
     { id: 'bigsmall', e: '🧩', n: 'Big and little', sub: 'Match the letters' },
-    { id: 'phonics', e: '👂', n: 'Letter sounds', sub: 'What sound does it make?' },
+    /* Letter sounds ('phonics') is paused: phone voices can't say single sounds clearly yet. Its code is kept below. */
+    { id: 'more', e: '⚖️', n: 'More or less', sub: 'Which group has more?' },
     { id: 'sounds', e: '🍎', n: 'First letters', sub: 'What does it start with?' },
     { id: 'spell1', e: '✏️', n: 'Spell words', sub: 'Short words, 1 to 5 letters' },
     { id: 'words', e: '📖', n: 'Words', sub: 'Find the word' },
@@ -5216,6 +5421,12 @@ function spell1List(lang) {
   for (let i = 0; i < Math.max(withPic.length, plain.length); i++) { if (withPic[i]) mix.push(withPic[i]); if (plain[i]) mix.push(plain[i]); }
   return mix.concat(list.filter(x => x.w.length > 3));
 }
+/* More or less for ages 3 to 6: two groups of the same picture. Level 1 has up to 5 in a group and they are easy to tell
+   apart; level 2 goes up to 10; level 3 has groups that are close, like 6 and 7. Three rounds of 8 or more move up a level. */
+const MORE_LV = { 1: { max: 5, minDiff: 2, maxDiff: 4 }, 2: { max: 10, minDiff: 2, maxDiff: 9 }, 3: { max: 10, minDiff: 1, maxDiff: 2 } };
+const MORE_LV_NAME = { 1: 'Up to 5, easy to tell apart', 2: 'Up to 10', 3: 'Up to 10, close together (like 6 and 7)' };
+function moreState(id) { const d = learnDoc(id); return d.more || (d.more = { lvl: 1, good: 0 }); }
+function moreLine(q) { const big = Math.max(q.a, q.b), small = Math.min(q.a, q.b); return q.ask === 'more' ? `${big} is more than ${small}` : `${small} is less than ${big}`; }
 /* Column math for ages 7 to 10. Level 1 has no carrying or borrowing; level 2 mostly does. */
 const MATH = {
   add2: { op: '+', lo: 10, hi: 99, re: 'carrying' }, add3: { op: '+', lo: 100, hi: 999, re: 'carrying' },
@@ -5259,7 +5470,7 @@ function makeQ(k, L) {
   if (L.act === 'sounds') {
     const pics = PIC_WORDS.filter(p => PXART[p[0].replace(/️/g, '')]), keys = pics.map(p => p[0]);
     const pe = weightedPick(keys, 'S:', mem, last), p = pics.find(x => x[0] === pe), w = lang === 'es' ? p[2] : p[1], a = firstLetter(w);
-    return { kind: 'pick', key: 'S:' + pe, item: pe, answer: a, word: w, show: `<span class="lpic">${pe}</span>`, hint: 'What letter does it start with?', say: `${w}. What letter does ${w} start with?`, choices: shuffle([a, ...others(abc, a, 2)]), big: true };
+    return { kind: 'pick', key: 'S:' + pe, item: pe, answer: a, word: w, show: `<span class="lpic">${pe}</span>`, hint: 'What letter does it start with?', say: [{ t: w, raw: true }, `What letter does ${w} start with?`], choices: shuffle([a, ...others(abc, a, 2)]), big: true };
   }
   if (L.act === 'numbers') {
     const g = learnDoc(k.id).numGroup || 0, [lo, hi] = numRange(g), pool = [];
@@ -5287,13 +5498,20 @@ function makeQ(k, L) {
     const letters = [...w.toLowerCase()], pool = 'abcdefghijklmnoprstuvwyz'.split('').filter(c => !letters.includes(c));
     const decoys = L.act === 'spell1' ? (letters.length <= 3 ? 1 : 2) : 2;
     const tiles = shuffle(letters.concat(others(pool, '', decoys))).map((c, i) => ({ c, i }));
-    return { kind: 'spell', key: (L.act === 'spell1' ? 'E:' : 'P:') + w, item: w, answer: w.toLowerCase(), pic, say: `Spell ${w}. ${w}.`, tiles, typed: '', used: [], misses: 0, hintAt: L.act === 'spell1' ? 2 : 3 };
+    return { kind: 'spell', key: (L.act === 'spell1' ? 'E:' : 'P:') + w, item: w, answer: w.toLowerCase(), pic, say: [`Spell the word ${w}.`, { t: w, raw: true, slow: true }], tiles, typed: '', used: [], misses: 0, hintAt: L.act === 'spell1' ? 2 : 3 };
   }
   if (L.act === 'tables') {
     const tabs = L.table ? [L.table] : Array.from({ length: 11 }, (_, i) => i + 2);
     const facts = []; for (const a of tabs) for (let b = 1; b <= 12; b++) facts.push(`${a}x${b}`);
     const f = weightedPick(facts, 'T:', mem, last), [a, b] = f.split('x').map(Number);
     return { kind: 'pad', key: 'T:' + f, item: f, answer: String(a * b), a, b, say: `${a} times ${b}`, entry: '' };
+  }
+  if (L.act === 'more') {
+    const st = moreState(k.id), cfg = MORE_LV[st.lvl] || MORE_LV[1]; let a, b, t = 0;
+    do { a = 1 + rnd(cfg.max); b = 1 + rnd(cfg.max); t++; } while (t < 300 && (a === b || Math.abs(a - b) < cfg.minDiff || Math.abs(a - b) > cfg.maxDiff));
+    const ask = Math.random() < 0.5 ? 'more' : 'less', pic = COUNT_PICS[rnd(COUNT_PICS.length)];
+    const hint = ask === 'more' ? 'Which group has more?' : 'Which group has less?';
+    return { kind: 'sets', key: 'Q:' + ask, item: `${a}:${b}:${ask}`, a, b, ask, pic, lvl: st.lvl, answer: (ask === 'more') === (a > b) ? 'L' : 'R', hint, say: hint };
   }
   if (MATH[L.act]) {
     const cfg = MATH[L.act], lvl = mathState(k.id, L.act).lvl, [a, b] = mathPair(cfg, lvl);
@@ -5328,6 +5546,10 @@ function lrnNext(k) {
       if (L.score === L.n) { doc.numPerfect = (doc.numPerfect || 0) + 1; L.perfect = true; }
       if ((doc.numPerfect || 0) >= NUM_PERFECT) { doc.numGroup = g + 1; doc.numPerfect = 0; L.levelUp = g + 1 > NUM_TOP ? 'all' : numLabel(g + 1); }
     }
+    if (L.act === 'more') {
+      const m = moreState(k.id);
+      if (m.lvl < 3 && L.score >= 8) { m.good = (m.good || 0) + 1; if (m.good >= 3) { m.lvl++; m.good = 0; L.levelUp = 'more' + m.lvl; } }
+    }
     if (MATH[L.act]) {
       const m = mathState(k.id, L.act);
       if (m.lvl === 1 && L.score >= 8) { m.good = (m.good || 0) + 1; if (m.good >= MATH_GOOD) { m.lvl = 2; L.levelUp = MATH[L.act].re; } }
@@ -5344,6 +5566,7 @@ function lrnReveal(L) {
   const q = L.q, es = langNow() === 'es';
   if (L.act === 'sounds') return `${q.word} starts with ${q.answer}`;
   if (L.act === 'phonics') return `${q.word} starts with ${es ? q.letter : q.sound}`;
+  if (L.act === 'more') return moreLine(q);
   return q.answer;
 }
 ACT.lrnGo = d => { const k = kidById(UI.childId); if (!k) return; unlockSpeech(); play('tap'); if (['tables', 'spell', 'readw'].includes(d.v) && !d.t) { UI.lrnPick = d.v; window.scrollTo(0, 0); render(); return; } UI.lrnPick = null; lrnStart(k, d.v, d.v === 'tables' ? { table: d.t === 'mix' ? 0 : Number(d.t) } : d.t ? { tier: d.t } : {}); window.scrollTo(0, 0); render(); };
@@ -5355,12 +5578,12 @@ ACT.lrnPick = (d, el) => {
   const v = d.v, ok = v === L.q.answer;
   if (ok) {
     if (!L.tries) lrnScore(k); lrnRecord(k, !L.tries); L.picked = { v, ok: true }; play('star'); buzz(20); L.busy = true;
-    if (L.act === 'sounds' || L.act === 'phonics') speak(lrnReveal(L)); else if (L.q.wordQ) speak(L.q.answer, true);
+    if (['sounds', 'phonics', 'more'].includes(L.act)) speak(lrnReveal(L)); else if (L.q.wordQ) speak(L.q.answer, true);
     UI._keepScroll = true; render();
-    setTimeout(() => { L.busy = false; lrnNext(k); }, L.act === 'phonics' ? 1100 : 750);
+    setTimeout(() => { L.busy = false; lrnNext(k); }, L.act === 'phonics' || L.act === 'more' ? 1500 : 750);
   } else {
     L.tries++; L.picked = { v, ok: false }; play('oops'); buzz([30, 40, 30]);
-    if (L.tries >= 2) { lrnRecord(k, false); L.reveal = true; L.busy = true; UI._keepScroll = true; render(); speak(lrnReveal(L), !['sounds', 'phonics'].includes(L.act)); setTimeout(() => { L.busy = false; L.reveal = false; lrnNext(k); }, 1700); return; }
+    if (L.tries >= 2) { lrnRecord(k, false); L.reveal = true; L.busy = true; UI._keepScroll = true; render(); speak(lrnReveal(L), !['sounds', 'phonics', 'more'].includes(L.act)); setTimeout(() => { L.busy = false; L.reveal = false; lrnNext(k); }, 2000); return; }
     UI._keepScroll = true; render(); setTimeout(() => lrnSay(k), 300);
   }
 };
@@ -5413,6 +5636,12 @@ function lrnQuestion(k) {
         return `<button class="lchoice ${q.big ? 'big' : ''} ${q.pics ? 'pic' : ''} ${st}" data-a="lrnPick" data-v="${esc(c)}" ${q.pics ? `aria-label="${esc(q.labels[c] || '')}" translate="no"` : ''}>${esc(c)}</button>`;
       }).join('')}</div>`;
     if ((L.picked && L.picked.ok || L.reveal) && (L.act === 'sounds' || L.act === 'phonics')) h += `<p class="lrn-word" translate="no"><b>${esc(q.word.charAt(0).toUpperCase())}</b>${esc(q.word.slice(1))}</p>`;
+  } else if (q.kind === 'sets') {
+    const side = (n, id) => { const st = L.picked && L.picked.v === id ? (L.picked.ok ? 'right' : 'wrong') : L.reveal && id === q.answer ? 'right hint' : ''; const show = (L.picked && L.picked.ok) || L.reveal;
+      return `<button class="setbox ${st}" data-a="lrnPick" data-v="${id}" aria-label="${n}"><span class="setpics">${Array.from({ length: n }, () => `<span>${q.pic}</span>`).join('')}</span>${show ? `<b class="setn num">${n}</b>` : ''}</button>`; };
+    h += `<div class="lrn-q"><button class="say big" data-a="lrnHear" aria-label="Hear it again">🔊</button><p class="lrn-say big">${esc(q.hint)}</p></div>
+      <div class="sets" translate="no">${side(q.a, 'L')}${side(q.b, 'R')}</div>`;
+    if ((L.picked && L.picked.ok) || L.reveal) h += `<p class="lrn-word num">${esc(moreLine(q))}</p>`;
   } else if (q.kind === 'spell') {
     const slots = [...q.answer].map((c, i) => `<span class="slot ${i < q.typed.length ? 'on' : ''}">${i < q.typed.length ? esc(c) : ''}</span>`).join('');
     const hintNext = q.misses >= (q.hintAt || 3) ? q.answer.charAt(q.typed.length) : null;
@@ -5436,6 +5665,8 @@ function lrnDone(k) {
     else if (L.levelUp) level = `<div class="lvlup"><b>Now numbers ${L.levelUp}!</b></div>`;
     else if ((doc.numGroup || 0) <= NUM_TOP) { const g = doc.numGroup || 0, n = doc.numPerfect || 0; level = `<div class="lvlrow"><span class="pdots" aria-hidden="true">${Array.from({ length: NUM_PERFECT }, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('')}</span></div><p class="small"><b>${L.perfect ? 'Perfect round!' : 'Get all 10 right for a perfect round.'}</b></p><p class="small num">${g >= NUM_TOP ? `${n} of ${NUM_PERFECT} perfect rounds to finish your numbers to 100.` : `${n} of ${NUM_PERFECT} perfect rounds to move up to numbers ${numLabel(g + 1)}.`}</p>`; }
   }
+  if (L.act === 'more' && L.levelUp) level = `<div class="lvlup"><b>${L.levelUp === 'more2' ? 'Now groups go up to 10!' : 'Now the groups are closer together!'}</b></div>`;
+  else if (L.act === 'more' && moreState(k.id).lvl < 3) { const left = 3 - (moreState(k.id).good || 0); level = `<p class="small num">Score 8 or more ${left} more time${left === 1 ? '' : 's'} to move up a level.</p>`; }
   if (MATH[L.act] && L.levelUp) level = `<div class="lvlup"><b>Now with ${L.levelUp}!</b></div>`;
   else if (MATH[L.act] && mathState(k.id, L.act).lvl === 1) { const m = mathState(k.id, L.act), left = MATH_GOOD - (m.good || 0); level = `<p class="small num">Score 8 or more ${left} more time${left === 1 ? '' : 's'} to unlock ${MATH[L.act].re}.</p>`; }
   return `<div class="focus lrn-done"><div class="bige">${L.levelUp ? '🏆' : L.score >= 8 ? '🌟' : L.score >= 5 ? '⭐' : '💪'}</div>
@@ -5478,7 +5709,7 @@ function learnSummary(k) {
   const pill = (txt, m) => `<span class="lpill ${known(m) ? 'k' : m && m[1] > m[0] ? 'h' : m ? 'l' : ''}" translate="no">${esc(txt)}</span>`;
   const week = learnStats(k, weekStart(todayStr()), todayStr());
   let h = `<div class="card stack"><h3>Practice level</h3><div class="choices">${Object.entries(LEARN_LEVELS).map(([id, n]) => `<button class="choice ${lv === id ? 'on' : ''}" data-a="learnLevelSet" data-v="${id}">${n}</button>`).join('')}</div>
-    <p class="small muted">${lv === 'early' ? 'Letters, big and little letters, letter sounds, first letters, spelling short words, first words, numbers to 100 and counting. Everything is read aloud.' : lv === 'school' ? 'Adding and subtracting 2-digit and 3-digit numbers, times tables 1 to 12, spelling and reading words.' : 'The Learn tab is hidden.'}</p>
+    <p class="small muted">${lv === 'early' ? 'Letters, big and little letters, first letters, spelling short words, first words, numbers to 100, counting, and more or less. Everything is read aloud.' : lv === 'school' ? 'Adding and subtracting 2-digit and 3-digit numbers, times tables 1 to 12, spelling and reading words.' : 'The Learn tab is hidden.'}</p>
     <p class="small num">${doc.rounds || 0} round${doc.rounds === 1 ? '' : 's'} finished${doc.last ? `, last on ${esc(niceDate(doc.last))}` : ''}.</p>
     <p class="small num"><b>🏆 ${doc.points || 0} points in all, ${week.right} this week.</b></p><p class="small muted">A point for every question answered right the first time.</p>
     <p class="small muted"><span class="lpill k">Knows it</span> <span class="lpill l">Learning</span> <span class="lpill h">Tricky</span> <span class="lpill">Not tried yet</span></p></div>`;
@@ -5491,7 +5722,8 @@ function learnSummary(k) {
       <p class="small muted">A perfect round is 10 of 10 right the first time. ${NUM_PERFECT} perfect rounds move up to the next ten.</p>
       <label class="field"><span>Number group</span><select class="input" data-ch="numGroupSet">${Array.from({ length: NUM_TOP + 2 }, (_, i) => `<option value="${i}" ${i === Math.min(g, NUM_TOP + 1) ? 'selected' : ''}>${i > NUM_TOP ? 'All, 0 to 100' : numLabel(i)}</option>`).join('')}</select></label>
       <div class="lpills">${nums.map(n => pill(n, mem['N:' + n])).join('')}</div>
-      <h3>Letter sounds</h3><div class="lpills">${[...new Set(phonicsPics(lang).map(p => p.L))].filter(x => lang === 'es' || LETTER_SOUND[x]).sort().map(a => pill(a, mem['F:' + a])).join('')}</div>
+      <h3>More or less</h3><p class="small num">${(() => { const m = (doc.more || { lvl: 1 }), q1 = mem['Q:more'] || [0, 0], q2 = mem['Q:less'] || [0, 0], r = q1[0] + q2[0], all = r + q1[1] + q2[1]; return `Level ${m.lvl}: ${MORE_LV_NAME[m.lvl]}.` + (all ? ` ${pctOf(r, all)}% right the first time.` : ''); })()}</p>
+      <div class="choices sm">${[1, 2, 3].map(l => `<button class="choice ${((doc.more || {}).lvl || 1) === l ? 'on' : ''}" data-a="moreLvlSet" data-v="${l}">Level ${l}</button>`).join('')}</div>
       <h3>Letters</h3><div class="lpills">${ABC[lang].map(a => pill(a, mem['L:' + a])).join('')}</div>
       <h3>Big and little</h3><div class="lpills">${ABC[lang].map(a => pill(a + a.toLowerCase(), mem['B:' + a])).join('')}</div>
       <h3>Spelling short words</h3><div class="lpills">${sp.length ? sp.map(w => pill(w, mem['E:' + w])).join('') : '<span class="small muted">None tried yet.</span>'}</div>
@@ -5510,6 +5742,7 @@ function learnSummary(k) {
 }
 ACT.learnLevelSet = d => { const k = kidById(UI.pchild); if (!k) return; saveSettings({ children: kids().map(x => (x.id === k.id ? { ...x, learn: d.v } : x)) }); UI._keepScroll = true; render(); };
 ACT.numGroupSet = (d, el) => { const k = kidById(UI.pchild); if (!k) return; const doc = learnDoc(k.id); doc.numGroup = Number(el.value) || 0; doc.numPerfect = 0; S.store.set('learn/' + k.id, doc).catch(storeErr); toast('Number group changed.'); UI._keepScroll = true; render(); };
+ACT.moreLvlSet = d => { const k = kidById(UI.pchild); if (!k) return; const doc = learnDoc(k.id), m = moreState(k.id); m.lvl = Number(d.v) || 1; m.good = 0; S.store.set('learn/' + k.id, doc).catch(storeErr); UI._keepScroll = true; render(); };
 ACT.mathLvlSet = d => { const k = kidById(UI.pchild); if (!k || !MATH[d.g]) return; const doc = learnDoc(k.id), m = mathState(k.id, d.g); m.lvl = Number(d.v); m.good = m.lvl === 2 ? MATH_GOOD : 0; S.store.set('learn/' + k.id, doc).catch(storeErr); UI._keepScroll = true; render(); };
 function learnStats(k, from, to) {
   let rounds = 0, right = 0, total = 0; const acts = {};
@@ -6157,7 +6390,7 @@ const ES = {
 "Butterfly hug": "Abrazo de mariposa",
 "Cake": "Pastel",
 "Call out a number with each catch.": "Di un número en voz alta cada vez que la atrapes.",
-"Calm": "Calma",
+"Calm": "Tranquilo",
 "Calm and ready": "Tranquilo y listo",
 "Calm music": "Música tranquila",
 "Calm-down time": "Hora de calmarse",
@@ -7269,6 +7502,34 @@ const ES = {
 "Squeeze tight!": "¡Aprieta fuerte!",
 "Go to the start screen": "Ir a la pantalla de inicio",
 "Something went wrong on this screen": "Algo salió mal en esta pantalla",
+"More or less": "Más o menos",
+"Which group has more?": "¿Qué grupo tiene más?",
+"Which group has less?": "¿Qué grupo tiene menos?",
+"Now groups go up to 10!": "¡Ahora los grupos llegan hasta 10!",
+"Now the groups are closer together!": "¡Ahora los grupos se parecen más!",
+"Up to 5, easy to tell apart": "Hasta 5, fáciles de distinguir",
+"Up to 10": "Hasta 10",
+"Up to 10, close together (like 6 and 7)": "Hasta 10, muy parecidos (como 6 y 7)",
+"Letters, big and little letters, first letters, spelling short words, first words, numbers to 100, counting, and more or less. Everything is read aloud.": "Letras, mayúsculas y minúsculas, primeras letras, deletrear palabras cortas, primeras palabras, números hasta el 100, contar, y más o menos. Todo se lee en voz alta.",
+"Letters, spelling, numbers, more or less": "Letras, deletreo, números, más o menos",
+"Voice on this device": "Voz en este aparato",
+"★ sounds the most natural of the voices this device has.": "★ es la voz más natural que tiene este aparato.",
+"sounds the most natural of the voices this device has.": "es la voz más natural que tiene este aparato.",
+"This device hasn't shared its voices yet. Tap Test the voice, then come back.": "Este aparato todavía no muestra sus voces. Toca Probar la voz y vuelve aquí.",
+"Normal speed": "Velocidad normal",
+"Slower": "Más despacio",
+"Test the voice": "Probar la voz",
+"For a more natural voice on an iPhone or iPad, open Settings, then Accessibility, then Read & Speak (Spoken Content on older iPhones), then Voices. Download a voice marked Enhanced or Premium, then pick it here. Each phone, tablet and computer keeps its own choice.": "Para una voz más natural en un iPhone o iPad, abre Configuración, luego Accesibilidad, luego Leer y hablar (Contenido leído en iPhones más viejos), luego Voces. Descarga una voz marcada como Mejorada o Premium y elígela aquí. Cada teléfono, tableta y computadora guarda su propia elección.",
+"Hi! This is the voice that reads to your kids.": "¡Hola! Esta es la voz que les lee a tus hijos.",
+"Look": "Estilo",
+"Pick a look": "Elige un estilo",
+"Retro": "Retro",
+"Soft colors and fewer details. The original look.": "Colores suaves y menos detalles. El estilo original.",
+"Bright colors, bold outlines and playful letters.": "Colores vivos, bordes gruesos y letras divertidas.",
+"Changes how the app looks for everyone in the family. Everything stays in the same place.": "Cambia cómo se ve la app para toda la familia. Todo queda en el mismo lugar.",
+"You can switch any time in Grown-up settings.": "Puedes cambiarlo cuando quieras en la configuración para adultos.",
+"Give the task a name.": "Ponle un nombre a la tarea.",
+"Gymnast balance. Stand on one foot with your arms out wide. Then switch feet. Look at one spot to help you balance.": "Equilibrio de gimnasta. Párate en un pie con los brazos bien abiertos. Luego cambia de pie. Mira un punto fijo para mantener el equilibrio.",
 "Mad": "Enojado",
 "Sad": "Triste",
 "Worried": "Preocupado",
@@ -7653,6 +7914,12 @@ const ES_RX = [
   [/^The answer is (\d+)$/, 'La respuesta es $1'],
   [/^Finish a round of 10 to earn a star\. (\d) stars? left today\.$/, (m, n) => `Termina una ronda de 10 para ganar una estrella. ${plural(n, 'Queda 1 estrella', `Quedan ${n} estrellas`)} hoy.`],
   [/^Question (\d+) of (\d+)$/, 'Pregunta $1 de $2'],
+  [/^What letter does (.+) start with\?$/, '¿Con qué letra empieza $1?'],
+  [/^Spell the word (.+)\.$/, 'Deletrea la palabra $1.'],
+  [/^(\d+) is more than (\d+)$/, '$1 es más que $2'],
+  [/^(\d+) is less than (\d+)$/, '$1 es menos que $2'],
+  [/^Score 8 or more (\d+) more times? to move up a level\.$/, (m, n) => `Saca 8 o más ${plural(n, '1 vez', `${n} veces`)} más para subir de nivel.`],
+  [/^Level (\d): (.+?)\.(?: (\d+)% right the first time\.)?$/, (m, l, name, pct) => `Nivel ${l}: ${tIn(name)}.${pct ? ` ${pct}% a la primera.` : ''}`],
   [/^You earned ⭐ (\d+) stars? today\.$/u, (m, n) => `Ganaste ⭐ ${n} ${plural(n, 'estrella', 'estrellas')} hoy.`],
   [/^(.+) is all done!$/, (m, a) => `¡${tIn(a)}: todo listo!`],
   [/^Fact (\d+) of (\d+)$/, 'Dato $1 de $2'],
@@ -8116,7 +8383,8 @@ const PXART = {
   "🔬": '|..gg|..lgg|...lgg|....lgg|.....lgg.DD|......lggDD|.......lgDD|.......cDDD|.....kkkkDD|..........DD|.........DD|.........DD|....DDDDDDDD|...DDDDDDDDDD',
   "💄": '||.......rr|......rrrr|......rrrR|......rrrR|......rrrR|.....hyyyyh|.....hyyyyh|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....pqqqqq|.....qqqqqq',
   "💡": '||......yyyy|....yyyyyyyy|...ywwyyyyyyy|...ywyyyyyyyy|...yyyyyyyyyy|...yyyyyyyyyy|....yyyyyyyy|.....yyyyyy|......hyyh|.....llllll|.....gggggg|.....llllll|......gggg',
-  "🎲": '||...wwwwwwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..wwwwwkkwwwww|..wwwwwkkwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..llllllllllll|...llllllllll'
+  "🎲": '||...wwwwwwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..wwwwwkkwwwww|..wwwwwkkwwwww|..wwwwwwwwwwww|..wwkkwwwwkkww|..wwkkwwwwkkww|..wwwwwwwwwwww|..llllllllllll|...llllllllll',
+  "⚖": '||.......yy|..yyyyyyyyyyyy|..h....yy....h|.h.h...yy...h.h|h...h..yy..h...h|yyyyy..yy..yyyyy|.yyy...yy...yyy|.......yy|.......yy|.......yy|.....hhhhhh|....yyyyyyyy'
 };
 const PXCELL = {}, PXC = {};
 const pxKey = e => String(e).replace(/\uFE0F/g, '');
