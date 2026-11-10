@@ -1,0 +1,18 @@
+name = "a-z-reminders"
+main = "worker.js"
+compatibility_date = "2026-06-01"
+
+[triggers]
+crons = ["* * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "a-z-reminders"
+database_id = "PASTE-THE-DATABASE-ID-HERE"
+
+[vars]
+ALLOW_ORIGIN = "https://YOUR-GITHUB-NAME.github.io"
+VAPID_PUBLIC = "PASTE-THE-PUBLIC-KEY-HERE"
+VAPID_SUBJECT = "mailto:YOUR-EMAIL"
+# The private key is kept as a secret, not in this file:
+#   npx wrangler secret put VAPID_PRIVATE_JWK

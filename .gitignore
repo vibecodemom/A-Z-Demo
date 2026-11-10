@@ -1,0 +1,11 @@
+# Private: the copy of the A-Z artifact and the scripts and lists that know real names. Never upload these.
+private/
+# Made by the Spanish and pixel-art scripts, for updating the artifact on claude.ai
+translations/es.js
+pixel-art/pixel-art.js
+# Claude Code's local settings
+.claude/
+# Mac and Python clutter
+.DS_Store
+__pycache__/
+*.pyc
