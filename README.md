@@ -1,4 +1,4 @@
-# A-Z
+# Zarya Daily
 
 A calm routine, feelings and rewards app for kids, made for families with ADHD and autism in mind.
 
@@ -8,10 +8,10 @@ The demo has a pretend family, Maya and Leo, so you can look around and see the 
 
 ## How this repo works
 
-The A-Z app is made and changed in Claude, as a claude.ai artifact. This repo only builds the public demo from a copy of it. It works one way: nothing in this repo changes the app in Claude.
+The Zarya Daily app (first called A-Z) is made and changed in Claude, as a claude.ai artifact. This repo only builds the public demo from a copy of it. It works one way: nothing in this repo changes the app in Claude.
 
 ```
-A-Z app in Claude  →  read-only copy in private/  →  python3 build.py  →  index.html (the demo)  →  GitHub Pages
+Zarya Daily app in Claude  →  read-only copy in private/  →  python3 build.py  →  index.html (the demo)  →  GitHub Pages
 ```
 
 Changes to the app don't reach GitHub by themselves. After changing the app, update the demo (see below).
@@ -19,7 +19,7 @@ Changes to the app don't reach GitHub by themselves. After changing the app, upd
 | File or folder | What it is |
 |---|---|
 | `index.html` | The demo that GitHub Pages shows. Made by `build.py`, so don't edit it by hand. |
-| `build.py` | Makes `index.html` from the copy of the app. It swaps out family details, disconnects the Claude storage code, adds the pretend family, and stops without writing anything if a family detail is left. |
+| `build.py` | Makes `index.html` from the copy of the app. It swaps out family details, disconnects the Claude storage code, adds the pretend family and the Sunrise bounce opening screen, and stops without writing anything if a family detail is left. |
 | `demo-family.js` | The pretend family (Maya and Leo) and the demo welcome card. |
 | `app-files/` | Icons, home-screen settings and the offline file for the full app. The full app (empty, for real families) isn't published yet. |
 | `pixel-art/` | The 16x16 pixel pictures, drawn in Python. `python3 pixel-art/export_all.py` writes `pixel-art/pixel-art.js`, which replaces the "A-Z pixel pictures" section of the app in Claude. |
@@ -29,7 +29,7 @@ Changes to the app don't reach GitHub by themselves. After changing the app, upd
 
 ## Updating the demo after the app changes
 
-In Claude Code, in this folder, say: **"Update the demo from the A-Z artifact."** Claude reads a fresh copy of the app (read only), runs `python3 build.py`, checks the result, and asks before pushing to GitHub.
+In Claude Code, in this folder, say: **"Update the demo from the Zarya Daily artifact."** Claude reads a fresh copy of the app (read only), runs `python3 build.py`, checks the result, and asks before pushing to GitHub.
 
 To do it by hand: save the app's page as `private/family-app.html`, run `python3 build.py`, then commit and push. GitHub Pages updates about a minute later.
 

@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>A-Z</title>
-<meta name="description" content="A-Z: picture routines, timers, reminders, rewards and calm-down tools for kids and families. Demo with a pretend family.">
+<title>Zarya Daily</title>
+<meta name="description" content="Zarya Daily: picture routines, timers, reminders, rewards and calm-down tools for kids and families. Demo with a pretend family.">
 <meta name="theme-color" content="#EDF1F8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -716,6 +716,20 @@ textarea#rtext { min-height: 220px; font-size: .85rem; }
 #splash .stag { margin: 0; font-weight: 700; opacity: .85; animation: splashIn 1s .35s ease both; }
 @keyframes splashIn { from { opacity: 0; transform: translateY(14px) scale(.92); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { #splash .smark, #splash .sname, #splash .sname span, #splash .stag { animation: none !important; } }
+/* Demo opening screen: Sunrise bounce. A sun rises, its rays turn, and the letters drop onto it and bounce. Same colors in light and dark. */
+#splash { background: #FFF3DE; color: #1E3FA8; overflow: hidden; }
+#splash .sr-disc { position: absolute; left: 50%; top: 50%; width: 260px; height: 260px; margin: -140px 0 0 -130px; border-radius: 50%; background: #FFC83D; box-shadow: 0 0 0 20px #FFE08A, 0 0 0 40px #FFEDBD; animation: srRise 1s cubic-bezier(.2,.8,.2,1) both; }
+#splash .sr-rays { position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin-top: -10px; animation: srRaysIn .6s .8s ease-out both, srTurn 24s .8s linear infinite; }
+#splash .sr-rays b { position: absolute; left: -8px; top: -208px; width: 16px; height: 36px; border-radius: 8px; background: #FFB020; transform-origin: 8px 208px; transform: rotate(calc(var(--k) * 30deg)); }
+#splash .sname { position: relative; z-index: 3; margin-top: -20px; letter-spacing: .02em; text-shadow: 0 4px 0 rgba(30, 63, 168, .16); animation: none; }
+#splash .sname span { transform-origin: 50% 100%; animation: srDrop .95s calc(.55s + var(--i) * .08s) cubic-bezier(.3,.7,.4,1) both; }
+#splash .stag { position: relative; z-index: 3; color: #7A4A12; font-size: 17px; opacity: 1; animation: srFadeUp .6s 1.9s ease-out both; }
+@keyframes srRise { from { transform: translateY(380px) scale(.7); } to { transform: none; } }
+@keyframes srRaysIn { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes srTurn { to { rotate: 360deg; } }
+@keyframes srDrop { 0% { transform: translateY(-470px); opacity: 0; } 8% { opacity: 1; } 55% { transform: translateY(0) scale(1.2, .8); } 70% { transform: translateY(-26px) scale(.94, 1.06); } 85% { transform: translateY(0) scale(1.05, .95); } 100% { transform: none; opacity: 1; } }
+@keyframes srFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { #splash .sr-disc, #splash .sr-rays { animation: none !important; } }
 /* Up next card on Today */
 .upnext { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 24px; background: var(--surface); box-shadow: var(--shadow), inset 0 -5px 0 var(--kid); }
 .upnext .kring { width: 72px; height: 72px; } .upnext .kava { width: 60px; height: 60px; font-size: 2.1rem; }
@@ -1288,7 +1302,7 @@ body.vp-on { overflow: hidden; }
 .card.demo { background: var(--star-soft); box-shadow: none; }
 </style>
 <div id="app"></div><script>window.AZ_LS_KEY = "a-z-demo-data";</script>
-<div id="splash" aria-hidden="true"><div class="sname" id="splashname"><span style="--i:0">Z</span><span style="--i:1">a</span><span style="--i:2">r</span><span style="--i:3">y</span><span style="--i:4">a</span><span style="--i:5">&nbsp;</span><span style="--i:6">D</span><span style="--i:7">a</span><span style="--i:8">i</span><span style="--i:9">l</span><span style="--i:10">y</span></div><p class="stag">Routines, rewards and calm</p></div>
+<div id="splash" aria-hidden="true"><div class="sr-disc"></div><div class="sr-rays"><b style="--k:0"></b><b style="--k:1"></b><b style="--k:2"></b><b style="--k:3"></b><b style="--k:4"></b><b style="--k:5"></b><b style="--k:6"></b><b style="--k:7"></b><b style="--k:8"></b><b style="--k:9"></b><b style="--k:10"></b><b style="--k:11"></b></div><div class="sname" id="splashname"><span style="--i:0">Z</span><span style="--i:1">a</span><span style="--i:2">r</span><span style="--i:3">y</span><span style="--i:4">a</span><span style="--i:5">&nbsp;</span><span style="--i:6">D</span><span style="--i:7">a</span><span style="--i:8">i</span><span style="--i:9">l</span><span style="--i:10">y</span></div><p class="stag">Routines, rewards and calm</p></div>
 <script>
 'use strict';
 /* ============================== Utilities ============================== */
@@ -1576,7 +1590,7 @@ const chartOf = id => S.charts[id] || { sections: [], rewards: [] };
    Only small picture data is accepted, so a restored backup can't sneak anything else into the page. */
 const safePic = v => (typeof v === 'string' && v.length < 60000 && /^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(v) ? v : '');
 function face(k) { const pic = k && safePic(k.pic); return pic ? `<img class="face ${k.picKind === 'pixel' ? 'pix' : ''}" src="${pic}" alt="" draggable="false">` : esc((k && k.avatar) || '⭐'); }
-const appName = () => { const n = S.settings && S.settings.appName; return n && n !== 'A-Z' ? n : 'A-Z'; };
+const appName = () => { const n = S.settings && S.settings.appName; return n && n !== 'A-Z' ? n : 'Zarya Daily'; };
 function saveSettings(patch) { const next = deepMerge(clone(S.settings) || {}, patch); if (patch.children) next.children = patch.children; if (patch.helpers) next.helpers = patch.helpers; S.settings = next; return S.store.set('app/settings', next).catch(storeErr); }
 function saveChart(id, chart) { S.charts[id] = chart; pushResync(); return S.store.set('charts/' + id, chart).catch(storeErr); }
 function storeErr(e) {
@@ -2493,9 +2507,9 @@ function draftToKid(d, order) {
 /* ============================== First-run setup ============================== */
 function viewSetup() {
   const st = UI.setup || (UI.setup = { step: 0, pin1: [], pin2: [], added: [] });
-  const head = topBar(`<div class="brand"><span class="mark" aria-hidden="true">★</span>${esc(st.name || 'A-Z')}</div><div class="spacer"></div><span class="label">Setup ${Math.min(st.step + 1, 3)} of 3</span>`);
+  const head = topBar(`<div class="brand"><span class="mark" aria-hidden="true">★</span>${esc(st.name || 'Zarya Daily')}</div><div class="spacer"></div><span class="label">Setup ${Math.min(st.step + 1, 3)} of 3</span>`);
   if (st.step === 0) {
-    if (st.name == null) st.name = 'A-Z';
+    if (st.name == null) st.name = 'Zarya Daily';
     return head + `<main class="page no-tabs">
       <div class="row between"><div class="hello"><p class="label">Welcome</p><h1>Let's set up your family's app</h1></div>${langBtn('cbtn slim')}</div>
       <div class="card stack">
@@ -2505,10 +2519,10 @@ function viewSetup() {
       </div>
       <div class="card stack"><h3>Pick a look</h3>${lookPicker('suSkin')}<p class="small muted">You can switch any time in Grown-up settings.</p></div>
       <div class="card stack consent"><h3>Before you start</h3>
-        <p class="small">${onOwnSite() ? "Your family's information stays on this device. Nothing is sent to the A-Z team. No ads, no tracking, nothing sold." : "Your family's information is saved privately in your Claude account. No ads, no tracking, nothing sold."}</p>
+        <p class="small">${onOwnSite() ? "Your family's information stays on this device. Nothing is sent to the Zarya Daily team. No ads, no tracking, nothing sold." : "Your family's information is saved privately in your Claude account. No ads, no tracking, nothing sold."}</p>
         ${UI.showPrivacy ? privacyNotice() + `<button class="btn ghost" data-a="togglePrivacy">Hide the privacy notice</button>` : `<button class="btn ghost" data-a="togglePrivacy">Read the privacy notice</button>`}
         <button class="check-row ${st.ok1 ? 'on' : ''}" data-a="suOk" data-v="ok1" aria-pressed="${!!st.ok1}"><span class="cbox">${st.ok1 ? '✓' : ''}</span><span>I'm the parent or legal guardian of the children I add, or an adult setting this up for myself.</span></button>
-        <button class="check-row ${st.ok2 ? 'on' : ''}" data-a="suOk" data-v="ok2" aria-pressed="${!!st.ok2}"><span class="cbox">${st.ok2 ? '✓' : ''}</span><span>I've read the privacy notice and agree to how A-Z keeps my family's information.</span></button>
+        <button class="check-row ${st.ok2 ? 'on' : ''}" data-a="suOk" data-v="ok2" aria-pressed="${!!st.ok2}"><span class="cbox">${st.ok2 ? '✓' : ''}</span><span>I've read the privacy notice and agree to how Zarya Daily keeps my family's information.</span></button>
       </div>
       <p class="pad-msg" aria-live="polite">${esc(st.msg || '')}</p>
       <button class="btn primary big full" data-a="suNext" ${st.ok1 && st.ok2 ? '' : 'aria-disabled="true"'}>Get started</button></main>`;
@@ -2545,7 +2559,7 @@ function viewSetup() {
 }
 ACT.suName = (d, el) => { UI.setup.name = el.value; };
 ACT.suOk = d => { UI.setup[d.v] = !UI.setup[d.v]; UI.setup.msg = ''; UI._keepScroll = true; render(); };
-ACT.suNext = () => { const st = UI.setup; if (!(st.ok1 && st.ok2)) { st.msg = 'Please check both boxes to continue.'; UI._keepScroll = true; render(); return; } st.name = (st.name || '').trim() || 'A-Z'; st.step = 1; st.msg = ''; UI.showPrivacy = false; render(); };
+ACT.suNext = () => { const st = UI.setup; if (!(st.ok1 && st.ok2)) { st.msg = 'Please check both boxes to continue.'; UI._keepScroll = true; render(); return; } st.name = (st.name || '').trim() || 'Zarya Daily'; st.step = 1; st.msg = ''; UI.showPrivacy = false; render(); };
 ACT.suPinRestart = () => { UI.setup.pin1 = []; UI.setup.pin2 = []; UI.setup.msg = ''; render(); };
 ACT.suPin = d => {
   const st = UI.setup, confirming = st.pin1.length === 4, arr = confirming ? st.pin2 : st.pin1;
@@ -2574,7 +2588,7 @@ ACT.suFinish = async () => {
     const ch = k._template ? makeChart(k.mode, k._faith) : { sections: [], rewards: makeChart(k.mode, false).rewards };
     await saveChart(k.id, ch);
   }
-  const settings = { appName: st.name || 'A-Z', pinHash: await hash(st.pin1.join('|')), warnMin: 5, warnStyle: 'both', sound: true, devoOn: true, allowRemove: true, children, setupDone: true, createdAt: todayStr(), lang: langNow(), skin: st.skin === 'retro' ? 'retro' : 'calm', consent: { v: PRIVACY_V, at: new Date().toISOString(), guardian: true } };
+  const settings = { appName: st.name || 'Zarya Daily', pinHash: await hash(st.pin1.join('|')), warnMin: 5, warnStyle: 'both', sound: true, devoOn: true, allowRemove: true, children, setupDone: true, createdAt: todayStr(), lang: langNow(), skin: st.skin === 'retro' ? 'retro' : 'calm', consent: { v: PRIVACY_V, at: new Date().toISOString(), guardian: true } };
   S.settings = settings;
   await S.store.set('app/settings', settings).catch(storeErr);
   UI.setup = null; go('who');
@@ -3832,7 +3846,7 @@ function parentSettings() {
     <button class="btn ghost full" data-a="lock">🔒 Lock grown-up mode</button>`;
 }
 ACT.setName = (d, el) => { UI.nameDraft = el.value; };
-ACT.saveName = () => { const n = (UI.nameDraft != null ? UI.nameDraft : appName()).trim() || 'A-Z'; UI.nameDraft = null; saveSettings({ appName: n }); toast('Name saved.'); render(); };
+ACT.saveName = () => { const n = (UI.nameDraft != null ? UI.nameDraft : appName()).trim() || 'Zarya Daily'; UI.nameDraft = null; saveSettings({ appName: n }); toast('Name saved.'); render(); };
 ACT.setWarn = d => { const v = Math.max(1, Math.min(15, ((S.settings && S.settings.warnMin) || 5) + Number(d.n))); saveSettings({ warnMin: v }); UI._keepScroll = true; render(); };
 ACT.setWarnStyle = d => { saveSettings({ warnStyle: d.v }); UI._keepScroll = true; render(); };
 ACT.testWarn = () => { unlockSpeech(); warnAlert(); };
@@ -5802,7 +5816,7 @@ async function saveFile(filename, text, type) {
   setTimeout(() => URL.revokeObjectURL(url), 5000);
   return true;
 }
-const fileSafe = s => String(s || '').replace(/[\\/:*?"<>|]+/g, '').trim() || 'A-Z';
+const fileSafe = s => String(s || '').replace(/[\\/:*?"<>|]+/g, '').trim() || 'Zarya Daily';
 ACT.backupSave = async () => {
   try {
     await saveFile(`${fileSafe(appName())} backup ${todayStr()}.json`, JSON.stringify(backupData()), 'application/json');
@@ -5816,11 +5830,11 @@ function validBackup(b) {
 }
 ACT.restorePick = (d, el) => {
   const f = el.files && el.files[0]; if (!f) return;
-  if (f.size > 20 * 1024 * 1024) { toast("That file is too big to be an A-Z backup."); return; }
+  if (f.size > 20 * 1024 * 1024) { toast("That file is too big to be a Zarya Daily backup."); return; }
   const rd = new FileReader();
   rd.onload = () => {
     let b = null; try { b = JSON.parse(rd.result); } catch (e) {}
-    if (!validBackup(b)) { UI.restore = null; toast("That file isn't an A-Z backup."); UI._keepScroll = true; render(); return; }
+    if (!validBackup(b)) { UI.restore = null; toast("That file isn't a Zarya Daily backup."); UI._keepScroll = true; render(); return; }
     UI.restore = { b, name: f.name }; UI.confirm = null; UI._keepScroll = true; render();
   };
   rd.readAsText(f); el.value = '';
@@ -5864,11 +5878,11 @@ ACT.goBackup = () => { UI.ptab = 'settings'; UI.pchild = null; UI.edit = null; f
 function privacyNotice() {
   const own = onOwnSite();
   return `<div class="privacy stack">
-    <p><b>The short version:</b> A-Z is a family tool, not a data business. There are no ads, no tracking and nothing is ever sold.</p>
-    <h4>What A-Z saves</h4>
+    <p><b>The short version:</b> Zarya Daily is a family tool, not a data business. There are no ads, no tracking and nothing is ever sold.</p>
+    <h4>What Zarya Daily saves</h4>
     <p>Only what you type or tap in: first names or nicknames, a picture, each child's age group, routines and times, check-offs, stars, check-ins, feelings and calm-down choices, moments you log, practice answers, pet and island play, approved video links, and your grown-up passcode (saved scrambled, never as the numbers).</p>
     <h4>Where it is kept</h4>
-    <p>${own ? 'On this website, everything stays on this phone or tablet, inside the browser. It is not sent to the A-Z team or anyone else. Clearing your browser data or deleting the app from this device erases it, so save a backup now and then.' : "Inside Claude, everything is saved privately in the owner's Claude account. Only the owner and people the owner shares the app with as an Editor can open it."}</p>
+    <p>${own ? 'On this website, everything stays on this phone or tablet, inside the browser. It is not sent to the Zarya Daily team or anyone else. Clearing your browser data or deleting the app from this device erases it, so save a backup now and then.' : "Inside Claude, everything is saved privately in the owner's Claude account. Only the owner and people the owner shares the app with as an Editor can open it."}</p>
     <h4>What is never collected</h4>
     <p>No last names, exact birthdays, addresses, school names, phone numbers or exact location. Please don't type those into notes either. Birth month and year are optional and only used to tell you when a child can move up an age group. A profile photo is optional too: only a small square copy is kept, and pixel art works just as well.</p>
     <h4>Outside services</h4>
@@ -5876,12 +5890,12 @@ function privacyNotice() {
     <h4>Your choices</h4>
     <p>You can see everything in Grown-up mode, save a copy of it all with Backup, and erase it all with Delete everything in Settings. Children can't open Grown-up mode without your passcode.</p>
     <h4>Questions</h4>
-    <p>${PRIVACY_CONTACT ? `Write to ${esc(PRIVACY_CONTACT)}.` : 'Ask the person who invited you to try A-Z.'}</p>
-    <p class="small muted">Privacy notice version ${PRIVACY_V}. This is a beta. If anything about how A-Z handles information changes, you'll be asked to read and agree again.</p></div>`;
+    <p>${PRIVACY_CONTACT ? `Write to ${esc(PRIVACY_CONTACT)}.` : 'Ask the person who invited you to try Zarya Daily.'}</p>
+    <p class="small muted">Privacy notice version ${PRIVACY_V}. This is a beta. If anything about how Zarya Daily handles information changes, you'll be asked to read and agree again.</p></div>`;
 }
 function pPrivacyCard() {
   return `<div class="card stack"><h3>🔒 Privacy and your family's data</h3>
-    <p class="small muted">${onOwnSite() ? "Everything is saved only on this device. Nothing is sent to the A-Z team." : "Everything is saved privately in your Claude account."} No ads, no tracking, nothing sold.</p>
+    <p class="small muted">${onOwnSite() ? "Everything is saved only on this device. Nothing is sent to the Zarya Daily team." : "Everything is saved privately in your Claude account."} No ads, no tracking, nothing sold.</p>
     ${UI.showPrivacy ? privacyNotice() + `<button class="btn ghost" data-a="togglePrivacy">Hide the privacy notice</button>` : `<button class="btn ghost" data-a="togglePrivacy">Read the privacy notice</button>`}
     <div class="dangerbox"><b>Delete everything</b><p class="small muted">Erases all profiles, routines, history, moments, practice, pets and settings${S.assets ? ', plus uploaded photos and recordings' : ''} from ${onOwnSite() ? 'this device' : 'this app'}. Save a backup first if you might want it back. This can't be undone.</p>
       ${UI.wiping ? '<button class="btn danger" disabled>Deleting…</button>' : confirmBtn('wipe', 'wipeAll', 'Delete everything')}</div></div>`;
@@ -9970,7 +9984,7 @@ function remBody(it) { return it.st.sub ? tr(it.st.sub) : `${tr(it.s.n)} · ${ap
 function icsText(items) {
   const cfg = remCfg(), esc2 = s => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
   const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
-  const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//A-Z//Family routines//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:' + esc2(appName() + ' ' + tr('reminders'))];
+  const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Zarya Daily//Family routines//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:' + esc2(appName() + ' ' + tr('reminders'))];
   for (const it of items) {
     const dur = Math.max(5, Math.min(60, stMins(it.st)[0] || 10));
     L.push('BEGIN:VEVENT', `UID:${it.k.id}-${it.st.id}@a-z-family`, 'DTSTAMP:' + stamp, 'DTSTART:' + icsDate(firstDate(it.days), it.time), `DURATION:PT${dur}M`,
@@ -10117,7 +10131,7 @@ const ES = {
 "A grown-up can turn it on in your profile.": "Un adulto puede activarlo en tu perfil.",
 "A new kid-friendly devotional each day, opened from the devotional step": "Un devocional nuevo para niños cada día, que se abre desde el paso del devocional",
 "A quick walk, inside or outside.": "Una caminata corta, adentro o afuera.",
-"A-Z is a family tool, not a data business. There are no ads, no tracking and nothing is ever sold.": "A-Z es una herramienta para la familia, no un negocio de datos. No hay anuncios, no hay rastreo y nunca se vende nada.",
+"Zarya Daily is a family tool, not a data business. There are no ads, no tracking and nothing is ever sold.": "Zarya Daily es una herramienta para la familia, no un negocio de datos. No hay anuncios, no hay rastreo y nunca se vende nada.",
 "Add": "Agregar",
 "Add a child": "Agregar un niño",
 "Add a level": "Agregar un nivel",
@@ -10157,7 +10171,7 @@ const ES = {
 "Ask for a break": "Pedir un descanso",
 "Ask for a hug": "Pedir un abrazo",
 "Ask for help": "Pedir ayuda",
-"Ask the person who invited you to try A-Z.": "Pregúntale a la persona que te invitó a probar A-Z.",
+"Ask the person who invited you to try Zarya Daily.": "Pregúntale a la persona que te invitó a probar Zarya Daily.",
 "Asking for help is brave. Find a grown-up and say": "Pedir ayuda es de valientes. Busca a un adulto y dile",
 "At the end-of-day time, if some of the list is still left": "A la hora de fin del día, si todavía falta algo de la lista",
 "At the time": "A la hora",
@@ -10319,7 +10333,7 @@ const ES = {
 "End of the day": "Fin del día",
 "Erases all profiles, routines, history, moments, practice, pets and settings from this device. Save a backup first if you might want it back. This can't be undone.": "Borra todos los perfiles, rutinas, historial, momentos, práctica, mascotas y ajustes de este aparato. Guarda una copia antes si quizá lo quieras recuperar. No se puede deshacer.",
 "Every day": "Todos los días",
-"Everything is saved only on this device. Nothing is sent to the A-Z team. No ads, no tracking, nothing sold.": "Todo se guarda solo en este aparato. No se envía nada al equipo de A-Z. Sin anuncios, sin rastreo, nada se vende.",
+"Everything is saved only on this device. Nothing is sent to the Zarya Daily team. No ads, no tracking, nothing sold.": "Todo se guarda solo en este aparato. No se envía nada al equipo de Zarya Daily. Sin anuncios, sin rastreo, nada se vende.",
 "Extra kindness": "Amabilidad extra",
 "Extra words (optional)": "Palabras extra (opcional)",
 "Face": "Carita",
@@ -10460,7 +10474,7 @@ const ES = {
 "I'm calm now": "Ya estoy tranquilo",
 "I'm done": "Ya terminé",
 "I'm the parent or legal guardian of the children I add, or an adult setting this up for myself.": "Soy la madre, el padre o el tutor legal de los niños que agrego, o un adulto que lo configura para sí mismo.",
-"I've read the privacy notice and agree to how A-Z keeps my family's information.": "Leí el aviso de privacidad y acepto cómo A-Z guarda la información de mi familia.",
+"I've read the privacy notice and agree to how Zarya Daily keeps my family's information.": "Leí el aviso de privacidad y acepto cómo Zarya Daily guarda la información de mi familia.",
 "Ice cream": "Helado",
 "If a child's list isn't finished by this time, a single \"keep going\" phrase pops up. Finishing the whole list earlier shows a single \"great day\" phrase right away.": "Si la lista de un niño no está terminada a esta hora, aparece una frase de \"sigue así\". Si termina toda la lista antes, aparece enseguida una frase de \"gran día\".",
 "If you add words, the app shows them big and can read them out loud.": "Si agregas palabras, la app las muestra en grande y puede leerlas en voz alta.",
@@ -10607,7 +10621,7 @@ const ES = {
 "Old school look": "Estilo clásico",
 "On": "Encendido",
 "On iPhone or iPad: open the link in Safari, tap Share, then Add to Home Screen. On Android: open it in Chrome, tap the ⋮ menu, then Add to Home screen.": "En iPhone o iPad: abre el enlace en Safari, toca Compartir y luego Agregar a inicio. En Android: ábrelo en Chrome, toca el menú ⋮ y luego Agregar a la pantalla principal.",
-"On this website, everything stays on this phone or tablet, inside the browser. It is not sent to the A-Z team or anyone else. Clearing your browser data or deleting the app from this device erases it, so save a backup now and then.": "En este sitio web, todo se queda en este teléfono o tableta, dentro del navegador. No se envía al equipo de A-Z ni a nadie más. Si borras los datos del navegador o quitas la app de este aparato, se borra todo, así que guarda una copia de vez en cuando.",
+"On this website, everything stays on this phone or tablet, inside the browser. It is not sent to the Zarya Daily team or anyone else. Clearing your browser data or deleting the app from this device erases it, so save a backup now and then.": "En este sitio web, todo se queda en este teléfono o tableta, dentro del navegador. No se envía al equipo de Zarya Daily ni a nadie más. Si borras los datos del navegador o quitas la app de este aparato, se borra todo, así que guarda una copia de vez en cuando.",
 "One minute less": "Un minuto menos",
 "One minute more": "Un minuto más",
 "One step at a time": "Un paso a la vez",
@@ -10714,7 +10728,7 @@ const ES = {
 "Reminder words (optional)": "Palabras del recordatorio (opcional)",
 "Reminders are off in Settings": "Los recordatorios están apagados en Ajustes",
 "Reminders for unfinished tasks": "Recordatorios de tareas sin terminar",
-"Reminders pop up while A-Z is open on the phone or tablet. They can't reach a locked phone or an app that's closed. To turn one off, edit the task.": "Los recordatorios aparecen mientras A-Z está abierta en el teléfono o la tableta. No llegan a un teléfono bloqueado ni a la app cerrada. Para apagar uno, edita la tarea.",
+"Reminders pop up while Zarya Daily is open on the phone or tablet. They can't reach a locked phone or an app that's closed. To turn one off, edit the task.": "Los recordatorios aparecen mientras Zarya Daily está abierta en el teléfono o la tableta. No llegan a un teléfono bloqueado ni a la app cerrada. Para apagar uno, edita la tarea.",
 "Remove": "Quitar",
 "Remove profile": "Quitar perfil",
 "Remove stars": "Quitar estrellas",
@@ -10872,7 +10886,7 @@ const ES = {
 "Tap your picture": "Toca tu dibujo",
 "Tap your secret code": "Toca tu código secreto",
 "Task name": "Nombre de la tarea",
-"Tasks with a time can ring on your phone even when A-Z is closed. They're added to your phone's calendar as repeating alerts.": "Las tareas con hora pueden sonar en tu teléfono aunque A-Z esté cerrada. Se agregan al calendario de tu teléfono como avisos que se repiten.",
+"Tasks with a time can ring on your phone even when Zarya Daily is closed. They're added to your phone's calendar as repeating alerts.": "Las tareas con hora pueden sonar en tu teléfono aunque Zarya Daily esté cerrada. Se agregan al calendario de tu teléfono como avisos que se repiten.",
 "Teacher": "Maestro",
 "Teachers and therapists (optional)": "Maestros y terapeutas (opcional)",
 "Teens": "Adolescentes",
@@ -10976,7 +10990,7 @@ const ES = {
 "Welcome": "Bienvenida",
 "Went to bed on time": "Se acostó a tiempo",
 "What a great day!": "¡Qué gran día!",
-"What A-Z saves": "Qué guarda A-Z",
+"What Zarya Daily saves": "Qué guarda Zarya Daily",
 "What are we timing?": "¿Qué vamos a medir?",
 "What can I get?": "¿Qué puedo conseguir?",
 "What happened, and what to try next time": "Qué pasó y qué intentar la próxima vez",
@@ -11024,7 +11038,7 @@ const ES = {
 "Your custom chart": "Tu tabla personalizada",
 "Your family": "Tu familia",
 "Your family today": "Tu familia hoy",
-"Your family's information stays on this device. Nothing is sent to the A-Z team. No ads, no tracking, nothing sold.": "La información de tu familia se queda en este aparato. No se envía nada al equipo de A-Z. Sin anuncios, sin rastreo, nada se vende.",
+"Your family's information stays on this device. Nothing is sent to the Zarya Daily team. No ads, no tracking, nothing sold.": "La información de tu familia se queda en este aparato. No se envía nada al equipo de Zarya Daily. Sin anuncios, sin rastreo, nada se vende.",
 "Your family's information is saved privately in your Claude account. No ads, no tracking, nothing sold.": "La información de tu familia se guarda en privado en tu cuenta de Claude. Sin anuncios, sin rastreo, nada se vende.",
 "Your own calm tools": "Tus propias herramientas de calma",
 "Your own moves": "Tus propios movimientos",
@@ -11054,7 +11068,7 @@ const ES = {
 "Pick 2 moves. Do the mind job while you move.": "Elige 2 movimientos. Haz la tarea para la mente mientras te mueves.",
 "Pick 2 moves: body and brain": "Elige 2 movimientos: cuerpo y cerebro",
 "Pick one, or two so the child can choose (like 45 min or 1 hour).": "Elige uno, o dos para que el niño escoja (como 45 min o 1 hora).",
-"Privacy notice version 1. This is a beta. If anything about how A-Z handles information changes, you'll be asked to read and agree again.": "Aviso de privacidad versión 1. Esta es una versión beta. Si algo cambia en cómo A-Z maneja la información, te pediremos que lo leas y lo aceptes otra vez.",
+"Privacy notice version 1. This is a beta. If anything about how Zarya Daily handles information changes, you'll be asked to read and agree again.": "Aviso de privacidad versión 1. Esta es una versión beta. Si algo cambia en cómo Zarya Daily maneja la información, te pediremos que lo leas y lo aceptes otra vez.",
 "Secret code: tap 4": "Código secreto: toca 4",
 "Step-by-step pictures and a 2-minute brushing timer that shows which teeth to brush": "Dibujos paso a paso y un temporizador de 2 minutos que muestra qué dientes cepillar",
 "Takes about 2 minutes. Earn ⭐ 2 stars.": "Toma unos 2 minutos. Gana ⭐ 2 estrellas.",
@@ -11148,8 +11162,8 @@ const ES = {
 "reminders": "recordatorios",
 "Backup saved. Keep the file somewhere safe, like your email or cloud drive.": "Copia guardada. Guarda el archivo en un lugar seguro, como tu correo o tu nube.",
 "The backup couldn't be saved here.": "Aquí no se pudo guardar la copia.",
-"That file is too big to be an A-Z backup.": "Ese archivo es demasiado grande para ser una copia de A-Z.",
-"That file isn't an A-Z backup.": "Ese archivo no es una copia de A-Z.",
+"That file is too big to be a Zarya Daily backup.": "Ese archivo es demasiado grande para ser una copia de Zarya Daily.",
+"That file isn't a Zarya Daily backup.": "Ese archivo no es una copia de Zarya Daily.",
 "Backup restored.": "Copia restaurada.",
 "Restoring replaces everything in the app now with this backup. Your current grown-up passcode stays the same.": "Restaurar cambia todo lo que hay ahora en la app por esta copia. Tu clave de adulto actual se queda igual.",
 "Replace with this backup": "Cambiar por esta copia",
@@ -11187,7 +11201,7 @@ const ES = {
 "Snack time": "Hora de la merienda",
 "Forgot it? Ask Claude in your chat to reset the grown-up passcode.": "¿La olvidaste? Pídele a Claude en tu chat que reinicie la clave de adulto.",
 "If you forget it, ask Claude in your chat to reset it.": "Si la olvidas, pídele a Claude en tu chat que la reinicie.",
-"Saved on this device only. To keep data across phones and tablets, open A-Z from your Claude account.": "Guardado solo en este aparato. Para tener los datos en varios teléfonos y tabletas, abre A-Z desde tu cuenta de Claude.",
+"Saved on this device only. To keep data across phones and tablets, open Zarya Daily from your Claude account.": "Guardado solo en este aparato. Para tener los datos en varios teléfonos y tabletas, abre Zarya Daily desde tu cuenta de Claude.",
 "Saved privately in your Claude account. It stays in sync on every phone and tablet where you open this app while signed in. Only you, and anyone you share it with as an Editor, can see it.": "Guardado en privado en tu cuenta de Claude. Se mantiene igual en cada teléfono y tableta donde abras esta app con tu sesión iniciada. Solo tú y quien lo compartas como Editor pueden verlo.",
 "done": "hechas",
 "Ready for a great day?": "¿Listo para un gran día?",
@@ -11869,7 +11883,7 @@ const ES = {
 "You still earn coins today by doing your list.": "Hoy todavía ganas monedas haciendo tu lista.",
 "Only what you type or tap in: first names or nicknames, a picture, each child's age group, routines and times, check-offs, stars, check-ins, feelings and calm-down choices, moments you log, practice answers, pet and island play, approved video links, and your grown-up passcode (saved scrambled, never as the numbers).": "Solo lo que escribes o tocas: nombres o apodos, un dibujo, el grupo de edad de cada niño, rutinas y horarios, tareas hechas, estrellas, registros, sentimientos y opciones para calmarse, momentos que anotas, respuestas de práctica, el juego con la mascota y la isla, los enlaces de videos aprobados, y tu clave de adulto (guardada en clave, nunca como los números).",
 "The weather helper sends only the ZIP code or city you enter to free weather services (Open-Meteo and Zippopotam.us) to get the forecast. The app's letters come from Google Fonts, which can see your device's internet address when it loads them. Approved videos play from YouTube in its privacy-enhanced mode, and their pictures come from YouTube too, so YouTube (Google) can see your device's internet address and which video is playing. None of them get names or any other family information.": "La ayuda del clima envía solo el código postal o la ciudad que escribes a servicios gratuitos del clima (Open-Meteo y Zippopotam.us) para obtener el pronóstico. Las letras de la app vienen de Google Fonts, que puede ver la dirección de internet de tu aparato cuando las carga. Los videos aprobados se ven desde YouTube en su modo de privacidad mejorada, y sus imágenes también vienen de YouTube, así que YouTube (Google) puede ver la dirección de internet de tu aparato y qué video se está viendo. Ninguno recibe nombres ni otra información de la familia.",
-"Privacy notice version 2. This is a beta. If anything about how A-Z handles information changes, you'll be asked to read and agree again.": "Aviso de privacidad versión 2. Esta es una versión beta. Si algo cambia en cómo A-Z maneja la información, te pediremos que lo leas y lo aceptes otra vez.",
+"Privacy notice version 2. This is a beta. If anything about how Zarya Daily handles information changes, you'll be asked to read and agree again.": "Aviso de privacidad versión 2. Esta es una versión beta. Si algo cambia en cómo Zarya Daily maneja la información, te pediremos que lo leas y lo aceptes otra vez.",
 "No videos yet": "Todavía no hay videos",
 "A grown-up can add videos for you in Settings, Approved videos.": "Un adulto puede agregarte videos en Ajustes, Videos aprobados.",
 "Who can watch it? Tap each name.": "¿Quién puede verlo? Toca cada nombre.",
@@ -12518,7 +12532,7 @@ function demoSeed() {
     { id: 'demo_maya', name: 'Maya', mode: 'kids', avatar: '🦊', color: 'ocean', codeType: 'numbers', code: '1|1|1|1', buddy: 'rocket', font: 'standard', order: 0 },
     { id: 'demo_leo', name: 'Leo', mode: 'little', avatar: '🦖', color: 'grass', codeType: 'pictures', code: '🍎|🐶|⭐|🚗', buddy: 'dino', font: 'standard', order: 1 }
   ];
-  const data = { 'app/settings': { appName: 'A-Z', children: kidsList, setupDone: true, demo: true, pinHash: DEMO_PIN, sound: true, warnMin: 5, warnStyle: 'both', devoOn: true, allowRemove: true, playMin: 15, createdAt: todayStr() } };
+  const data = { 'app/settings': { appName: 'Zarya Daily', children: kidsList, setupDone: true, demo: true, pinHash: DEMO_PIN, sound: true, warnMin: 5, warnStyle: 'both', devoOn: true, allowRemove: true, playMin: 15, createdAt: todayStr() } };
   for (const k of kidsList) {
     const ch = makeChart(k.mode, true);
     const brush = ch.sections[0].steps.find(st => /brush/i.test(st.l)); if (brush) brush.time = k.mode === 'little' ? '06:50' : '06:40';
@@ -12545,8 +12559,8 @@ function demoSeed() {
 function demoBanner() {
   if (!S.store) return '';
   const isDemo = S.settings && S.settings.demo;
-  return `<div class="card demo stack"><p><b>👋 Welcome to the A-Z demo</b></p>
-    <p class="small muted">${isDemo ? 'This is a pretend family. Tap Maya (code 1 1 1 1) or Leo (code 🍎 🐶 ⭐ 🚗). The grown-up passcode is 1 2 3 4.' : 'This is your own copy of A-Z.'} Everything saves only in this browser, and nothing is sent anywhere.</p>
+  return `<div class="card demo stack"><p><b>👋 Welcome to the Zarya Daily demo</b></p>
+    <p class="small muted">${isDemo ? 'This is a pretend family. Tap Maya (code 1 1 1 1) or Leo (code 🍎 🐶 ⭐ 🚗). The grown-up passcode is 1 2 3 4.' : 'This is your own copy of Zarya Daily.'} Everything saves only in this browser, and nothing is sent anywhere.</p>
     <div class="row">${confirmBtn('demo-reset', 'demoReset', 'Reset demo')}</div></div>`;
 }
 ACT.demoReset = () => { try { localStorage.removeItem(LS_KEY); localStorage.removeItem('az_wx'); } catch (e) {} location.reload(); };

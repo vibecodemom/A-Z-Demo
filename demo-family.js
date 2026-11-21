@@ -8,7 +8,7 @@ function demoSeed() {
     { id: 'demo_maya', name: 'Maya', mode: 'kids', avatar: '🦊', color: 'ocean', codeType: 'numbers', code: '1|1|1|1', buddy: 'rocket', font: 'standard', order: 0 },
     { id: 'demo_leo', name: 'Leo', mode: 'little', avatar: '🦖', color: 'grass', codeType: 'pictures', code: '🍎|🐶|⭐|🚗', buddy: 'dino', font: 'standard', order: 1 }
   ];
-  const data = { 'app/settings': { appName: 'A-Z', children: kidsList, setupDone: true, demo: true, pinHash: DEMO_PIN, sound: true, warnMin: 5, warnStyle: 'both', devoOn: true, allowRemove: true, playMin: 15, createdAt: todayStr() } };
+  const data = { 'app/settings': { appName: 'Zarya Daily', children: kidsList, setupDone: true, demo: true, pinHash: DEMO_PIN, sound: true, warnMin: 5, warnStyle: 'both', devoOn: true, allowRemove: true, playMin: 15, createdAt: todayStr() } };
   for (const k of kidsList) {
     const ch = makeChart(k.mode, true);
     const brush = ch.sections[0].steps.find(st => /brush/i.test(st.l)); if (brush) brush.time = k.mode === 'little' ? '06:50' : '06:40';
@@ -35,8 +35,8 @@ function demoSeed() {
 function demoBanner() {
   if (!S.store) return '';
   const isDemo = S.settings && S.settings.demo;
-  return `<div class="card demo stack"><p><b>👋 Welcome to the A-Z demo</b></p>
-    <p class="small muted">${isDemo ? 'This is a pretend family. Tap Maya (code 1 1 1 1) or Leo (code 🍎 🐶 ⭐ 🚗). The grown-up passcode is 1 2 3 4.' : 'This is your own copy of A-Z.'} Everything saves only in this browser, and nothing is sent anywhere.</p>
+  return `<div class="card demo stack"><p><b>👋 Welcome to the Zarya Daily demo</b></p>
+    <p class="small muted">${isDemo ? 'This is a pretend family. Tap Maya (code 1 1 1 1) or Leo (code 🍎 🐶 ⭐ 🚗). The grown-up passcode is 1 2 3 4.' : 'This is your own copy of Zarya Daily.'} Everything saves only in this browser, and nothing is sent anywhere.</p>
     <div class="row">${confirmBtn('demo-reset', 'demoReset', 'Reset demo')}</div></div>`;
 }
 ACT.demoReset = () => { try { localStorage.removeItem(LS_KEY); localStorage.removeItem('az_wx'); } catch (e) {} location.reload(); };

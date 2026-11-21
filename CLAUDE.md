@@ -1,7 +1,7 @@
 # Notes for Claude working in this repo
 
-## The A-Z app in Claude must never be changed from here
-- The A-Z app is a claude.ai artifact owned by the user. That artifact is the only place the app itself is changed.
+## The Zarya Daily app in Claude must never be changed from here
+- The Zarya Daily app (first called A-Z; the user may say either name) is a claude.ai artifact owned by the user. That artifact is the only place the app itself is changed.
 - **Never publish, update, republish or delete that artifact (or any claude.ai artifact) from this repo, and never write to its data.** Reading it is fine. The artifact's link is in `private/ARTIFACT.txt` (kept off GitHub).
 - This repo is one way, downstream only: artifact → `private/family-app.html` → `python3 build.py` → `index.html` (the demo) → GitHub Pages for `vibecodemom/A-Z-Demo`.
 
@@ -12,6 +12,7 @@
 4. Ask the user before pushing. The repo and its GitHub Pages site are public.
 
 ## What is published
+- The demo opens with the "Sunrise bounce" opening screen (the user's pick from the "Zarya Opening Screens" artifact, added by `build.py`). The app in Claude still opens with "Blue spin"; if it switches, remove that part of `build.py`.
 - Only the demo (`index.html`). The full app for real families is intentionally not published right now. Don't add it unless the user asks.
 - `.nojekyll` makes GitHub Pages serve files as they are.
 
