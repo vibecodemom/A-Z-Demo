@@ -3,8 +3,9 @@ private/
 # Made by the Spanish and pixel-art scripts, for updating the artifact on claude.ai
 translations/es.js
 pixel-art/pixel-art.js
-# Claude Code's local settings
+# Claude Code's local settings and its instructions for this folder (kept on this computer only)
 .claude/
+CLAUDE.md
 # Mac and Python clutter
 .DS_Store
 __pycache__/
